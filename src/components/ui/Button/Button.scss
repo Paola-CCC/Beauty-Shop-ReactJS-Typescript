@@ -1,0 +1,26 @@
+
+
+$primary-color : pink;
+$primary_hover : grey ; 
+$primary_focus-box-sadow : 0px -5px 10px 0px rgba(0, 0, 0, 0.5); 
+
+button  {
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  // &:disabled {
+  //     background-color: #e8e8e8;
+  //     color: #818181;
+  //     cursor: not-allowed;
+  // }
+  a {
+    padding: 0.5rem 1rem;
+
+  }
+}
+
+
+
