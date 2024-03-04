@@ -1,4 +1,4 @@
 export { default as Register } from "./Register/Register";
 export { default as Login } from "./Login/Login";
-export { default as AboutPage } from "./AboutPage/AboutPage";
+export { default as Blog } from "./Blog/Blog";
 export { default as Home } from "./Home/Home";

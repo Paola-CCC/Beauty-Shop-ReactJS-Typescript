@@ -2,7 +2,9 @@ import React from 'react';
 import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './layout';
-import { AboutPage, Home, Login, Register } from './pages';
+import { Blog, Home, Login, Register } from './pages';
+import MakeUpPage from './pages/MakeUpPage/MakeUpPage';
+import SkinCarePage from './pages/SkinCarePage/SkinCarePage';
 
 
 
@@ -19,16 +21,24 @@ function App() {
           element: < Home />,
         },
         {
-          path: 'about',
-          element: <AboutPage />,
-        },
-        {
           path: 'connexion',
           element: <Login />,
         },
         {
           path: 'inscription',
           element: <Register />,
+        },
+        {
+          path: 'make-up',
+          element: <MakeUpPage />,
+        },
+        {
+          path: 'skin-care',
+          element: <SkinCarePage />,
+        },
+        {
+          path: 'blog',
+          element: <Blog />,
         },
       ],
     },

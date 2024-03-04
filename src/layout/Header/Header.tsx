@@ -14,14 +14,15 @@ const Header = () => {
       <nav className="navbar">
 
         <div className="data-icons">
-
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={active ? "fas fa-times" : "fas fa-bars"}></i>
+          <div className="menu-logo-zone">
+            <div className="menu-icon" onClick={handleClick}>
+              <i className={active ? "fas fa-times" : "fas fa-bars"}></i>
+            </div>
+            <h4 className="navbar-logo">
+              BeautyGalaxy <i className="fab fa-react"></i>
+            </h4>
           </div>
 
-          <h4 className="navbar-logo">
-            React <i className="fab fa-react"></i>
-          </h4>
           <ul className="nav-links-mobile">
             <li>
               <Link to="#" className="nav-links">
@@ -41,7 +42,6 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-
         </div>
 
         <ul className={active ? "nav-menu active" : "nav-menu"}>
@@ -51,17 +51,17 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="#" className="nav-links">
+            <Link to="make-up" className="nav-links">
               Maquillage
             </Link>
           </li>
           <li>
-            <Link to="#" className="nav-links">
+            <Link to="skin-care" className="nav-links">
               Skincare
             </Link>
           </li>
           <li>
-            <Link to="#" className="nav-links">
+            <Link to="blog" className="nav-links">
               Blog
             </Link>
           </li>

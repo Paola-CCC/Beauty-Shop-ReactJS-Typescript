@@ -5,7 +5,7 @@ header {
   flex-direction: row;
   justify-content: center;
   nav.navbar {
-    width: 85vw;   // );
+    width: 85vw;
     display: flex;
     align-items: center;
     height: 70px;
@@ -21,7 +21,6 @@ header {
       gap: 20px;
       list-style: none;
       text-align: center;
-      // width: 80vw;
       justify-content: end;
       margin: 0;
 
@@ -30,8 +29,6 @@ header {
           color: #000000;
           text-decoration: none;
           position: relative;
-
-
           small.heart-text {
             font-size: 14px;
             height: 20px;
@@ -61,27 +58,29 @@ header {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      .menu-icon {
-        display: none;
-        font-size: 1.8rem;
-        cursor: pointer;
+      .menu-logo-zone {
+        display: flex;
+        flex-direction: row;
+        .menu-icon {
+          display: none;
+          font-size: 1.8rem;
+          cursor: pointer;
+          .fa-times {
+            color: #181818;
+            font-size: 2rem;
+          }
+        }
 
-        .fa-times {
+        h4.navbar-logo {
           color: #181818;
-          font-size: 2rem;
+          cursor: pointer;
+          margin: 0 0 0 10px ;
+          .fa-react {
+            margin-left: 0.5rem;
+            font-size: 1.6rem;
+          }
         }
       }
-
-      h1.navbar-logo {
-        color: #181818;
-        margin-left: 20px;
-        cursor: pointer;
-        .fa-react {
-          margin-left: 0.5rem;
-          font-size: 1.6rem;
-        }
-      }
-
       // Element Mobile
       ul.nav-links-mobile {
         display: none;
@@ -115,16 +114,20 @@ header {
 
 @media (max-width: 960px) {
   header {
-    padding: 0 20px ;
+    padding: 0 10px ;
     nav.navbar {
       display: flex;
       flex-direction: row;
+      width: 100vw;
       .data-icons {
         width: 100%;
-        .menu-icon {
-          display: block;
+        .menu-logo-zone {
+          .menu-icon {
+            display: block;
+            height: 30px;
+            width: 30px;
+          }
         }
-
         ul.nav-links-mobile {
           display: flex;
           justify-content: flex-end;
@@ -138,7 +141,6 @@ header {
             display: inline-block;
           }
         }
-        
       }
 
 

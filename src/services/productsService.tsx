@@ -1,8 +1,9 @@
 
+import { Products } from "../types/products.type";
 import http from "./axiosClient";
 
 export const getAll = () => {
-    return http.get("/products");
+    return http.get<Products[]>("/products");
 };
 
 export const getById = (id : number | string) => {
