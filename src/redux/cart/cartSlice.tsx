@@ -61,7 +61,7 @@ export const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state));
     },
 
-    updateQuantityProduct(state, action: PayloadAction<{ id: number, quantity: number, price: number }>) {
+    updateQuantityProduct(state, action: PayloadAction<CartItems>) {
       let sumItems = 0;
 
       const itemIndex = state.CartItems.findIndex(
