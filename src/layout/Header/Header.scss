@@ -61,6 +61,7 @@ header {
       .menu-logo-zone {
         display: flex;
         flex-direction: row;
+        align-items: center;
         .menu-icon {
           display: none;
           font-size: 1.8rem;
@@ -71,15 +72,24 @@ header {
           }
         }
 
-        h4.navbar-logo {
-          color: #181818;
+        a {
+          all:unset;
           cursor: pointer;
-          margin: 0 0 0 10px ;
-          .fa-react {
-            margin-left: 0.5rem;
-            font-size: 1.6rem;
+          h4.navbar-logo {
+            color: #181818;
+            cursor: pointer;
+            margin: 0 0 0 10px ;
+            vertical-align: middle;            
+            .fa-react {
+              margin-left: 0.5rem;
+              font-size: 1.6rem;
+            }
           }
+
         }
+        
+        
+
       }
       // Element Mobile
       ul.nav-links-mobile {

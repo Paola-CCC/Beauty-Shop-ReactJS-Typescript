@@ -7,32 +7,38 @@ interface CardProps {
   notes?: string | number,
   description?: string, 
   imgSrc?: string, 
-  price?: string | number
+  price?: string | number,
+  showButton?: boolean
 }
 
-const Card = ({brandName , notes, description, imgSrc, price}: CardProps) => {
+const Card = ({brandName , notes, description, imgSrc, price , showButton = true }: CardProps) => {
   return (
     <Link to={"#"} className="card">
       <figure className="card-image">
-        <img src="https://d1flfk77wl2xk4.cloudfront.net/Assets/80/931/XXL_p0165993180.jpg" alt="An orange painted blue, cut in half laying on a blue background" />
+        <img src={imgSrc} alt="skincare-i" />
+        <span tabIndex={0}>
+        <i className="fa-regular fa-heart fa-xl" ></i>        
+        </span>
       </figure>
       <div className="card-header">
         <h4>
-          <span className='title-card'> BEAUTY OF JOSEON 
-              <span><i className="fa-solid fa-star"></i> 3.5</span>
+          <span className='title-card'> {brandName}
+              <span><i className="fa-solid fa-star"></i> {notes}</span>
           </span>
-          <span> Relief Sun : Rice + Probiotics SPF50+ PA++++ </span>
+          <span> {description} </span>
         </h4>
       </div>
       <div className="card-footer">
         <h4>
-            30 €
+            {price} €
         </h4>
-        <Button kind='primary'>
-         En savoir plus
-        </Button>
-      </div>
+        { showButton  &&
+          <Button kind='primary'>
+            En savoir plus
+          </Button>
+        }
 
+      </div>
     </Link>
   )
 }

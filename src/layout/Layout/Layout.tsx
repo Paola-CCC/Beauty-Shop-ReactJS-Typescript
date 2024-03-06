@@ -6,13 +6,20 @@ import Header from '../Header/Header';
 
 const Layout = () => {
     return (
-        <div className='App'>
+        <>
           <Header/>
           <main>
             <Outlet />
           </main>
-          <footer>Footer Content</footer>
-        </div>
+          <footer>
+            <div>
+              <span>
+                BeautyGalaxy 2024
+              </span>
+            </div>
+
+          </footer>
+        </>
       );
 }
 

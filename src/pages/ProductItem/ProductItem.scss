@@ -1,0 +1,201 @@
+
+.ariane-string {
+    background-color: rgb(237, 237, 237);
+    padding: 10px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    span {
+       width:  85vw;
+       display: inline-block;
+    }
+}
+
+
+section.product-description,
+section.product-reviews {
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > div {
+        width: 85vw;
+    }
+}
+
+section.product-description {
+ 
+    > div.container-item  {
+        height: 500px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+
+        div {
+            border-radius: 15px;
+        }
+
+
+        div.img-container {
+            width: fit-content;
+            height:inherit;
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 15px;
+
+            }
+        }
+
+        div.description-zone {
+            width: fit-content;
+            // background-color: rgb(237, 237, 237);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            height:inherit;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            > * {
+                padding: 0 25px;
+            }
+
+            .main-datas {
+
+                h1 {
+                    font-size: 1.70rem;
+                    font-weight: 600;
+                }
+    
+                h3 {
+                    margin-top: 60px;
+                    font-size: 1.40rem ;
+                    font-weight: 400;
+    
+                }
+    
+                p {
+                    font-size: 1.70rem ;
+                    font-weight: 600;
+                }
+            }
+
+
+            .section-actions-cat {
+                // background-color: darkgoldenrod;
+                border-radius: 0;
+                padding: 0;
+
+                div.mb-3 {
+                    padding: 0px  25px;
+                    label {
+                        display: block;
+                        margin: 10px 0px ;
+                        font-weight: 500;
+                    }
+                }
+                button {
+                    width: 100%;
+                    padding: 1.25rem 0;
+                    background-color: black;
+                    color: white;
+                    border-bottom-left-radius: 15px;
+                    border-bottom-right-radius: 15px;
+                    font-size: 16px;
+                    font-weight: 600;
+
+                }
+            }
+        }
+    }
+
+    
+}
+
+
+section.product-reviews {
+
+
+    .reviews-zone .reviewItem {
+        width: 460px;
+        background-color: #f7f7f7;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        transition: all .2s linear;
+
+        &:hover{
+            // border-color: aqua;
+            transform: scale(1.01);
+            // background-color: #090921;
+            box-shadow: 0 0px 5px 0px #cbc0c0;
+        }
+
+            
+        .top {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0;
+
+
+            .clientImage  span{
+                font-weight: 700;
+            }
+
+            ul {
+                display: flex;
+                list-style: none;
+                li {
+                    padding-left: 4px;
+
+                }
+            }
+
+ 
+        }
+     
+        article p {
+            font-size: 16px;
+            margin-top: 0;
+            
+        }
+
+        article small {
+            font-size: 14px;
+        }
+    }
+    
+
+    
+
+    
+
+}
+
+@media screen and (max-width: 960px) {   
+    section.product-description,
+    section.product-reviews {
+        > div {
+            width: 95vw;
+        }
+    }
+}
+
+
+@media screen and (max-width: 660px) {   
+    section.product-description > div.container-item {
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+    }
+}

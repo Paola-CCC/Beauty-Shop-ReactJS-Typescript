@@ -19,7 +19,9 @@ const Header = () => {
               <i className={active ? "fas fa-times" : "fas fa-bars"}></i>
             </div>
             <h4 className="navbar-logo">
-              BeautyGalaxy <i className="fab fa-react"></i>
+              <Link to={'/'}>
+                BeautyGalaxy <i className="fab fa-react"></i>
+              </Link>
             </h4>
           </div>
 
@@ -61,8 +63,8 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="blog" className="nav-links">
-              Blog
+            <Link to="#" className="nav-links">
+              About
             </Link>
           </li>
           <li className="desktop-icons-user">

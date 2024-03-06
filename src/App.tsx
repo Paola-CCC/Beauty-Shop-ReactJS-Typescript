@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './layout';
-import { Blog, Home, Login, Register } from './pages';
+import { Blog, Home, Login, ProductItem, Register } from './pages';
 import MakeUpPage from './pages/MakeUpPage/MakeUpPage';
 import SkinCarePage from './pages/SkinCarePage/SkinCarePage';
 
@@ -39,6 +39,14 @@ function App() {
         {
           path: 'blog',
           element: <Blog />,
+        },
+        {
+          path: 'skin-care/:id',
+          element: <ProductItem />,
+        },
+        {
+          path: 'make-up/:id',
+          element: <ProductItem />,
         },
       ],
     },

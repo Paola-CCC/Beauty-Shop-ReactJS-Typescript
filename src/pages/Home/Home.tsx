@@ -7,11 +7,18 @@ import { Brand } from "../../components/Brand/Brand";
 
 const Home = () => {
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
+  const productData = {
+    brandName: ('Anastasia Beverly').toUpperCase(),
+    notes: 4.5,
+    description: 'Anastasia Beverly Hills Cosmos Eye Shadow Palette',
+    imgSrc: 'https://www.sephora.fr/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dwba3c8965/images/hi-res/SKU/SKU_3335/585584_swatch.jpg',
+    price: 29.99,
+    showButton: false
+  };
 
   useEffect(() => {
-    // Appels de dispatch regroupés dans un seul useEffect
     dispatch(getproductList());
   }, [dispatch]);
 
@@ -72,17 +79,21 @@ const Home = () => {
               <h3> Produits populaires</h3>
               <p> Découvrez les produits les plus populaires du moment  </p>
             </div>
-            <div className="heading-btn">
+            {/* <div className="heading-btn">
               <button>
                   Tout voir
               </button>
-            </div>    
+            </div>     */}
         </div>
         <div className="container-card popular-choice">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card {...productData} />
+          <Card {...productData} />
+          <Card {...productData} />
+          <Card {...productData} />
+          <Card {...productData} />
+          <Card {...productData} />
+          <Card {...productData} />
+          <Card {...productData} />  
         </div>
       </section>
 
@@ -99,7 +110,7 @@ const Home = () => {
               </button>
             </div>     */}
         </div>
-        <div className="container-card popular-choice">
+        <div className="container-card brand-name">
         <Brand brandName={"CHANEL"}/>
         <Brand brandName={"DIOR"}/>
         <Brand brandName={"FENTY BEAUTY"}/>
