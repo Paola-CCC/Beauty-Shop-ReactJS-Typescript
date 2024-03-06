@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import "./ProductItem.scss";
 import { Button, InputSelect } from '../../components/ui';
+import { useParams } from 'react-router-dom';
 
 const ProductItem = () => {
 
     const [quantity, setQuantity] = useState(0);
+
+    const { Id } = useParams();
 
     const optionsQuantity =[
         { value: 0, label: "choisir une quantité" },

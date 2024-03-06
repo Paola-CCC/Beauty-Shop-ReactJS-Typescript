@@ -3,6 +3,7 @@ import './Card.scss';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 interface CardProps {
+  path?: string,
   brandName?: string,
   notes?: string | number,
   description?: string, 
@@ -11,9 +12,9 @@ interface CardProps {
   showButton?: boolean
 }
 
-const Card = ({brandName , notes, description, imgSrc, price , showButton = true }: CardProps) => {
+const Card = ({path , brandName , notes, description, imgSrc, price , showButton = true }: CardProps) => {
   return (
-    <Link to={"#"} className="card">
+    <Link to={'/' + path} className="card">
       <figure className="card-image">
         <img src={imgSrc} alt="skincare-i" />
         <span tabIndex={0}>

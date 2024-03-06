@@ -1,15 +1,23 @@
+import { useEffect } from 'react';
 import { Card } from '../../components/ui';
 import './MakeUpPage.scss';
 
 const MakeUpPage = () => {
 
+  
+
   const productData = {
     brandName: ('Anastasia Beverly').toUpperCase(),
+    path: "make-up/8",
     notes: 4.5,
     description: 'Anastasia Beverly Hills Cosmos Eye Shadow Palette',
     imgSrc: 'https://www.sephora.fr/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dwba3c8965/images/hi-res/SKU/SKU_3335/585584_swatch.jpg',
     price: 29.99,
   };
+
+  useEffect(() => {
+
+  },[])
 
   return (
     <div className='container-makeup-zone'>

@@ -6,9 +6,6 @@ import { Blog, Home, Login, ProductItem, Register } from './pages';
 import MakeUpPage from './pages/MakeUpPage/MakeUpPage';
 import SkinCarePage from './pages/SkinCarePage/SkinCarePage';
 
-
-
-
 function App() {
 
   const router = createBrowserRouter([
@@ -41,11 +38,11 @@ function App() {
           element: <Blog />,
         },
         {
-          path: 'skin-care/:id',
+          path: 'skin-care/:Id',
           element: <ProductItem />,
         },
         {
-          path: 'make-up/:id',
+          path: 'make-up/:Id',
           element: <ProductItem />,
         },
       ],

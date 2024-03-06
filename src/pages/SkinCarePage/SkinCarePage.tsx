@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Card } from '../../components/ui';
 import './SkinCarePage.scss';
 
@@ -5,11 +6,16 @@ const SkinCarePage = () => {
 
   const productData = {
     brandName: 'BEAUTY OF JOSEON',
+    path: "skin-care/3",
     notes: 3.5,
     description: 'Green Plum Refreshing Cleanser - Nettoyant',
     imgSrc: 'https://d1flfk77wl2xk4.cloudfront.net/Assets/80/931/XXL_p0165993180.jpg',
     price: 50,
   };
+
+  useEffect(() => {
+
+  },[])
 
   return (
     <div className='container-makeup-zone'>
