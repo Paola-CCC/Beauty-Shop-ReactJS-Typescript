@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./Home.scss";
-import { getproductList } from "../../redux/products/productsActions";
+import { getPopularProductsList, getproductList } from "../../redux/products/productsActions";
 import { useAppDispatch } from "../../redux/hooks";
 import { Card } from "../../components/ui";
 import { Brand } from "../../components/Brand/Brand";
@@ -11,6 +11,7 @@ const Home = () => {
 
   const productData = {
     brandName: ('Anastasia Beverly').toUpperCase(),
+    path: "make-up/4",
     notes: 4.5,
     description: 'Anastasia Beverly Hills Cosmos Eye Shadow Palette',
     imgSrc: 'https://www.sephora.fr/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dwba3c8965/images/hi-res/SKU/SKU_3335/585584_swatch.jpg',
@@ -20,6 +21,8 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getproductList());
+    dispatch(getPopularProductsList());
+
   }, [dispatch]);
 
   return (
@@ -90,10 +93,14 @@ const Home = () => {
           <Card {...productData} />
           <Card {...productData} />
           <Card {...productData} />
+          {/* <Card {...productData} />
+          <Card {...productData} />
+          <Card {...productData} />
+          <Card {...productData} /> 
           <Card {...productData} />
           <Card {...productData} />
           <Card {...productData} />
-          <Card {...productData} />  
+          <Card {...productData} />     */}
         </div>
       </section>
 
@@ -111,10 +118,26 @@ const Home = () => {
             </div>     */}
         </div>
         <div className="container-card brand-name">
-        <Brand brandName={"CHANEL"}/>
-        <Brand brandName={"DIOR"}/>
-        <Brand brandName={"FENTY BEAUTY"}/>
-        <Brand brandName={"MISSHA"}/>
+
+          <Brand 
+          brandName={"CHANEL"}
+          imgSrc={"https://puls-img.chanel.com/1682497097609-onelandingpageeditopush1080x1150pxdesktopmobile4jpg_1150x1080.jpg"}
+          />
+
+          <Brand 
+            brandName={"DIOR"}
+            imgSrc={"https://www.dior.com/on/demandware.static/-/Library-Sites-DiorSharedLibrary/default/dw3dbe1533/images/beauty/03-SKINCARE/2023/Skincare-map/CaptureTotale_S123_Duo_Serum_Creme_1850x2000.jpg"}
+          />
+
+          <Brand 
+          brandName={"FENTY BEAUTY"}
+          imgSrc="https://media.allure.com/photos/6217d1050c9cc364689cda05/16:9/w_3488,h_1962,c_limit/fenty%20skin%20fragrance-free%20lede.jpg"
+          />
+
+          <Brand 
+          brandName={"MISSHA"}
+          imgSrc="https://missha.com/upload/sharpmissha/202106021449159d0c612b-d53d-4d91-a873-d43ccda959b7.jpg"
+          />
         {/* <Brand brandName={"BEAUTY OF JOSEON"}/> */}
 
 

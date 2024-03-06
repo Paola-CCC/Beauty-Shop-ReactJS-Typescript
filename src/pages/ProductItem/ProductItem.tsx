@@ -1,15 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "./ProductItem.scss";
 import { Button, InputSelect } from '../../components/ui';
 import { useParams } from 'react-router-dom';
+import { addToCart } from '../../redux/cart/cartSlice';
+import { CartItems, Products } from '../../types/products.type';
+import { useAppDispatch } from '../../redux/hooks';
+import ProductsService from '../../services/productsService';
 
 const ProductItem = () => {
 
     const [quantity, setQuantity] = useState(0);
-
+    const initialState : Products  = {
+        id: null,
+        brandName: '',
+        name: '',
+        descriptionLong: '',
+        descriptionShort: '',
+        quantity: null,
+        tags: [],
+        categories: [],
+        notes: null,
+        createdAt: '',
+        images: [],
+        price: null,
+    }
+    const [productDatas, setProductsDatas] = useState<Products>(initialState);
     const { Id } = useParams();
+    const dispatch = useAppDispatch();
+    const dataFetched = useRef<boolean>(false);
 
-    const optionsQuantity =[
+    const handleAddCat = () => {
+      const datasCatOne : CartItems = {
+        id: 25 ,
+        quantity: quantity,
+        price: 10
+      }
+
+      dispatch(addToCart(datasCatOne));
+    };
+
+    const optionsQuantity = [
         { value: 0, label: "choisir une quantité" },
         { value: 1, label: "1" },
         { value: 2, label: "3" },
@@ -20,8 +50,28 @@ const ProductItem = () => {
 
     const handleChange = (event: any) => {
         const { value } = event.target;
-        setQuantity( value );
+        setQuantity(Number(value));
     };
+
+    useEffect(() => {
+
+        const showData = async () => {
+            try {
+                const response = await ProductsService.getById(Id);
+                setProductsDatas(response.data);
+            
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        if(Id && dataFetched.current === false) {
+            showData();
+            dataFetched.current = true ;
+        }
+
+    },[Id,productDatas])
+
   return (
     <>
     <div className='ariane-string'>
@@ -32,18 +82,17 @@ const ProductItem = () => {
     <section className='product-description'>
         <div className='container-item'>
             <div className='img-container'> 
-                <img src="https://static.thcdn.com/images/small/webp//productimg/original/13187358-1734982825762586.jpg"alt="skincare-i" />
+                <img src={productDatas?.images[0]}   alt="skincare-i" />
             </div>
             <div className='description-zone'> 
                
                 <div className='main-datas'>
 
-                    <h3>BYOMA </h3>
-                    <h1>Huile au Rétinol - Soin Peaux Sensibles </h1>
-                    <span><i className="fa-solid fa-star"></i> 3.6 (35 avis ) </span>
-                    <p> 18.95 €</p>
+                    <h3> {productDatas?.brandName} </h3>
+                    <h1>{ productDatas?.name} </h1>
+                    <span><i className="fa-solid fa-star"></i> {productDatas.notes} (35 avis ) </span>
+                    <p> {productDatas?.price} €</p>
                 </div>
-
 
                 <div className='section-actions-cat'>
 
@@ -57,7 +106,7 @@ const ProductItem = () => {
                         />
                     </div>
 
-                    <Button kind='primary'>
+                    <Button kind='primary' onClick={handleAddCat}>
                         Ajouter au panier
                     </Button>
                 </div>
@@ -85,9 +134,11 @@ const ProductItem = () => {
                         </ul>
                     </div>
                     <article>
-                        <p className="review">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit beatae ipsa
+                        <p className="review">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit beatae ipsa
                             voluptatibus perferendis quos eaque nemo error tempora harum quas, laudantium tenetur, neque,
-                            facere exercitationem!</p>
+                            facere exercitationem!
+                        </p>
                         <small>Le 18/08/2023</small>
                     </article>
                 </div>

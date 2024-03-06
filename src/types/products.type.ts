@@ -1,15 +1,16 @@
 export type Products = {
-    id: number;
-    name: string;
-    descriptionLong: string;
-    descriptionShort: string;
-    quantity: number;
-    tags: string[];
-    categories: string[];
-    notes: number;
-    createdAt: string;
-    images: string[];
-    price: number;
+    id: number | null,
+    brandName: string,
+    name: string,
+    descriptionLong: string,
+    descriptionShort: string,
+    quantity: number | null,
+    tags: string[],
+    categories: string[],
+    notes: number | null,
+    createdAt: string,
+    images: string[],
+    price: number | null,
 } 
 
 export type CartItems = {

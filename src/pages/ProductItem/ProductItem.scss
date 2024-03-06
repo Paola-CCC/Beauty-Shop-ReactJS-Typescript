@@ -40,12 +40,11 @@ section.product-description {
 
 
         div.img-container {
-            width: fit-content;
             height:inherit;
             img {
                 height: 100%;
                 width: 100%;
-                object-fit: cover;
+                object-fit: contain;
                 border-radius: 15px;
 
             }

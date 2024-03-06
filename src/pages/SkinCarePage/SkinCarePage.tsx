@@ -42,8 +42,8 @@ const SkinCarePage = () => {
         <Card {...productData} />
         <Card {...productData} />
         <Card {...productData} />
-        {/* <Card {...productData} />
-        <Card {...productData} /> */}
+        <Card {...productData} />
+        <Card {...productData} />
         </div>
       </section>
     </div>

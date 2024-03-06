@@ -1,10 +1,11 @@
 import { PayloadAction, createSlice  } from "@reduxjs/toolkit";
-import { getproductList } from "./productsActions";
+import { getPopularProductsList, getproductList } from "./productsActions";
 import { RootState } from "../store";
 import { Products } from "../../types/products.type";
 
 interface ProductsState {
-  data?: Products[],
+  datas?: Products[],
+  popularProducts?: Products[],
   categories?: string[],
   tags?: string[],
   isLoading: boolean,
@@ -13,7 +14,8 @@ interface ProductsState {
 }
 
 const initialState: ProductsState = {
-  data: [],
+  datas: [],
+  popularProducts: [],
   categories:[],
   tags: [],
   isLoading: false,
@@ -33,7 +35,7 @@ const productsSlice = createSlice({
       .addCase(getproductList.fulfilled, (state, action: PayloadAction< any>) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.data = action.payload;
+        state.datas = action.payload;
         const listCategories : any[] = [];
         const listTags : any[] = [];
 
@@ -59,11 +61,26 @@ const productsSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = false;
         state.errorMessage = action.payload;
+      })
+
+
+      .addCase(getPopularProductsList.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getPopularProductsList.fulfilled, (state, action: PayloadAction< any>) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.popularProducts = action.payload;
+      })
+      .addCase(getPopularProductsList.rejected,(state,action: PayloadAction< any>) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.errorMessage = action.payload;
       });
   },
 });
 
-export const selectAllProducts = (state : RootState) => state.products.data;
+export const selectAllProducts = (state : RootState) => state.products.datas;
 export const getProductIsSuccess = (state : RootState) => state.products.isSuccess;
 export const getproductsErrorMessage = (state : RootState) => state.products.errorMessage;
 

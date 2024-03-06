@@ -5,16 +5,16 @@ import "./Brand.scss";
 
 interface BandCardProps {
     brandName: string, 
-    img?: string , 
+    imgSrc?: string , 
     alt?: string
 }
 
-export const Brand = ({brandName,img,alt }: BandCardProps) => {
+export const Brand = ({brandName,imgSrc,alt }: BandCardProps) => {
   return (
         <div className="card-brand">
             <Link to={"#"}>
                 <div className="card-image">
-                    <img src="https://1.bp.blogspot.com/-k-Cbbx0M7w4/YBrDmu_NSII/AAAAAAAFZbs/Pa3MSkFNcr00PnHalMuYWvKQUVm6zC0ZwCLcBGAsYHQ/s800/givenchy-maquillage-printemps-2021.jpg" alt="Orange" />
+                    <img src={imgSrc} alt="Orange" />
                     <h4> {brandName}</h4>
                 </div>
             </Link>

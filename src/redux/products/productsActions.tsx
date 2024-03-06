@@ -12,3 +12,15 @@ export const getproductList = createAsyncThunk(
     }
   }
 );
+
+export const getPopularProductsList = createAsyncThunk(
+  'products/getPopularProductsList',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await ProductsService.getPopularProducts();
+      return response.data;
+    } catch (error :any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

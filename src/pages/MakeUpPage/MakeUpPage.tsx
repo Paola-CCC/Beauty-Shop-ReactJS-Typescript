@@ -8,7 +8,7 @@ const MakeUpPage = () => {
 
   const productData = {
     brandName: ('Anastasia Beverly').toUpperCase(),
-    path: "make-up/8",
+    path: "make-up/1",
     notes: 4.5,
     description: 'Anastasia Beverly Hills Cosmos Eye Shadow Palette',
     imgSrc: 'https://www.sephora.fr/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dwba3c8965/images/hi-res/SKU/SKU_3335/585584_swatch.jpg',
@@ -44,7 +44,9 @@ const MakeUpPage = () => {
         <Card {...productData} />
         <Card {...productData} />
         <Card {...productData} />
-        <Card {...productData} />     
+        <Card {...productData} /> 
+        <Card {...productData} />
+        <Card {...productData} />      
         </div>
       </section>
     </div>

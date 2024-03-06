@@ -1,0 +1,409 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "elisa.zhan@free.fr",
+      "firstname": "Elisa",
+      "lastname": "Zhan",
+      "age": 27
+    },
+    {
+      "id": 2,
+      "email": "Jeanne.Pilon@free.fr",
+      "firstname": "Jeanne",
+      "lastname": "Pilon",
+      "age": 27
+    }
+  ],
+  "login": {
+    "token_JWT": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlcm5hbWUiOiJFbGlzYSBaaGFuIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwidXNlcklkIjoxfQ.A83lJ0ofH8EoviV11NZwOL3ttN_J817nKaxUBKNvbd8"
+  },
+  "register": {
+    "token_JWT": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlcm5hbWUiOiJFbGlzYSBaaGFuIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwidXNlcklkIjoxfQ.A83lJ0ofH8EoviV11NZwOL3ttN_J817nKaxUBKNvbd8"
+  },
+  "products": [
+    {
+      "id": 1,
+      "brandName": "BYOMA",
+      "name": "Product 1",
+      "descriptionLong": "This is a long description for Product 1. It provides detailed information about the product.",
+      "descriptionShort": "Short description for Product 1.",
+      "quantity": 10,
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ],
+      "categories": [
+        "category1",
+        "category2"
+      ],
+      "notes": 2.5,
+      "createdAt": "2024-02-16",
+      "images": [
+        "https://images.beautybay.com/eoaaqxyywn6o/THEO0003F_1.jpg_s3.lmb_40ht7r/71039e90fe8b62e0ec970a783421afeb/THEO0003F_1.jpg",
+        "https://sf1.bibamagazine.fr/wp-content/uploads/biba/2019/07/coup-coeur-pour-the-ordinary-marque-soin-experte-petit-prix-1140x623.jpgg",
+        "https://media1.popsugar-assets.com/files/thumbor/mDLDrgx-NDqR8c5XHUD9p47uxxs=/0x367:6720x3727/fit-in/6720x4480/top/filters:format_auto():quality(85):upscale()/2023/03/20/778/n/1922153/7abe219764189abe02b4b6.45728933_.jpg",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7tWvLDW2b21sjb1nIA-QbmFc49RJsHzWBUGFWFyqZ3q7XMW0427eBkjcAW9Xi4NWoIMwOHBoQxKIxjmXS4VVzoxXDp8oJamPLxYsaJKZjv_Vbt57F6pIj8qcX3jInvqUSMMH93GgQ7TV0nB26AYhSbDN9YAo47VR6Ejwkz7535w9qRzFTye-OUk2x2g/s2304/mario-badescu-soins-visage-naturels-3.jpg"
+      ],
+      "price": 19.99
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "brandName": "BYOMA",
+      "descriptionLong": "This is a long description for Product 2. It provides detailed information about the product.",
+      "descriptionShort": "Short description for Product 2.",
+      "quantity": 15,
+      "tags": [
+        "tag2",
+        "tag3",
+        "tag4"
+      ],
+      "categories": [
+        "category2",
+        "category3"
+      ],
+      "notes": 4.5,
+      "createdAt": "2024-02-17",
+      "images": [
+        "https://images.beautybay.com/eoaaqxyywn6o/THEO0003F_1.jpg_s3.lmb_40ht7r/71039e90fe8b62e0ec970a783421afeb/THEO0003F_1.jpg",
+        "https://sf1.bibamagazine.fr/wp-content/uploads/biba/2019/07/coup-coeur-pour-the-ordinary-marque-soin-experte-petit-prix-1140x623.jpgg",
+        "https://media1.popsugar-assets.com/files/thumbor/mDLDrgx-NDqR8c5XHUD9p47uxxs=/0x367:6720x3727/fit-in/6720x4480/top/filters:format_auto():quality(85):upscale()/2023/03/20/778/n/1922153/7abe219764189abe02b4b6.45728933_.jpg",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7tWvLDW2b21sjb1nIA-QbmFc49RJsHzWBUGFWFyqZ3q7XMW0427eBkjcAW9Xi4NWoIMwOHBoQxKIxjmXS4VVzoxXDp8oJamPLxYsaJKZjv_Vbt57F6pIj8qcX3jInvqUSMMH93GgQ7TV0nB26AYhSbDN9YAo47VR6Ejwkz7535w9qRzFTye-OUk2x2g/s2304/mario-badescu-soins-visage-naturels-3.jpg"
+      ],
+      "price": 29.99
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "brandName": "BYOMA",
+      "descriptionLong": "This is a long description for Product 3. It provides detailed information about the product.",
+      "descriptionShort": "Short description for Product 3.",
+      "quantity": 8,
+      "tags": [
+        "tag1",
+        "tag4",
+        "tag5"
+      ],
+      "categories": [
+        "category1",
+        "category3"
+      ],
+      "notes": 3,
+      "createdAt": "2024-02-18",
+      "images": [
+        "https://images.beautybay.com/eoaaqxyywn6o/THEO0003F_1.jpg_s3.lmb_40ht7r/71039e90fe8b62e0ec970a783421afeb/THEO0003F_1.jpg",
+        "https://sf1.bibamagazine.fr/wp-content/uploads/biba/2019/07/coup-coeur-pour-the-ordinary-marque-soin-experte-petit-prix-1140x623.jpgg",
+        "https://media1.popsugar-assets.com/files/thumbor/mDLDrgx-NDqR8c5XHUD9p47uxxs=/0x367:6720x3727/fit-in/6720x4480/top/filters:format_auto():quality(85):upscale()/2023/03/20/778/n/1922153/7abe219764189abe02b4b6.45728933_.jpg",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7tWvLDW2b21sjb1nIA-QbmFc49RJsHzWBUGFWFyqZ3q7XMW0427eBkjcAW9Xi4NWoIMwOHBoQxKIxjmXS4VVzoxXDp8oJamPLxYsaJKZjv_Vbt57F6pIj8qcX3jInvqUSMMH93GgQ7TV0nB26AYhSbDN9YAo47VR6Ejwkz7535w9qRzFTye-OUk2x2g/s2304/mario-badescu-soins-visage-naturels-3.jpg"
+      ],
+      "price": 39.99
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "brandName": "BYOMA",
+      "descriptionLong": "This is a long description for Product 4. It provides detailed information about the product.",
+      "descriptionShort": "Short description for Product 3.",
+      "quantity": 8,
+      "tags": [
+        "tag1",
+        "tag4",
+        "tag5"
+      ],
+      "categories": [
+        "category1",
+        "category3"
+      ],
+      "notes": 2,
+      "createdAt": "2024-02-18",
+      "images": [
+        "https://images.beautybay.com/eoaaqxyywn6o/THEO0003F_1.jpg_s3.lmb_40ht7r/71039e90fe8b62e0ec970a783421afeb/THEO0003F_1.jpg",
+        "https://sf1.bibamagazine.fr/wp-content/uploads/biba/2019/07/coup-coeur-pour-the-ordinary-marque-soin-experte-petit-prix-1140x623.jpgg",
+        "https://media1.popsugar-assets.com/files/thumbor/mDLDrgx-NDqR8c5XHUD9p47uxxs=/0x367:6720x3727/fit-in/6720x4480/top/filters:format_auto():quality(85):upscale()/2023/03/20/778/n/1922153/7abe219764189abe02b4b6.45728933_.jpg",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7tWvLDW2b21sjb1nIA-QbmFc49RJsHzWBUGFWFyqZ3q7XMW0427eBkjcAW9Xi4NWoIMwOHBoQxKIxjmXS4VVzoxXDp8oJamPLxYsaJKZjv_Vbt57F6pIj8qcX3jInvqUSMMH93GgQ7TV0nB26AYhSbDN9YAo47VR6Ejwkz7535w9qRzFTye-OUk2x2g/s2304/mario-badescu-soins-visage-naturels-3.jpg"
+      ],
+      "price": 39.99
+    },
+    {
+      "id": 5,
+      "name": "Product 5",
+      "brandName": "BYOMA",
+      "descriptionLong": "This is a long description for Product 5. It provides detailed information about the product.",
+      "descriptionShort": "Short description for Product 5.",
+      "quantity": 6,
+      "tags": [
+        "tag1",
+        "tag4",
+        "tag5"
+      ],
+      "categories": [
+        "category1",
+        "category3"
+      ],
+      "notes": 3,
+      "createdAt": "2024-02-18",
+      "images": [
+        "https://images.beautybay.com/eoaaqxyywn6o/THEO0003F_1.jpg_s3.lmb_40ht7r/71039e90fe8b62e0ec970a783421afeb/THEO0003F_1.jpg",
+        "https://sf1.bibamagazine.fr/wp-content/uploads/biba/2019/07/coup-coeur-pour-the-ordinary-marque-soin-experte-petit-prix-1140x623.jpgg",
+        "https://media1.popsugar-assets.com/files/thumbor/mDLDrgx-NDqR8c5XHUD9p47uxxs=/0x367:6720x3727/fit-in/6720x4480/top/filters:format_auto():quality(85):upscale()/2023/03/20/778/n/1922153/7abe219764189abe02b4b6.45728933_.jpg",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7tWvLDW2b21sjb1nIA-QbmFc49RJsHzWBUGFWFyqZ3q7XMW0427eBkjcAW9Xi4NWoIMwOHBoQxKIxjmXS4VVzoxXDp8oJamPLxYsaJKZjv_Vbt57F6pIj8qcX3jInvqUSMMH93GgQ7TV0nB26AYhSbDN9YAo47VR6Ejwkz7535w9qRzFTye-OUk2x2g/s2304/mario-badescu-soins-visage-naturels-3.jpg"
+      ],
+      "price": 39.99
+    },
+    {
+      "id": 6,
+      "name": "Product 6",
+      "brandName": "BYOMA",
+      "descriptionLong": "This is a long description for Product 6. It provides detailed information about the product.",
+      "descriptionShort": "Short description for Product 5.",
+      "quantity": 78,
+      "tags": [
+        "tag1",
+        "tag4",
+        "tag5"
+      ],
+      "categories": [
+        "category1",
+        "category3"
+      ],
+      "notes": 3.5,
+      "createdAt": "2024-02-18",
+      "images": [
+        "https://images.beautybay.com/eoaaqxyywn6o/THEO0003F_1.jpg_s3.lmb_40ht7r/71039e90fe8b62e0ec970a783421afeb/THEO0003F_1.jpg",
+        "https://sf1.bibamagazine.fr/wp-content/uploads/biba/2019/07/coup-coeur-pour-the-ordinary-marque-soin-experte-petit-prix-1140x623.jpgg",
+        "https://media1.popsugar-assets.com/files/thumbor/mDLDrgx-NDqR8c5XHUD9p47uxxs=/0x367:6720x3727/fit-in/6720x4480/top/filters:format_auto():quality(85):upscale()/2023/03/20/778/n/1922153/7abe219764189abe02b4b6.45728933_.jpg",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7tWvLDW2b21sjb1nIA-QbmFc49RJsHzWBUGFWFyqZ3q7XMW0427eBkjcAW9Xi4NWoIMwOHBoQxKIxjmXS4VVzoxXDp8oJamPLxYsaJKZjv_Vbt57F6pIj8qcX3jInvqUSMMH93GgQ7TV0nB26AYhSbDN9YAo47VR6Ejwkz7535w9qRzFTye-OUk2x2g/s2304/mario-badescu-soins-visage-naturels-3.jpg"
+      ],
+      "price": 39.99
+    }
+  ],
+  "popular-products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "descriptionLong": "This is a long description for Product 1. It provides detailed information about the product.",
+      "descriptionShort": "Short description for Product 1.",
+      "quantity": 10,
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ],
+      "categories": [
+        "category1",
+        "category2"
+      ],
+      "notes": 2.5,
+      "createdAt": "2024-02-16",
+      "images": [
+        "https://images.beautybay.com/eoaaqxyywn6o/THEO0003F_1.jpg_s3.lmb_40ht7r/71039e90fe8b62e0ec970a783421afeb/THEO0003F_1.jpg",
+        "https://sf1.bibamagazine.fr/wp-content/uploads/biba/2019/07/coup-coeur-pour-the-ordinary-marque-soin-experte-petit-prix-1140x623.jpgg",
+        "https://media1.popsugar-assets.com/files/thumbor/mDLDrgx-NDqR8c5XHUD9p47uxxs=/0x367:6720x3727/fit-in/6720x4480/top/filters:format_auto():quality(85):upscale()/2023/03/20/778/n/1922153/7abe219764189abe02b4b6.45728933_.jpg",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7tWvLDW2b21sjb1nIA-QbmFc49RJsHzWBUGFWFyqZ3q7XMW0427eBkjcAW9Xi4NWoIMwOHBoQxKIxjmXS4VVzoxXDp8oJamPLxYsaJKZjv_Vbt57F6pIj8qcX3jInvqUSMMH93GgQ7TV0nB26AYhSbDN9YAo47VR6Ejwkz7535w9qRzFTye-OUk2x2g/s2304/mario-badescu-soins-visage-naturels-3.jpg"
+      ],
+      "price": 19.99
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "descriptionLong": "This is a long description for Product 2. It provides detailed information about the product.",
+      "descriptionShort": "Short description for Product 2.",
+      "quantity": 15,
+      "tags": [
+        "tag2",
+        "tag3",
+        "tag4"
+      ],
+      "categories": [
+        "category2",
+        "category3"
+      ],
+      "notes": 4.5,
+      "createdAt": "2024-02-17",
+      "images": [
+        "https://images.beautybay.com/eoaaqxyywn6o/THEO0003F_1.jpg_s3.lmb_40ht7r/71039e90fe8b62e0ec970a783421afeb/THEO0003F_1.jpg",
+        "https://sf1.bibamagazine.fr/wp-content/uploads/biba/2019/07/coup-coeur-pour-the-ordinary-marque-soin-experte-petit-prix-1140x623.jpgg",
+        "https://media1.popsugar-assets.com/files/thumbor/mDLDrgx-NDqR8c5XHUD9p47uxxs=/0x367:6720x3727/fit-in/6720x4480/top/filters:format_auto():quality(85):upscale()/2023/03/20/778/n/1922153/7abe219764189abe02b4b6.45728933_.jpg",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7tWvLDW2b21sjb1nIA-QbmFc49RJsHzWBUGFWFyqZ3q7XMW0427eBkjcAW9Xi4NWoIMwOHBoQxKIxjmXS4VVzoxXDp8oJamPLxYsaJKZjv_Vbt57F6pIj8qcX3jInvqUSMMH93GgQ7TV0nB26AYhSbDN9YAo47VR6Ejwkz7535w9qRzFTye-OUk2x2g/s2304/mario-badescu-soins-visage-naturels-3.jpg"
+      ],
+      "price": 29.99
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "descriptionLong": "This is a long description for Product 3. It provides detailed information about the product.",
+      "descriptionShort": "Short description for Product 3.",
+      "quantity": 8,
+      "tags": [
+        "tag1",
+        "tag4",
+        "tag5"
+      ],
+      "categories": [
+        "category1",
+        "category3"
+      ],
+      "notes": 3,
+      "createdAt": "2024-02-18",
+      "images": [
+        "https://images.beautybay.com/eoaaqxyywn6o/THEO0003F_1.jpg_s3.lmb_40ht7r/71039e90fe8b62e0ec970a783421afeb/THEO0003F_1.jpg",
+        "https://sf1.bibamagazine.fr/wp-content/uploads/biba/2019/07/coup-coeur-pour-the-ordinary-marque-soin-experte-petit-prix-1140x623.jpgg",
+        "https://media1.popsugar-assets.com/files/thumbor/mDLDrgx-NDqR8c5XHUD9p47uxxs=/0x367:6720x3727/fit-in/6720x4480/top/filters:format_auto():quality(85):upscale()/2023/03/20/778/n/1922153/7abe219764189abe02b4b6.45728933_.jpg",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7tWvLDW2b21sjb1nIA-QbmFc49RJsHzWBUGFWFyqZ3q7XMW0427eBkjcAW9Xi4NWoIMwOHBoQxKIxjmXS4VVzoxXDp8oJamPLxYsaJKZjv_Vbt57F6pIj8qcX3jInvqUSMMH93GgQ7TV0nB26AYhSbDN9YAo47VR6Ejwkz7535w9qRzFTye-OUk2x2g/s2304/mario-badescu-soins-visage-naturels-3.jpg"
+      ],
+      "price": 39.99
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "descriptionLong": "This is a long description for Product 4. It provides detailed information about the product.",
+      "descriptionShort": "Short description for Product 3.",
+      "quantity": 8,
+      "tags": [
+        "tag1",
+        "tag4",
+        "tag5"
+      ],
+      "categories": [
+        "category1",
+        "category3"
+      ],
+      "notes": 2,
+      "createdAt": "2024-02-18",
+      "images": [
+        "https://images.beautybay.com/eoaaqxyywn6o/THEO0003F_1.jpg_s3.lmb_40ht7r/71039e90fe8b62e0ec970a783421afeb/THEO0003F_1.jpg",
+        "https://sf1.bibamagazine.fr/wp-content/uploads/biba/2019/07/coup-coeur-pour-the-ordinary-marque-soin-experte-petit-prix-1140x623.jpgg",
+        "https://media1.popsugar-assets.com/files/thumbor/mDLDrgx-NDqR8c5XHUD9p47uxxs=/0x367:6720x3727/fit-in/6720x4480/top/filters:format_auto():quality(85):upscale()/2023/03/20/778/n/1922153/7abe219764189abe02b4b6.45728933_.jpg",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7tWvLDW2b21sjb1nIA-QbmFc49RJsHzWBUGFWFyqZ3q7XMW0427eBkjcAW9Xi4NWoIMwOHBoQxKIxjmXS4VVzoxXDp8oJamPLxYsaJKZjv_Vbt57F6pIj8qcX3jInvqUSMMH93GgQ7TV0nB26AYhSbDN9YAo47VR6Ejwkz7535w9qRzFTye-OUk2x2g/s2304/mario-badescu-soins-visage-naturels-3.jpg"
+      ],
+      "price": 39.99
+    }
+  ],
+  "categories": [
+    {
+      "id": 4,
+      "name": "category4"
+    },
+    {
+      "id": 5,
+      "name": "category5"
+    },
+    {
+      "id": 6,
+      "name": "category6"
+    },
+    {
+      "id": 7,
+      "name": "category7"
+    },
+    {
+      "id": 8,
+      "name": "category8"
+    }
+  ],
+  "tags": [
+    {
+      "id": 8,
+      "name": "tag8"
+    },
+    {
+      "id": 9,
+      "name": "tag9"
+    },
+    {
+      "id": 10,
+      "name": "tag10"
+    },
+    {
+      "id": 11,
+      "name": "tag11"
+    },
+    {
+      "id": 12,
+      "name": "tag12"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "userID": 1,
+      "username": "Samantha David",
+      "productID": 1,
+      "rating": 4.5,
+      "comment": "Great product! Very satisfied with the quality.",
+      "createdAt": "2024-02-20"
+    },
+    {
+      "id": 2,
+      "userID": 2,
+      "username": "Nathania Vokia",
+      "productID": 2,
+      "rating": 3.8,
+      "comment": "Decent product, but could be improved.",
+      "createdAt": "2024-02-21"
+    },
+    {
+      "id": 3,
+      "userID": 3,
+      "username": "Ricardo Shaju",
+      "productID": 3,
+      "rating": 5,
+      "comment": "Excellent product! Highly recommend.",
+      "createdAt": "2024-02-22"
+    },
+    {
+      "id": 4,
+      "userID": 4,
+      "username": "Hanni Raoult",
+      "productID": 4,
+      "rating": 4.2,
+      "comment": "Good value for the money. Happy with my purchase.",
+      "createdAt": "2024-02-23"
+    },
+    {
+      "userID": 2,
+      "username": "JESUS",
+      "productID": 3,
+      "rating": 3.86,
+      "comment": "Texte à écrire",
+      "createdAt": "15-02-2015",
+      "id": 5
+    }
+  ],
+  "cartItems": [
+    {
+      "id": 1,
+      "productID": 5,
+      "userID": 2,
+      "quantity": 2,
+      "createdAt": "10-01-2023",
+      "pricing": 86
+    },
+    {
+      "id": 2,
+      "productID": 4,
+      "userID": 2,
+      "quantity": 6,
+      "createdAt": "11-01-2023",
+      "pricing": 86
+    }
+  ],
+  "orders": {
+    "id": 1,
+    "userID": 1,
+    "totalPrice": 86,
+    "createdAt": "10-01-2023",
+    "productsItems": [
+      {
+        "productID": 1,
+        "quantity": 2
+      },
+      {
+        "productID": 3,
+        "quantity": 1
+      }
+    ]
+  }
+}
