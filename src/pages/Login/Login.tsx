@@ -4,11 +4,11 @@ import { Button, InputText } from "../../components/ui";
 import { loginUser } from "../../redux/auth/authActions";
 import { useAppDispatch } from "../../redux/hooks";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../../types/user.type";
+import { UserDatas } from "../../types/user.type";
 
 const Login = () => {
   
-  const [ userDatas, setUserData ] = useState<UserAuth>({
+  const [ userDatas, setUserData ] = useState<UserDatas>({
     email: '',
     password: ''
   });

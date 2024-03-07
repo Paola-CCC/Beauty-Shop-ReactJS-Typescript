@@ -2,9 +2,8 @@ import React from 'react';
 import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './layout';
-import { Blog, CartPage, Home, Login, ProductItem, Register } from './pages';
-import MakeUpPage from './pages/MakeUpPage/MakeUpPage';
-import SkinCarePage from './pages/SkinCarePage/SkinCarePage';
+import { Blog, CartPage, Home, Login, MakeUpPage, Orders, PersonalPage, ProductItem, Register, SkinCarePage, UsersDetails } from './pages';
+
 
 function App() {
 
@@ -48,6 +47,20 @@ function App() {
         {
           path: 'panier',
           element: <CartPage />,
+        },
+        {
+          path: 'personal-space',
+          element: <PersonalPage />,
+          children: [
+            {
+              index: true,
+              element: < UsersDetails />,
+            },
+            {
+              path: 'orders',
+              element: <Orders />,
+            },
+          ]
         },
       ],
     },

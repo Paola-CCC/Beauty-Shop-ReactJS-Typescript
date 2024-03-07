@@ -3,24 +3,21 @@ import './CartPage.scss';
 import ShoppingCartRow from '../../components/ShoppingCartRow/ShoppingCartRow';
 import { useAppSelector } from '../../redux/hooks';
 import { RootState } from '../../redux/store';
-import { CartItems } from '../../types/products.type';
-
+import { useNavigate } from 'react-router-dom';
   
 const CartPage = () => {
-
 
     const products = useAppSelector((state : RootState) =>  state.cart);
     const [itemsCartAll, setItemsCartAll] = useState<any>({});
     const [itemsOnly, setItemsOnly] = useState<any>([]);
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         if( Object.values(products).length > 0) {
             setItemsOnly(products.CartItems);
             setItemsCartAll(products);
         }
-        
-        
+           
     },[products ,itemsOnly])
 
 
@@ -29,7 +26,7 @@ const CartPage = () => {
 
         <div className='cart-shopping-container'>
         
-        <h1> Votre Panier</h1>
+        <h3> VOTRE PANIER</h3>
 
         <section className='cart-items-layout'>
                 <ul className="shopping-cart-list"> 
@@ -67,7 +64,7 @@ const CartPage = () => {
                         <span> {itemsCartAll.total} € </span>
                     </h4>
                     <button className="checkout-button" disabled={Object.values(itemsOnly).length !== 0 ? false : true} >Valider le panier</button>
-                    <button className="checkout-button" >Continuer vos achats</button>
+                    <button className="checkout-button" onClick={() => navigate('/')} >Continuer vos achats</button>
                 </div>
         </section>
         </div>

@@ -1,19 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "../../services/authService";
-import { UserAuth } from "../../types/user.type";
-
-
-
+import { UserDatas } from "../../types/user.type";
 
 export const registerUser = createAsyncThunk(
   "auth/register",
-  async ({ username, email, password }: UserAuth
+  async ({ username, email, password }: UserDatas
     , { rejectWithValue }) => {
     try {
 
       const { data } = await authService.register({  username, email, password });
-
-      localStorage.setItem('userToken', data.token_JWT);
+      const  userInfo= { userId : data[0]?.id  , email: data[0].email}
+      localStorage.setItem('userToken', JSON.stringify(userInfo));
+      return data
     } catch (error: any) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -28,12 +26,12 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   'auth/login',
-  async ({ email, password }: UserAuth, { rejectWithValue }) => {
+  async ({ email, password }: UserDatas, { rejectWithValue }) => {
     try {
 
       const { data } = await authService.login({ email, password });
-
-      localStorage.setItem('userToken', data.token_JWT);
+      const userInfo = { userId : data[0]?.id  , email: data[0].email};
+      localStorage.setItem('userToken', JSON.stringify(userInfo));
       return data
     } catch (error : any) {
       if (error.response && error.response.data.message) {

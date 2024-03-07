@@ -6,3 +6,6 @@ export { default as ProductItem } from "./ProductItem/ProductItem";
 export { default as MakeUpPage } from "./MakeUpPage/MakeUpPage";
 export { default as SkinCarePage } from "./SkinCarePage/SkinCarePage";
 export { default as CartPage } from "./CartPage/CartPage";
+export { default as PersonalPage } from "./PersonalPage/PersonalPage";
+export { default as Orders } from "./Orders/Orders";
+export { default as UsersDetails } from "./UsersDetails/UsersDetails";

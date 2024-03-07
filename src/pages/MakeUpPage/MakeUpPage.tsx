@@ -25,7 +25,7 @@ const MakeUpPage = () => {
 
       <section>
         <div className="title-grp">
-          <h1>  MAQUILLAGE</h1>
+          <h3>  MAQUILLAGE</h3>
           <p>
             Essentiel beauté incontournable, le maquillage est notre meilleur allié ! Teint frais, lèvres
             gourmandes et smoky eyes, le makeup parfait est à portée de main. On laisse libre cours

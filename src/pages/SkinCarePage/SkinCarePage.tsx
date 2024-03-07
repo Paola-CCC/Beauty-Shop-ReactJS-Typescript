@@ -24,7 +24,7 @@ const SkinCarePage = () => {
 
       <section>
         <div className="title-grp">
-          <h1> SOIN DE LA PEAU</h1>
+          <h3> SOIN DE LA PEAU</h3>
           <p>
           Un teint frais et healthy commence avec une peau en bonne santé. Sephora propose des soins
           visage adaptés à tous les types de peaux. Peau sensible, grasse, mixte ou sèche, faites votre

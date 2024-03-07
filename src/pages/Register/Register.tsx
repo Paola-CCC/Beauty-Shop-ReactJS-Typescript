@@ -4,12 +4,12 @@ import { Button, InputText } from "../../components/ui";
 import { useAppDispatch } from "../../redux/hooks";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../redux/auth/authActions";
-import { UserAuth } from "../../types/user.type";
+import { UserDatas } from "../../types/user.type";
 
 const Register = () => {
   
   const [successRegister , setsuccessRegister] = useState<boolean>(true) ;
-  const [ userDatas, setUserData ] = useState<UserAuth>({
+  const [ userDatas, setUserData ] = useState<UserDatas>({
     username: '',
     email: '',
     password: ''

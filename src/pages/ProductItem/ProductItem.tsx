@@ -96,11 +96,11 @@ const ProductItem = () => {
 
   return (
     <>
-    <div className='ariane-string'>
+    {/* <div className='ariane-string'>
         <span>
         File d'ariane 
         </span>
-    </div>
+    </div> */}
     <section className='product-description'>
         <div className='container-item'>
             <div className='img-container'> 

@@ -18,9 +18,16 @@
             gap: 20px;
             list-style: none;
 
-            li a {
-                flex: 0 1 calc(280px - 1em);
-                align-self: center;
+            li {
+                border-radius: 15px;
+                a {
+                    flex: 0 1 calc(280px - 1em);
+                    align-self: center;
+                }
+
+                &:hover {
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                }
             }
         }
     }

@@ -11,14 +11,14 @@ const Layout = () => {
           <main>
             <Outlet />
           </main>
-          <footer>
+          {/* <footer>
             <div>
               <span>
                 BeautyGalaxy 2024
               </span>
             </div>
 
-          </footer>
+          </footer> */}
         </>
       );
 }

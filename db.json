@@ -2,17 +2,25 @@
   "users": [
     {
       "id": 1,
-      "email": "elisa.zhan@free.fr",
+      "email": "elisa.Yenzan@free.fr",
       "firstname": "Elisa",
-      "lastname": "Zhan",
-      "age": 27
+      "lastname": "Yenzan",
+      "username": "FreedomTyra",
+      "genre": "Femme",
+      "birthday": "4/11/1996",
+      "password": "password"
+
     },
     {
       "id": 2,
-      "email": "Jeanne.Pilon@free.fr",
+      "email": "Jeanne.Dupont@free.fr",
       "firstname": "Jeanne",
-      "lastname": "Pilon",
-      "age": 27
+      "lastname": "Dupont",
+      "username": "PoséJackdaniel",
+      "genre": "Masculin",
+      "birthday": "16/05/1989",
+      "password": "password"
+
     }
   ],
   "login": {
@@ -88,7 +96,7 @@
         "tag5"
       ],
       "categories": [
-        "make-up"     
+        "make-up"
       ],
       "notes": 3,
       "createdAt": "2024-02-18",

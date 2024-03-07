@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { registerUser } from "./authActions";
 import { loginUser } from "./authActions";
-import { useNavigate } from "react-router-dom";
 
 
 interface AuthState  {

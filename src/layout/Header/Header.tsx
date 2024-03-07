@@ -6,17 +6,13 @@ import { useAppSelector } from "../../redux/hooks";
 const Header = () => {
   const [active, setActive] = useState<boolean>(false);
   const [carItems , setCarTItems] = useState<any>({});
-
   const cartData = useAppSelector((state) => state.cart);
   
-
   const handleClick = () => {
     setActive(!active);
   };
 
 useEffect(()=> {
-
-    console.log("cartData " , cartData);
 
     if( cartData ) {
       setCarTItems(cartData);
@@ -97,6 +93,11 @@ useEffect(()=> {
 
           <li className="desktop-icons-user">
             <Link to="connexion" className="nav-links">
+              <i className="fa-solid fa-user fa-lg"></i>
+            </Link>
+          </li>
+          <li className="desktop-icons-user">
+            <Link to="personal-space" className="nav-links">
               <i className="fa-solid fa-user fa-lg"></i>
             </Link>
           </li>
