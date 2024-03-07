@@ -4,12 +4,10 @@ import { UserDatas } from "../../types/user.type";
 
 export const registerUser = createAsyncThunk(
   "auth/register",
-  async ({ username, email, password }: UserDatas
-    , { rejectWithValue }) => {
+  async (datas: UserDatas , { rejectWithValue }) => {
     try {
-
-      const { data } = await authService.register({  username, email, password });
-      const  userInfo= { userId : data[0]?.id  , email: data[0].email}
+      const { data } = await authService.register(datas);
+      const  userInfo = { userId : data?.id  , email: data.email}
       localStorage.setItem('userToken', JSON.stringify(userInfo));
       return data
     } catch (error: any) {

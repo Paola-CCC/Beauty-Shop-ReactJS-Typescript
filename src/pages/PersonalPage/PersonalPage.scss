@@ -23,7 +23,7 @@
   }
 
   li {
-    margin: 20px 0;
+    margin: 10px 0;
     padding: 0;
   }
 
@@ -39,8 +39,28 @@
       display: block;
 
       &:hover {
-        text-decoration: underline;
+        // text-decoration: underline;
+        font-weight: 500;
       }
+      i {
+        padding: 10px 0;
+        margin-right: 10px;
+       }
+    }
+
+    li button {
+      all: unset;
+       i {
+        padding: 10px 0;
+        margin-right: 10px;
+       }
+       span {
+         &:hover {
+          // text-decoration: underline;
+          font-weight: 500;
+
+         }
+       }
     }
   }
 

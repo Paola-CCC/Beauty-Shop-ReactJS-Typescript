@@ -3,8 +3,7 @@
 export type UserDatas = {
     id?: number,
     email?: string,
-    firstname?: string,
-    lastname?: string,
+    pseudo?: any,
     username?: string,
     genre?: string,
     birthday?: string,

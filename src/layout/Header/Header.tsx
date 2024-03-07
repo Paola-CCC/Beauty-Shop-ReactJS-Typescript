@@ -7,18 +7,24 @@ const Header = () => {
   const [active, setActive] = useState<boolean>(false);
   const [carItems , setCarTItems] = useState<any>({});
   const cartData = useAppSelector((state) => state.cart);
-  
+  const isLoggedUser   = useAppSelector((state) => state.auth);
+  const [ userIsLogged , setUserIsLogger ] = useState<boolean>( false);
+
   const handleClick = () => {
     setActive(!active);
-  };
+  };  
 
 useEffect(()=> {
 
     if( cartData ) {
       setCarTItems(cartData);
     }
-    
-},[cartData])
+
+    if (isLoggedUser) {
+      setUserIsLogger(isLoggedUser.isLogged);
+    } 
+
+},[cartData , isLoggedUser ])
 
   return (
     <header>
@@ -31,7 +37,8 @@ useEffect(()=> {
             </div>
             <h4 className="navbar-logo">
               <Link to={'/'}>
-                BeautyGalaxy <i className="fab fa-react"></i>
+                Beauty Galaxy 
+                <i className="fab fa-react"></i>
               </Link>
             </h4>
           </div>
@@ -50,9 +57,15 @@ useEffect(()=> {
               </Link>
             </li>
             <li>
-              <Link to="connexion" className="nav-links">
-                  <i className="fa-solid fa-user fa-lg"></i>
-              </Link>
+              { userIsLogged ? (
+                  <Link to={"personal-space"}  className="nav-links">
+                    <i className="fa-solid fa-user fa-lg"></i>
+                  </Link>
+              ) : (
+                  <Link to={"connexion"}  className="nav-links">
+                    <i className="fa-solid fa-user fa-lg"></i>
+                  </Link>
+              )}
             </li>
           </ul>
         </div>
@@ -92,14 +105,17 @@ useEffect(()=> {
           </li>
 
           <li className="desktop-icons-user">
-            <Link to="connexion" className="nav-links">
-              <i className="fa-solid fa-user fa-lg"></i>
-            </Link>
-          </li>
-          <li className="desktop-icons-user">
-            <Link to="personal-space" className="nav-links">
-              <i className="fa-solid fa-user fa-lg"></i>
-            </Link>
+
+            { userIsLogged ? (
+                <Link to={"personal-space"}  className="nav-links">
+                  <i className="fa-solid fa-user fa-lg"></i>
+                </Link>
+            ) : (
+                <Link to={"connexion"}  className="nav-links">
+                  <i className="fa-solid fa-user fa-lg"></i>
+                </Link>
+            )}
+
           </li>
         </ul>
 

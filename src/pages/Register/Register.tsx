@@ -8,18 +8,19 @@ import { UserDatas } from "../../types/user.type";
 
 const Register = () => {
   
-  const [successRegister , setsuccessRegister] = useState<boolean>(true) ;
   const [ userDatas, setUserData ] = useState<UserDatas>({
-    username: '',
-    email: '',
-    password: ''
+    username: 'Martine DOE',
+    email: 'Martine@free.fr',
+    password: 'password',
+    birthday: '18/06/1956',
+    pseudo:'Martine-DOE'
   });
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleUserDatas = (event: React.ChangeEvent<HTMLInputElement>) => {
-
-    const { name, value } = event.target ;
+  const handleUserDatas = (event: React.ChangeEvent<HTMLInputElement>) => {    
+    const { name, value } = event.target ;    
     setUserData((previousState: any) => ({
       ...previousState,
       [name]: value
@@ -41,12 +42,23 @@ const Register = () => {
         <div className="mb-3">
             <InputText 
                 label= {"Nom d'utilisateur"}   
-                value={userDatas.email} 
+                value={userDatas.username} 
                 onChange={handleUserDatas} 
                 name="username"
                 placeholder={"Nom d'utilisateur"} 
                 isRequired= {true}
                 errorText={ false  ?  "Le nom d'utilisateur est pas valide"  : ""}
+            />
+        </div>
+        <div className="mb-3">
+            <InputText 
+                label= {"Pseudo"}   
+                value={userDatas.pseudo} 
+                onChange={handleUserDatas} 
+                name="pseudo"
+                placeholder={"Pseudo"} 
+                isRequired= {true}
+                errorText={""}
             />
         </div>
         <div className="mb-3">
@@ -61,12 +73,16 @@ const Register = () => {
             />
         </div>
         <div className="mb-3">
+            <label htmlFor="birthday" className="input-text">Date de naissance</label>
+            <input type="date" name="birthday" onChange={handleUserDatas} ></input>
+        </div>
+        <div className="mb-3">
           <InputText 
               label= {"Mot de passe"}   
               value={userDatas.password} 
               name="password"
               type="password"
-              onChange={handleUserDatas} 
+              // onChange={handleUserDatas} 
               placeholder={"Mot de passe"} 
               isRequired= {true}
               errorText={ false ? "Le mot de passe de vérification ne correspond pas" : ""}
@@ -84,12 +100,12 @@ const Register = () => {
           <Link to="/connexion"> Se connecter </Link>
         </p>
       </form>
-      <div className={ `form-arror-msg ${successRegister === false ? "show": "hidden"}`} >
+      {/* <div className={ `form-arror-msg ${successRegister === false ? "show": "hidden"}`} >
         <p>
           Votre email et/ou mot de passe sont incorrects.
           <br /> Veuillez recommencer.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { UserDatas } from "../types/user.type";
 import http from "./axiosClient";
 
 export const register = (data: UserDatas) => {
-    return http.post("/register", data);
+    return http.post("/users", data);
 };
 
 export const login =(data:UserDatas) => {

@@ -6,22 +6,23 @@ import { UserDatas } from '../../types/user.type';
 
 const UsersDetails = () => {
 
-   const userId = 2;
-
    const [ userData,setUserData] = useState<  UserDatas >({} as UserDatas);
    const datasUserFetched = useRef<boolean>(false)
 
-   const handleUpdateData = () => {
-
-   }
+   // const handleUpdateData = () => {}
 
    useEffect(() => {
 
+      // Récupère données utilisateur par le userId dans le localStorage
       const getUser = async () => {
          try {
-            const response = await authService.getCurrentUserById(userId);
-            console.log('response  ' ,response);
-            setUserData(response.data)
+            const userStorage = localStorage.getItem("userToken");      
+            if (userStorage) {
+               let userDataStored = JSON.parse(userStorage);
+               const response = await authService.getCurrentUserById(userDataStored.userId);
+               setUserData(response.data);
+            }
+
          } catch (error) {
             console.error("Error " , error);
          }
@@ -42,20 +43,16 @@ const UsersDetails = () => {
           <ul className='block'>
             <li>
                <h4>Nom Prénom</h4>
-               <span>{userData?.firstname + ' ' + userData?.lastname}   </span>
+               <span>{userData?.username}   </span>
             </li>
 
             <li>
                <h4>Pseudo</h4>
-               <span>{userData?.username}  </span>
+               <span>{userData?.pseudo}  </span>
             </li>
             <li>
                <h4>Votre adresse e-mail</h4>
                <span>{userData?.email}  </span>
-            </li>
-            <li>
-               <h4>Genre</h4>
-               <span>{userData?.genre}  </span>
             </li>
             <li>
                <h4>Anniversaire</h4>
