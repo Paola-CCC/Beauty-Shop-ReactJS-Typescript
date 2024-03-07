@@ -46,6 +46,9 @@ export const cartSlice = createSlice({
           quantity: action.payload.quantity,
           price: action.payload.price,
           priceQty: action.payload.quantity * action.payload.price,
+          imgSrc: action.payload.imgSrc,
+          descriptionShort: action.payload.descriptionShort,
+          brandName: action.payload.brandName,
         });
       }
 
@@ -88,15 +91,20 @@ export const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state));
     },
 
-    removeFromCart(state, action: PayloadAction<{ id: string | number }>) {
-      const findItemId = state.CartItems.find((key) => key.id === action.payload.id);
-
-      if(findItemId?.priceQty ){
-        state.total -= findItemId.priceQty;
-      }
+    removeFromCart(state, action: PayloadAction<{ id: number }>) {
+      let sumItems = 0;
 
       state.CartItems = state.CartItems.filter((key) => key.id !== action.payload.id);
       state.cartLength = state.CartItems.length;
+
+      const dataCartItem = state.CartItems.map((key) => key.priceQty);
+      dataCartItem.forEach((num) => {
+        if( num ){
+          return (sumItems += num);
+        }    
+       });
+
+       state.total = sumItems;
       localStorage.setItem("cart", JSON.stringify(state));
     },
 
@@ -111,7 +119,6 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { resetCart, addToCart, removeFromCart, updateQuantityProduct, showCartFromLocalstorage } =
-  cartSlice.actions;
+export const { resetCart, addToCart, removeFromCart, updateQuantityProduct, showCartFromLocalstorage } = cartSlice.actions;
 
 export default cartSlice.reducer;

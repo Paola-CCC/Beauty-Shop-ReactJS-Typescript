@@ -18,5 +18,8 @@ export type CartItems = {
     id: number, 
     quantity: number,
     price: number,
-    priceQty?: number
+    priceQty?: number,
+    imgSrc?: string,
+    descriptionShort?: string,
+    brandName?: string,
 }

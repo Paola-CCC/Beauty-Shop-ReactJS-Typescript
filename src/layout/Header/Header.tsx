@@ -48,7 +48,7 @@ useEffect(()=> {
               </Link>
             </li> */}
             <li>
-              <Link to="#" className="nav-links">
+              <Link to="panier" className="nav-links">
                 <i className="fa-solid fa-cart-shopping fa-lg"></i>
                 <small id="cart-show-item" className="heart-text"> {carItems.cartLength}</small>
               </Link>
@@ -89,7 +89,7 @@ useEffect(()=> {
             </Link> */}
           </li>
           <li className="desktop-icons-user">
-            <Link to="#" className="nav-links">
+            <Link to="panier" className="nav-links">
               <i className="fa-solid fa-cart-shopping fa-lg"></i>
               <small id="cart-show-item" className="heart-text"> {carItems.cartLength}</small>
             </Link>

@@ -42,7 +42,10 @@ const ProductItem = () => {
         const datasCatOne : CartItems  = {
             id: productDatas.id ,
             quantity: quantity,
-            price: productDatas.price
+            price: productDatas.price,
+            imgSrc: productDatas.imgSrc,
+            descriptionShort: productDatas.descriptionShort,
+            brandName: productDatas.brandName,
           } 
 
         dispatch(addToCart(datasCatOne));

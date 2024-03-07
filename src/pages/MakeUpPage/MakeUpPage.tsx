@@ -12,17 +12,12 @@ const MakeUpPage = () => {
 
 
   useEffect(() => {
-
-
+    
       if(products  ) {
-
         const datas = products.filter((e) => e.categories[0] === "make-up");
-        console.log("datas makeup ", datas);
         setProductDatas(datas)
       }
       
-
-
   },[products])
 
   return (
