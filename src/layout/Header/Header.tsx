@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
+import { useAppSelector } from "../../redux/hooks";
 
 const Header = () => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState<boolean>(false);
+  const [carItems , setCarTItems] = useState<any>({});
+
+  const cartData = useAppSelector((state) => state.cart);
+  
 
   const handleClick = () => {
     setActive(!active);
   };
+
+useEffect(()=> {
+
+    console.log("cartData " , cartData);
+
+    if( cartData ) {
+      setCarTItems(cartData);
+    }
+    
+},[cartData])
 
   return (
     <header>
@@ -26,16 +41,16 @@ const Header = () => {
           </div>
 
           <ul className="nav-links-mobile">
-            <li>
+            {/* <li>
               <Link to="#" className="nav-links">
                 <i className="fa-solid fa-heart fa-lg"></i>
                 <small className="heart-text"> 8 </small>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link to="#" className="nav-links">
                 <i className="fa-solid fa-cart-shopping fa-lg"></i>
-                <small id="cart-show-item" className="heart-text"> 9</small>
+                <small id="cart-show-item" className="heart-text"> {carItems.cartLength}</small>
               </Link>
             </li>
             <li>
@@ -68,15 +83,15 @@ const Header = () => {
             </Link>
           </li>
           <li className="desktop-icons-user">
-            <Link to="#" className="nav-links">
+            {/* <Link to="#" className="nav-links">
               <i className="fa-solid fa-heart fa-lg"></i>
               <small className="heart-text"> 10 </small>
-            </Link>
+            </Link> */}
           </li>
           <li className="desktop-icons-user">
             <Link to="#" className="nav-links">
               <i className="fa-solid fa-cart-shopping fa-lg"></i>
-              <small id="cart-show-item" className="heart-text"> 9</small>
+              <small id="cart-show-item" className="heart-text"> {carItems.cartLength}</small>
             </Link>
           </li>
 

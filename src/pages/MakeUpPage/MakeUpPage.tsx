@@ -1,23 +1,29 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Card } from '../../components/ui';
 import './MakeUpPage.scss';
+import { selectAllProducts } from '../../redux/products/productsSlice';
+import { useAppSelector } from '../../redux/hooks';
+import { Products } from '../../types/products.type';
 
 const MakeUpPage = () => {
 
-  
+  const [productDatas , setProductDatas] = useState<Products[]>();
+  const products = useAppSelector(selectAllProducts);
 
-  const productData = {
-    brandName: ('Anastasia Beverly').toUpperCase(),
-    path: "make-up/1",
-    notes: 4.5,
-    description: 'Anastasia Beverly Hills Cosmos Eye Shadow Palette',
-    imgSrc: 'https://www.sephora.fr/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dwba3c8965/images/hi-res/SKU/SKU_3335/585584_swatch.jpg',
-    price: 29.99,
-  };
 
   useEffect(() => {
 
-  },[])
+
+      if(products  ) {
+
+        const datas = products.filter((e) => e.categories[0] === "make-up");
+        console.log("datas makeup ", datas);
+        setProductDatas(datas)
+      }
+      
+
+
+  },[products])
 
   return (
     <div className='container-makeup-zone'>
@@ -36,18 +42,17 @@ const MakeUpPage = () => {
 
 
       <section>
-        <div className='items-list makeup'>
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} /> 
-        <Card {...productData} />
-        <Card {...productData} />      
-        </div>
+        <ul className='items-list makeup'>
+          
+           { productDatas?.map((e : Products) => (
+            <li key={e.id}>
+                  <Card 
+                    path={'make-up/'+ e.id}
+                    {...e} 
+                  />
+            </li>
+          ))} 
+        </ul>
       </section>
     </div>
   )

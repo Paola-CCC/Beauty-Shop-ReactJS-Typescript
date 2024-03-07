@@ -5,14 +5,14 @@ import Button from '../Button/Button';
 interface CardProps {
   path?: string,
   brandName?: string,
-  notes?: string | number,
-  description?: string, 
+  notes?: any,
+  descriptionShort?: string, 
   imgSrc?: string, 
-  price?: string | number,
+  price: number | null,
   showButton?: boolean
 }
 
-const Card = ({path , brandName , notes, description, imgSrc, price , showButton = true }: CardProps) => {
+const Card = ({path , brandName , notes, descriptionShort, imgSrc, price , showButton = true }: CardProps) => {
   return (
     <Link to={'/' + path} className="card">
       <figure className="card-image">
@@ -23,10 +23,10 @@ const Card = ({path , brandName , notes, description, imgSrc, price , showButton
       </figure>
       <div className="card-header">
         <h4>
-          <span className='title-card'> {brandName}
+          <span className='title-card'> {brandName?.toUpperCase()}
               <span><i className="fa-solid fa-star"></i> {notes}</span>
           </span>
-          <span> {description} </span>
+          <span> {descriptionShort} </span>
         </h4>
       </div>
       <div className="card-footer">

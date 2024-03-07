@@ -1,13 +1,9 @@
 import React, { useEffect } from "react";
 import "./Home.scss";
-import { getPopularProductsList, getproductList } from "../../redux/products/productsActions";
-import { useAppDispatch } from "../../redux/hooks";
 import { Card } from "../../components/ui";
 import { Brand } from "../../components/Brand/Brand";
 
 const Home = () => {
-
-  const dispatch = useAppDispatch();
 
   const productData = {
     brandName: ('Anastasia Beverly').toUpperCase(),
@@ -19,11 +15,6 @@ const Home = () => {
     showButton: false
   };
 
-  useEffect(() => {
-    dispatch(getproductList());
-    dispatch(getPopularProductsList());
-
-  }, [dispatch]);
 
   return (
     <>

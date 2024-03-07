@@ -16,8 +16,9 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
+            list-style: none;
 
-            a {
+            li a {
                 flex: 0 1 calc(280px - 1em);
                 align-self: center;
             }

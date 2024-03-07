@@ -1,21 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Card } from '../../components/ui';
 import './SkinCarePage.scss';
+import { selectAllProducts } from '../../redux/products/productsSlice';
+import { useAppSelector } from '../../redux/hooks';
+import { Products } from '../../types/products.type';
 
 const SkinCarePage = () => {
 
-  const productData = {
-    brandName: 'BEAUTY OF JOSEON',
-    path: "skin-care/3",
-    notes: 3.5,
-    description: 'Green Plum Refreshing Cleanser - Nettoyant',
-    imgSrc: 'https://d1flfk77wl2xk4.cloudfront.net/Assets/80/931/XXL_p0165993180.jpg',
-    price: 50,
-  };
+  const [productDatas , setProductDatas] = useState<Products[]>();
+  const products = useAppSelector(selectAllProducts);
+
 
   useEffect(() => {
-
-  },[])
+    if(products ) {
+      const datas = products.filter((e) => e.categories[0] === "skin-care");
+      setProductDatas(datas)
+    }
+    
+},[products])
 
   return (
     <div className='container-makeup-zone'>
@@ -33,18 +35,17 @@ const SkinCarePage = () => {
 
 
       <section>
-        <div className='items-list makeup'>
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        <Card {...productData} />
-        </div>
+      <ul className='items-list makeup'>
+          
+          { productDatas?.map((e : Products) => (
+           <li key={e.id}>
+                 <Card 
+                   path={'skin-care/'+ e.id}
+                   {...e} 
+                 />
+           </li>
+         ))} 
+       </ul>
       </section>
     </div>
   )

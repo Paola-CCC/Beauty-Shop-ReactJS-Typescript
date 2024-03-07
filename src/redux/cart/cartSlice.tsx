@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CartItems } from "../../types/products.type";
 
+
 interface CartState {
   CartItems: CartItems[],
   cartLength: number,
@@ -21,8 +22,7 @@ export const cartSlice = createSlice({
   reducers: {
 
     showCartFromLocalstorage(state) {
-      const localStorageData = localStorage.getItem("cart");
-
+      const localStorageData = localStorage.getItem("cart");      
       if (localStorageData) {
         const storage = JSON.parse(localStorageData);
         state.CartItems = storage?.CartItems;

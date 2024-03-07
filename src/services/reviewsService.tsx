@@ -3,6 +3,8 @@ import http from "./axiosClient";
 
 
 export const getAll = () => {
+    console.log(" SARA");
+    
     return http.get<Reviews[]>("/reviews");
 };
 

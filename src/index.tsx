@@ -5,6 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { showCartFromLocalstorage } from './redux/cart/cartSlice';
+import { getPopularProductsList, getproductList } from './redux/products/productsActions';
+
+// store.getState();
+store.dispatch(showCartFromLocalstorage());
+store.dispatch(getproductList());
+store.dispatch(getPopularProductsList());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

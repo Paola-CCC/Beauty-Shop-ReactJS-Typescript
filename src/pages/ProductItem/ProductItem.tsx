@@ -4,16 +4,23 @@ import { Button, InputSelect } from '../../components/ui';
 import { useParams } from 'react-router-dom';
 import { addToCart } from '../../redux/cart/cartSlice';
 import { CartItems, Products } from '../../types/products.type';
-import { useAppDispatch } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import ProductsService from '../../services/productsService';
+import ReviewCard from '../../components/ReviewCard/ReviewCard';
+import RatingStars from '../../components/ui/RatingStars/RatingStars';
+import { getReviewsList } from '../../redux/reviews/reviewsActions';
+import { Reviews } from '../../types/reviews.type';
 
 const ProductItem = () => {
 
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState<number>(1);
+    const [reviewsAll, setReviewsAll] = useState<any>([]);
+
     const initialState : Products  = {
         id: null,
         brandName: '',
         name: '',
+        imgSrc: '',
         descriptionLong: '',
         descriptionShort: '',
         quantity: null,
@@ -29,14 +36,18 @@ const ProductItem = () => {
     const dispatch = useAppDispatch();
     const dataFetched = useRef<boolean>(false);
 
+    // ajoute produit au panier 
     const handleAddCat = () => {
-      const datasCatOne : CartItems = {
-        id: 25 ,
-        quantity: quantity,
-        price: 10
+      if( productDatas.id && productDatas.price ) {
+        const datasCatOne : CartItems  = {
+            id: productDatas.id ,
+            quantity: quantity,
+            price: productDatas.price
+          } 
+
+        dispatch(addToCart(datasCatOne));
       }
 
-      dispatch(addToCart(datasCatOne));
     };
 
     const optionsQuantity = [
@@ -53,6 +64,8 @@ const ProductItem = () => {
         setQuantity(Number(value));
     };
 
+    const { reviewsList } =  useAppSelector((state)=> state.reviews);
+
     useEffect(() => {
 
         const showData = async () => {
@@ -67,10 +80,16 @@ const ProductItem = () => {
 
         if(Id && dataFetched.current === false) {
             showData();
+            dispatch(getReviewsList());
             dataFetched.current = true ;
         }
 
-    },[Id,productDatas])
+        if( Id && reviewsList.length > 0  ) {
+            const usersReviews = reviewsList.filter(element => element.productID ===  Number(Id));
+            setReviewsAll(usersReviews);
+        }
+       
+    },[Id,productDatas ,dispatch ,reviewsList])
 
   return (
     <>
@@ -82,7 +101,7 @@ const ProductItem = () => {
     <section className='product-description'>
         <div className='container-item'>
             <div className='img-container'> 
-                <img src={productDatas?.images[0]}   alt="skincare-i" />
+                <img src={productDatas?.imgSrc}   alt="skincare-i" />
             </div>
             <div className='description-zone'> 
                
@@ -90,7 +109,11 @@ const ProductItem = () => {
 
                     <h3> {productDatas?.brandName} </h3>
                     <h1>{ productDatas?.name} </h1>
-                    <span><i className="fa-solid fa-star"></i> {productDatas.notes} (35 avis ) </span>
+                    <div>
+                        <RatingStars ratingScore={Number(productDatas?.notes) } /> 
+                        <span>  (35 avis)</span>
+                        
+                    </div>
                     <p> {productDatas?.price} €</p>
                 </div>
 
@@ -118,33 +141,18 @@ const ProductItem = () => {
     <section className='product-reviews'>
         <div>
             <h4> Avis Client </h4> 
-            <div className='reviews-zone'>
-
-                <div className="reviewItem">
-                    <div className="top">
-                        <div className="clientImage">
-                            <span>Samia H.</span>
-                        </div>
-                        <ul>
-                            <li><i className="fa-solid fa-star"></i></li>
-                            <li><i className="fa-solid fa-star"></i></li>
-                            <li><i className="fa-solid fa-star"></i></li>
-                            <li><i className="fa-regular fa-star"></i></li>
-                            <li><i className="fa-regular fa-star"></i></li>
-                        </ul>
-                    </div>
-                    <article>
-                        <p className="review">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit beatae ipsa
-                            voluptatibus perferendis quos eaque nemo error tempora harum quas, laudantium tenetur, neque,
-                            facere exercitationem!
-                        </p>
-                        <small>Le 18/08/2023</small>
-                    </article>
-                </div>
-
-            
-            </div>
+            <ul className='reviews-zone'>
+            {reviewsAll.length > 0 && reviewsAll.map((e: Reviews) => (
+                    <li key={e.id}>
+                        <ReviewCard
+                        username={e.username}
+                        rating={e.rating}
+                        commentText={e.comment}
+                        createdAt={e.createdAt}
+                        />
+                    </li>
+                ))}
+            </ul>
         </div>
     </section>
     </>
