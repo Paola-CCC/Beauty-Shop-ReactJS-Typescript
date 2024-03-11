@@ -125,7 +125,7 @@ const [datas, setDatas] = useState<Products[]>([]);
           />
 
           <Brand 
-          brandName={"FENTY BEAUTY"}
+          brandName={"FENTY SKIN"}
           imgSrc="https://media.allure.com/photos/6217d1050c9cc364689cda05/16:9/w_3488,h_1962,c_limit/fenty%20skin%20fragrance-free%20lede.jpg"
           />
 
