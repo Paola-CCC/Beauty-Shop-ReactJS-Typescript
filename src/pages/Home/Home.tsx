@@ -1,19 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.scss";
 import { Card } from "../../components/ui";
 import { Brand } from "../../components/Brand/Brand";
+import ProductsService from "../../services/productsService";
+import { Products } from "../../types/products.type";
 
 const Home = () => {
 
-  const productData = {
-    brandName: ('Anastasia Beverly').toUpperCase(),
-    path: "make-up/4",
-    notes: 4.5,
-    description: 'Anastasia Beverly Hills Cosmos Eye Shadow Palette',
-    imgSrc: 'https://www.sephora.fr/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dwba3c8965/images/hi-res/SKU/SKU_3335/585584_swatch.jpg',
-    price: 29.99,
-    showButton: false
-  };
+const [datas, setDatas] = useState<Products[]>([]);
+
+  useEffect(()=> {
+
+    const getData = async() => {
+       try {
+        const response = await ProductsService.getPopularProducts();
+        setDatas(response.data);
+       } catch (error) {
+        console.error("Error ", error);
+       }
+    };
+
+     getData();
+  },[])
 
 
   return (
@@ -79,27 +87,23 @@ const Home = () => {
               </button>
             </div>     */}
         </div>
-        <div className="container-card popular-choice">
-          <Card {...productData} />
-          <Card {...productData} />
-          <Card {...productData} />
-          <Card {...productData} />
-          {/* <Card {...productData} />
-          <Card {...productData} />
-          <Card {...productData} />
-          <Card {...productData} /> 
-          <Card {...productData} />
-          <Card {...productData} />
-          <Card {...productData} />
-          <Card {...productData} />     */}
-        </div>
+        <ul className="container-card brand-name">
+          { datas?.length > 0 && (
+              datas.map((e) => (
+                <li key={e.id}  className="container-card popular-choice">
+                  <Card path={`${e.categories[0]}/${e.id}`} {...e} />
+                </li>
+              ))
+          )}
+        </ul>
+
       </section>
 
 
       <section className="element">
         <div className="heading-grp">
             <div className="heading-text">
-              <h3> Les nouveautés par marques </h3>
+              <h3> Les marques </h3>
               <p> Craquez pour les dernières nouveautés et best-sellers de vos marques préférées !</p>
             </div>
             {/* <div className="heading-btn">
@@ -130,7 +134,6 @@ const Home = () => {
           imgSrc="https://missha.com/upload/sharpmissha/202106021449159d0c612b-d53d-4d91-a873-d43ccda959b7.jpg"
           />
         {/* <Brand brandName={"BEAUTY OF JOSEON"}/> */}
-
 
         </div>
       </section>

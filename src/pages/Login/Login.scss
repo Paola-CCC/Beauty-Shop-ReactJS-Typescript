@@ -1,7 +1,7 @@
 
 
 $secondary-color: #fbfbfb;
-$backGroundColor : #191f5c;
+$backGroundColor : #3c437c;
 
 .form-auth {
     padding: 70px 0;
@@ -67,5 +67,11 @@ $backGroundColor : #191f5c;
       &.show {
         display: block;
       }
+    }
+
+    button {
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
     }
   }

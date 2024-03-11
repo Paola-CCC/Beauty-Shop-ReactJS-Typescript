@@ -13,8 +13,8 @@ import { Reviews } from '../../types/reviews.type';
 
 const ProductItem = () => {
 
-    const [quantity, setQuantity] = useState<number>(1);
-    const [reviewsAll, setReviewsAll] = useState<any>([]);
+    const [quantity, setQuantity] = useState<number>(0);
+    const [reviewsAll, setReviewsAll] = useState<Reviews[]>([]);
 
     const initialState : Products  = {
         id: null,
@@ -54,15 +54,15 @@ const ProductItem = () => {
     };
 
     const optionsQuantity = [
-        { value: 0, label: "choisir une quantité" },
+        { value: '', label: "choisir une quantité" },
         { value: 1, label: "1" },
-        { value: 2, label: "3" },
+        { value: 2, label: "2" },
         { value: 3, label: "3" },
         { value: 4, label: "4" },
         { value: 5, label: "5" },
     ];
 
-    const handleChange = (event: any) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setQuantity(Number(value));
     };

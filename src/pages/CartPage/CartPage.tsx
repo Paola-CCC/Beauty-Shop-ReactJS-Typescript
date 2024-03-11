@@ -32,7 +32,7 @@ const CartPage = () => {
                 <ul className="shopping-cart-list"> 
 
                     { itemsOnly && itemsOnly.map((e:any , index: any)=> (
-                        <li key={index} >
+                        <li key={index}  className="cart-item">
                             <ShoppingCartRow 
                                 id={e.id}
                                 productName={e.brandName}

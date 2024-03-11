@@ -37,15 +37,17 @@ export const cartSlice = createSlice({
       const findItemId = state.CartItems.find((key) => key.id === action.payload.id);
 
       if (findItemId && findItemId !== undefined) {
+        const multiply = (findItemId.price * findItemId.quantity).toFixed(2) ;
         findItemId.quantity = action.payload.quantity;
         findItemId.price = action.payload.price;
-        findItemId.priceQty = findItemId.price * findItemId.quantity;
+        findItemId.priceQty = Number(multiply);
       } else {
+        const priceQtyTransformed = (action.payload.quantity * action.payload.price).toFixed(2)
         state.CartItems.push({
           id: action.payload.id,
           quantity: action.payload.quantity,
           price: action.payload.price,
-          priceQty: action.payload.quantity * action.payload.price,
+          priceQty: Number(priceQtyTransformed),
           imgSrc: action.payload.imgSrc,
           descriptionShort: action.payload.descriptionShort,
           brandName: action.payload.brandName,
@@ -55,7 +57,7 @@ export const cartSlice = createSlice({
       const dataCartItem = state.CartItems.map((key) => key.priceQty);
       dataCartItem.forEach((num) => {
         if( num ){
-          return (sumItems += num);
+          return sumItems += Number(num.toFixed(2))    ;
         }
       });
 
@@ -74,15 +76,14 @@ export const cartSlice = createSlice({
       if (sumItems >= 0 && state.CartItems[itemIndex].quantity >= 1) {
         state.CartItems[itemIndex].quantity = action.payload.quantity;
         state.CartItems[itemIndex].price = action.payload.price;
-        state.CartItems[itemIndex].priceQty =
-          state.CartItems[itemIndex].quantity *
-          state.CartItems[itemIndex].price;
+        let transformedPriceQty = (state.CartItems[itemIndex].quantity * state.CartItems[itemIndex].price).toFixed(2);
+        state.CartItems[itemIndex].priceQty = Number(transformedPriceQty); 
       }
 
       const dataCartItem = state.CartItems.map((key) => key.priceQty);
       dataCartItem.forEach((num) => {
         if( num ){
-          return (sumItems += num);
+          return sumItems += Number(num.toFixed(2))    ;
         }    
        });
 
@@ -93,14 +94,12 @@ export const cartSlice = createSlice({
 
     removeFromCart(state, action: PayloadAction<{ id: number }>) {
       let sumItems = 0;
-
       state.CartItems = state.CartItems.filter((key) => key.id !== action.payload.id);
       state.cartLength = state.CartItems.length;
-
       const dataCartItem = state.CartItems.map((key) => key.priceQty);
       dataCartItem.forEach((num) => {
         if( num ){
-          return (sumItems += num);
+          return sumItems += Number(num.toFixed(2))    ;
         }    
        });
 

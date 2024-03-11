@@ -16,7 +16,7 @@
     border-top-right-radius: 15px;
     overflow: hidden;
     margin: 0;
-    height: 210px;
+    height: 250px;
     position: relative;
     img {
       width: 100%;
@@ -34,72 +34,85 @@
     }
   }
 
-  .card-header {
-    display: flex;
-    flex-direction: column;
 
-    h4 {
-      margin: 0 1rem;
-      span.title-card {
-        font-weight: 700;
-        display: inline-flex;
-        justify-content: space-between;
-        align-items: baseline;
-        width: 100%;
-        margin: 20px 0;
-
-        &:after {
-          content: "";
-          position: absolute;
-          left: 0;
-          top: 0;
-          right: 0;
-          bottom: 0;
+  .card-main {
+    height: 200px;
+    .card-main-header {
+      display: flex;
+      flex-direction: column;
+  
+      h4 {
+        margin: 0 1rem;
+        span.title-card {
+          font-weight: 700;
+          display: inline-flex;
+          justify-content: space-between;
+          align-items: baseline;
+          width: 100%;
+          margin: 20px 0;
+  
+          &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+          }
         }
-      }
+  
+        span {
+          display: block;
+          font-weight: 500;
+          // font-size: 1rem;
+          // line-height: 1.25;
 
-      span {
+          &.description-short{
+            white-space: nowrap; 
+            width: 250px; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+          }
+        }
+
+      }
+  
+      p {
+        margin: 1rem;
+      }
+    }
+  
+    .card-main-footer {
+      width: 100%;
+      h4 {
+        margin: 1.25rem 1rem;
+      }
+  
+      button.primary {
         display: block;
+        width: 90%;
+        margin: 15px auto;
+        padding: 1rem 0;
         font-weight: 500;
-        // font-size: 1rem;
-        // line-height: 1.25;
+        border-radius: 10px;
+        background-color: #fff;
+        color: black ;
+        // border: 1px solid rgb(236, 236, 236) ;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  
+        font-family: AvantGardeMedium, Arial, sans-serif;
+        font-weight: 500;
+  
       }
     }
-
-    p {
-      margin: 1rem;
-    }
-  }
-
-  .card-footer {
-    width: 100%;
-    h4 {
-      margin: 1.25rem 1rem;
-    }
-
-    button.primary {
-      display: block;
-      width: 90%;
-      margin: 15px auto;
-      padding: 1rem 0;
-      font-weight: 500;
-      border-radius: 10px;
-      background-color: #fff;
-      color: black ;
-      // border: 1px solid rgb(236, 236, 236) ;
-      box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-
-      font-family: AvantGardeMedium, Arial, sans-serif;
-      font-weight: 500;
-
-    }
+  
   }
 
   &:hover {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     transform: translateY(-5px);
 
-    .card-footer button {
+    .card-main-footer button {
       background-color: rgb(0, 0, 0);
       color: #fff;
     }

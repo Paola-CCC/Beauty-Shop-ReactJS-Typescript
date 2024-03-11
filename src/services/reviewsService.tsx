@@ -2,9 +2,7 @@ import { Reviews } from "../types/reviews.type";
 import http from "./axiosClient";
 
 
-export const getAll = () => {
-    console.log(" SARA");
-    
+export const getAll = () => {    
     return http.get<Reviews[]>("/reviews");
 };
 
