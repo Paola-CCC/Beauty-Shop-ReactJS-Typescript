@@ -9,8 +9,8 @@ import { UserDatas } from "../../types/user.type";
 const Login = () => {
   
   const [ userDatas, setUserData ] = useState<UserDatas>({
-    email: 'elisa.Yenzan@free.fr',
-    password: 'password'
+    email: '',
+    password: ''
   });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

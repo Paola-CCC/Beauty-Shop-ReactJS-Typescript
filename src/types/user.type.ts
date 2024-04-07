@@ -2,10 +2,10 @@
 
 export type UserDatas = {
     id?: number,
+    firstname?: string,
+    lastname?: string,
     email?: string,
     pseudo?: any,
-    username?: string,
-    genre?: string,
     birthday?: string,
     password?:  string | undefined,
 }

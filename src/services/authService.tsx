@@ -1,22 +1,20 @@
 import { UserDatas } from "../types/user.type";
 import http from "./axiosClient";
 
-export const register = (data: UserDatas) => {
-    return http.post("/users", data);
+export const register = async (data: UserDatas) => {
+    return await http.post("/register", data);
 };
 
-export const login =(data:UserDatas) => {
-    // return http.get("/login",data);
-    return http.get(`/users?email=${data.email}&password=${data.password}`);
-
+export const login = async (data:UserDatas) => {
+    return await http.post("/login",data);
 };
 
-export const getCurrentUserById = ( id: number) => {
-    return http.get(`/users/${id}`);
+export const getCurrentUserById = async ( id: number) => {
+    return await http.get(`/clients-show/${id}`);
 };
 
-export const updateCurrentUserById = ( id: number ,data :any) => {
-    return http.put(`/users/${id}`,data );
+export const updateCurrentUserById = async ( id: number ,data :any) => {
+    return await http.put(`/client-update/${id}`,data );
 };
 
 const authService = {

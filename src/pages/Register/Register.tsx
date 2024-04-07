@@ -9,11 +9,12 @@ import { UserDatas } from "../../types/user.type";
 const Register = () => {
   
   const [ userDatas, setUserData ] = useState<UserDatas>({
-    username: 'Martine DOE',
-    email: 'Martine@free.fr',
-    password: 'password',
-    birthday: '18/06/1956',
-    pseudo:'Martine-DOE'
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    birthday: '',
+    pseudo:''
   });
 
   const dispatch = useAppDispatch();
@@ -41,13 +42,25 @@ const Register = () => {
         <h1> Inscription </h1>
         <div className="mb-3">
             <InputText 
-                label= {"Nom d'utilisateur"}   
-                value={userDatas.username} 
+                label= {"Prénom"}   
+                value={userDatas.firstname} 
                 onChange={handleUserDatas} 
-                name="username"
+                name="firstname"
                 placeholder={"Nom d'utilisateur"} 
                 isRequired= {true}
-                errorText={ false  ?  "Le nom d'utilisateur est pas valide"  : ""}
+                errorText={ false  ?  "Le prénom est pas valide"  : ""}
+            />
+        </div>
+
+        <div className="mb-3">
+            <InputText 
+                label= {"Nom"}   
+                value={userDatas.lastname} 
+                onChange={handleUserDatas} 
+                name="lastname"
+                placeholder={"Nom de Famille"} 
+                isRequired= {true}
+                errorText={ false  ?  "Le nom de famille est pas valide"  : ""}
             />
         </div>
         <div className="mb-3">
@@ -82,7 +95,7 @@ const Register = () => {
               value={userDatas.password} 
               name="password"
               type="password"
-              // onChange={handleUserDatas} 
+              onChange={handleUserDatas} 
               placeholder={"Mot de passe"} 
               isRequired= {true}
               errorText={ false ? "Le mot de passe de vérification ne correspond pas" : ""}

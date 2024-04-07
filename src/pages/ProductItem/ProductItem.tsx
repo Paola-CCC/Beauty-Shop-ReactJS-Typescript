@@ -20,15 +20,14 @@ const ProductItem = () => {
         id: null,
         brandName: '',
         name: '',
-        imgSrc: '',
         descriptionLong: '',
         descriptionShort: '',
+        thumbnail:'',
         quantity: null,
         tags: [],
-        categories: [],
+        categories: '',
         notes: null,
         createdAt: '',
-        images: [],
         price: null,
     }
     const [productDatas, setProductsDatas] = useState<Products>(initialState);
@@ -43,7 +42,7 @@ const ProductItem = () => {
             id: productDatas.id ,
             quantity: quantity,
             price: productDatas.price,
-            imgSrc: productDatas.imgSrc,
+            thumbnail: productDatas.thumbnail,
             descriptionShort: productDatas.descriptionShort,
             brandName: productDatas.brandName,
           } 
@@ -104,7 +103,7 @@ const ProductItem = () => {
     <section className='product-description'>
         <div className='container-item'>
             <div className='img-container'> 
-                <img src={productDatas?.imgSrc}   alt="skincare-i" />
+                <img src={productDatas?.thumbnail}   alt="skincare-i" />
             </div>
             <div className='description-zone'> 
                

@@ -13,7 +13,7 @@ const SkinCarePage = () => {
 
   useEffect(() => {
     if(products ) {
-      const datas = products.filter((e) => e.categories[0] === "skin-care");
+      const datas = products.filter((e) => e.categories === "skin-care");      
       setProductDatas(datas)
     }
     

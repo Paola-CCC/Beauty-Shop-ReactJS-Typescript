@@ -13,8 +13,8 @@ const MakeUpPage = () => {
 
   useEffect(() => {
     
-      if(products  ) {
-        const datas = products.filter((e) => e.categories[0] === "make-up");
+      if(products  ) {        
+        const datas = products.filter((e) => e.categories === "make-up");        
         setProductDatas(datas)
       }
       

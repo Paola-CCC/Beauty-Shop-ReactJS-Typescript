@@ -1,12 +1,11 @@
 import axios from "axios";
 
 const URL = process.env.REACT_APP_BASEURL;
-const tokenStorage = localStorage.getItem("tokenJWT"); 
-const token = tokenStorage ? `${tokenStorage}` : "";
+const tokenStorage = localStorage.getItem("userToken") ; 
+const token = tokenStorage ? JSON.parse(tokenStorage)?.jwt : "";
 
 const http = axios.create({
   baseURL: URL,
-  withCredentials: true,
   headers: {
     "Content-Type": "application/json; charset=utf-8",
     Authorization: `Bearer ${token}`,

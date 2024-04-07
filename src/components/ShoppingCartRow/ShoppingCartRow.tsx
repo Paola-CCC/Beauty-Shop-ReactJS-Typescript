@@ -9,11 +9,11 @@ interface CartRow {
     productName: string , 
     descriptionShort : string, 
     price:  number,
-    imgSrc: string,
+    thumbnail: string,
     quantitySelected: number
 }
 
-const ShoppingCartRow = ({ id,productName , descriptionShort, price , imgSrc ,quantitySelected }: CartRow ) => {
+const ShoppingCartRow = ({ id,productName,descriptionShort,price,thumbnail,quantitySelected }: CartRow ) => {
 
 
     const dispatch = useAppDispatch()
@@ -36,7 +36,7 @@ const ShoppingCartRow = ({ id,productName , descriptionShort, price , imgSrc ,qu
             id: id ,
             quantity: Number(value),
             price: price,
-            imgSrc: imgSrc,
+            thumbnail: thumbnail,
             descriptionShort: descriptionShort,
         } 
 
@@ -51,7 +51,7 @@ const ShoppingCartRow = ({ id,productName , descriptionShort, price , imgSrc ,qu
         <>
 
             <div className='img-zone'>
-                <img src={imgSrc} alt="Product" />
+                <img src={thumbnail} alt="Product" />
             </div>
             <div className="item-details">
                 <h3>{productName}</h3>

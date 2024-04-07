@@ -42,8 +42,8 @@ const UsersDetails = () => {
         <div className='details'>
           <ul className='block'>
             <li>
-               <h4>Nom Prénom</h4>
-               <span>{userData?.username}   </span>
+               <h4>Prénom NOM</h4>
+               <span>  { (userData?.firstname) + ' '  + (userData?.lastname)?.toUpperCase()}   </span>
             </li>
 
             <li>

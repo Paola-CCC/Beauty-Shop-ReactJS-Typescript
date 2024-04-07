@@ -2,15 +2,15 @@
 import { Products } from "../types/products.type";
 import http from "./axiosClient";
 
-export const getAll = () => {
-    return http.get<Products[]>("/products");
+export const getAll = async () => {
+    return await http.get<Products[]>("/products");
 };
-export const getPopularProducts = () => {
-    return http.get<Products[]>("/popular-products");
+export const getPopularProducts = async () => {
+    return await http.get<Products[]>("/products");
 };
 
-export const getById = (id : number | string | undefined) => {
-    return http.get<Products>(`/products/${id}`);
+export const getById = async(id : number | string | undefined) => {
+    return await http.get<Products>(`/products-show/${id}`);
 };
 
 const ProductsService = {

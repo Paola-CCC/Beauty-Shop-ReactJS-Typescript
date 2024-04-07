@@ -40,11 +40,10 @@ const productsSlice = createSlice({
         const listTags : any[] = [];
 
         for (const element of action.payload) {
-          element?.categories?.forEach((value:any) => {
-            if(!listCategories.includes(value)){
-              listCategories.push(value);
-            }
-          });
+        
+          if(!listCategories.includes(element?.categories)){
+            listCategories.push(element?.categories);
+          }
         
           element?.tags?.forEach((tag :any) => {
             if(!listTags.includes(tag)){

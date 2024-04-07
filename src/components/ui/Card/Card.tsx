@@ -7,16 +7,16 @@ interface CardProps {
   brandName?: string,
   notes?: any,
   descriptionShort?: string, 
-  imgSrc?: string, 
+  thumbnail?: string, 
   price: number | null,
   showButton?: boolean
 }
 
-const Card = ({path , brandName , notes, descriptionShort, imgSrc, price , showButton = true }: CardProps) => {
+const Card = ({path , brandName , notes, descriptionShort, thumbnail, price , showButton = true }: CardProps) => {
   return (
     <Link to={'/' + path} className="card">
       <figure className="card-image">
-        <img src={imgSrc} alt="skincare-i" />
+        <img src={thumbnail} alt="skincare-i" />
         <span tabIndex={0}>
         <i className="fa-regular fa-heart fa-xl" ></i>        
         </span>

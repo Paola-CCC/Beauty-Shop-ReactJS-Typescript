@@ -2,15 +2,15 @@ export type Products = {
     id: number | null,
     brandName: string,
     name: string,
-    imgSrc: string,
     descriptionLong: string,
     descriptionShort: string,
+    thumbnail: string,
     quantity: number | null,
-    tags: string[],
-    categories: string[],
+    tags?: string[],
+    subCategories?: string[],
+    categories: string,
     notes?: any,
     createdAt: string,
-    images: string[],
     price: number | null,
 } 
 
@@ -19,7 +19,7 @@ export type CartItems = {
     quantity: number,
     price: number,
     priceQty?: number,
-    imgSrc?: string,
+    thumbnail?: string,
     descriptionShort?: string,
     brandName?: string,
 }

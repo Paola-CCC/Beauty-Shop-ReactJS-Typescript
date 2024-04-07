@@ -39,7 +39,7 @@ const CartPage = () => {
                                 descriptionShort={e.descriptionShort}
                                 price={e.price}
                                 quantitySelected={e.quantity}
-                                imgSrc={e.imgSrc} 
+                                thumbnail={e.thumbnail} 
                             
                             />
 
