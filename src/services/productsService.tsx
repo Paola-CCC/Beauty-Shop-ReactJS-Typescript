@@ -6,7 +6,7 @@ export const getAll = async () => {
     return await http.get<Products[]>("/products");
 };
 export const getPopularProducts = async () => {
-    return await http.get<Products[]>("/products");
+    return await http.get<Products[]>("/popular-products");
 };
 
 export const getById = async(id : number | string | undefined) => {

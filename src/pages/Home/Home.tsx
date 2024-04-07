@@ -56,7 +56,6 @@ const [datas, setDatas] = useState<Products[]>([]);
             </div>
 
             <div className="grid-item content-three">
-              {/* <img src="https://media.allure.com/photos/6217d1050c9cc364689cda05/16:9/w_1280,c_limit/fenty%20skin%20fragrance-free%20lede.jpg" alt="drunk elephant" /> */}
               <img src="https://i.pinimg.com/736x/27/a5/a3/27a5a387550bb00c33752e093361d218.jpg" alt="glossier" />
 
             </div>
@@ -66,10 +65,6 @@ const [datas, setDatas] = useState<Products[]>([]);
               Une routine de soins essentielles et simple est capable de changer la peau.
               Nous sommes convaincues que les gestes du quotidien peuvent changer votre peau.
           </p>
-
-
-              {/* <img src="https://media.allure.com/photos/6217d1050c9cc364689cda05/16:9/w_1280,c_limit/fenty%20skin%20fragrance-free%20lede.jpg" alt="drunk elephant" /> */}
-
           </div>
 
         </div>
