@@ -32,7 +32,8 @@ const Register = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const response = dispatch(registerUser(userDatas));
+    // const response = dispatch(registerUser(userDatas));
+    dispatch(registerUser(userDatas))
     navigate("/");
   };
 

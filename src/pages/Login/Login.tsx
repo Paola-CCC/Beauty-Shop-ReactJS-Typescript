@@ -14,7 +14,7 @@ const Login = () => {
   });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [successLogin, setSuccessLogin] = useState<boolean>(true) ;
+  // const [successLogin, setSuccessLogin] = useState<boolean>(true) ;
 
   const handleUserDatas = (event: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -28,7 +28,8 @@ const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = dispatch(loginUser(userDatas));
+    // const response = dispatch(loginUser(userDatas));
+    dispatch(loginUser(userDatas));
     navigate("/");
   };
 
@@ -72,12 +73,12 @@ const Login = () => {
           <Link to="/inscription"> S'inscrire </Link>
         </p>
       </form>
-        <div className={ `form-arror-msg ${successLogin === false ? "show": "hidden"}`} >
+        {/* <div className={ `form-arror-msg ${successLogin === false ? "show": "hidden"}`} >
         <p>
           Votre email et/ou mot de passe sont incorrects.
           <br /> Veuillez recommencer.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };
