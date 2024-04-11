@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.scss';
 import { Link } from 'react-router-dom';
+import { ReactComponent as HeartIcon } from '../../../assets/svg/heart-icon.svg';
 import Button from '../Button/Button';
 interface CardProps {
   path?: string,
@@ -18,7 +19,7 @@ const Card = ({path , brandName , notes, descriptionShort, thumbnail, price , sh
       <figure className="card-image">
         <img src={thumbnail} alt="skincare-i" />
         <span tabIndex={0}>
-        <i className="fa-regular fa-heart fa-xl" ></i>        
+          <HeartIcon />
         </span>
       </figure>
       <div className='card-main'>

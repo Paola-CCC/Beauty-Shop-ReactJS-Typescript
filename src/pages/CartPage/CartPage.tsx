@@ -31,7 +31,7 @@ const CartPage = () => {
         <section className='cart-items-layout'>
                 <ul className="shopping-cart-list"> 
 
-                    { itemsOnly && itemsOnly.map((e:any , index: any)=> (
+                    { itemsOnly && itemsOnly.map((e:any, index: number)=> (
                         <li key={index}  className="cart-item">
                             <ShoppingCartRow 
                                 id={e.id}
@@ -40,7 +40,6 @@ const CartPage = () => {
                                 price={e.price}
                                 quantitySelected={e.quantity}
                                 thumbnail={e.thumbnail} 
-                            
                             />
 
                         </li>
@@ -57,7 +56,9 @@ const CartPage = () => {
                 <div className="cart-summary">
                     <h4> 
                         <span>Nombre d'articles: </span>
-                        <span>{itemsCartAll.cartLength} articles</span>
+                        <span>
+                            { itemsCartAll.cartLength > 1 ? `${itemsCartAll.cartLength} articles `: `${itemsCartAll.cartLength} article` }
+                        </span>
                     </h4>
                     <h4> 
                         <span>Total:  </span>

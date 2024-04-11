@@ -9,3 +9,5 @@ export { default as CartPage } from "./CartPage/CartPage";
 export { default as PersonalPage } from "./PersonalPage/PersonalPage";
 export { default as Orders } from "./Orders/Orders";
 export { default as UsersDetails } from "./UsersDetails/UsersDetails";
+export { default as NewThings } from "./NewThings/NewThings";
+export { default as Favorites } from "./Favorites/Favorites";
