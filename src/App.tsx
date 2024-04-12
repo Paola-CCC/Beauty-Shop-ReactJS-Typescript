@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './layout';
-import { Blog, CartPage, Home, Login, MakeUpPage, NewThings, Orders, PersonalPage, ProductItem, Register, SkinCarePage, UsersDetails } from './pages';
+import { Blog, CartPage, Favorites, Home, Login, MakeUpPage, NewThings, Orders, PersonalPage, ProductItem, Register, SkinCarePage, UsersDetails } from './pages';
 
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
         },
         {
           path: 'favoris',
-          element: <NewThings />,
+          element: <Favorites />,
         },
         {
           path: 'blog',

@@ -40,6 +40,7 @@ const Button = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
+      tabIndex={0}
     >
       {children}
     </button>
