@@ -4,3 +4,4 @@ export const usePathname = () => {
   const location = useLocation();
   return location.pathname;
 }
+

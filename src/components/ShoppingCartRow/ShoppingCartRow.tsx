@@ -20,7 +20,7 @@ const ShoppingCartRow = ({ id,productName,descriptionShort,price,thumbnail,quant
     const [quantity, setQuantity] = useState<number >( Number(quantitySelected));
 
     const optionsQuantity = [
-        { value: '', label: "choisir une quantité" },
+        { value: '', label: "sélectionnez la quantité" },
         { value: 1, label: "1" },
         { value: 2, label: "2" },
         { value: 3, label: "3" },
