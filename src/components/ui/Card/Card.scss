@@ -1,13 +1,9 @@
 .card {
-  all: unset;
   text-decoration: none;
-  height: auto;
   height: fit-content;
-  background-color: #fff;
-  cursor: pointer;
+  background-color: #ffffff;
   border-radius: 15px;
   overflow: hidden;
-  // padding: 1rem;
   position: relative;
   transition: 0.15s ease-in;
 
@@ -26,17 +22,18 @@
     }
     span {
       position: absolute;
-      background-color: rgb(236, 236, 236);
+      background-color: rgba(248, 248, 248, 0.856);
       top: 11px;
       right: 0px;
-      padding: 5px 10px;
+      padding: 5px 5px 0 5px;
       display: block;
+      
     }
   }
 
 
   .card-main {
-    height: 200px;
+    height: max-content;
     .card-main-header {
       display: flex;
       flex-direction: column;
@@ -49,72 +46,98 @@
           justify-content: space-between;
           align-items: baseline;
           width: 100%;
-          margin: 20px 0;
-  
-          &:after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-          }
+          margin: 10px 0;
         }
-  
-        span {
-          display: block;
-          font-weight: 500;
-          // font-size: 1rem;
-          // line-height: 1.25;
-
-          &.description-short{
-            white-space: nowrap; 
-            width: 250px; 
-            overflow: hidden;
-            text-overflow: ellipsis; 
-          }
-        }
-
       }
-  
+
       p {
         margin: 1rem;
       }
     }
+
+    .card-main-body {
+      margin: 0 1rem;
+        
+      span {
+        display: block;
+        cursor: default;
+     
+
+        &.description-short {
+          white-space: nowrap; 
+          width: 250px; 
+          overflow: hidden;
+          text-overflow: ellipsis; 
+          margin-bottom: 10px;
+        }
+        &.pricing {
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+      }
+
+    }
   
     .card-main-footer {
       width: 100%;
-      h4 {
-        margin: 1.25rem 1rem;
-      }
-  
-      button.primary {
+
+      a.btn-path-action {
         display: block;
+        cursor: pointer;
         width: 90%;
+        text-decoration: none;
         margin: 15px auto;
-        padding: 1rem 0;
-        font-weight: 500;
-        border-radius: 10px;
-        background-color: #fff;
-        color: black ;
-        // border: 1px solid rgb(236, 236, 236) ;
-        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+        button.primary {
+          display: block;
+          width:100%;
+          margin: 15px auto;
+          padding: 1rem 0;
+          font-weight: 500;
+          border-radius: 10px;
+          background-color: #fff;
+          color: black ;        
+          box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+          font-family: AvantGardeMedium, Arial, sans-serif;
+          font-weight: 600;
+          text-align: center;
+          text-decoration: none;
   
-        font-family: AvantGardeMedium, Arial, sans-serif;
-        font-weight: 500;
-  
+          &:hover {
+            background-color: black;
+            color: white ;  
+          }
+        } 
+
+      }
+
+      div.mb-3 {
+        margin: 0 1rem;
+        padding-top: 0;
+        padding-bottom: 0.75rem;
+
+        button {
+          margin-top: 7px;
+          height: 40px;
+          border-radius: 4px;         
+          width: 100%;
+          padding: 0;
+          background-color: black;
+          color: rgb(255, 255, 255);
+          box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+          font-family: AvantGardeMedium, Arial, sans-serif;
+          font-weight: 600;
+          text-align: center;
+          &:hover {
+            color: white ;  
+          }
+        }
       }
     }
-  
   }
 
   &:hover {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     transform: translateY(-5px);
-
-    .card-main-footer button {
-      background-color: rgb(0, 0, 0);
-      color: #fff;
-    }
   }
 }

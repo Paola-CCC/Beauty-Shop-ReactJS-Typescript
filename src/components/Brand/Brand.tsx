@@ -9,12 +9,12 @@ interface BandCardProps {
     alt?: string
 }
 
-export const Brand = ({brandName,imgSrc,alt }: BandCardProps) => {
+export const Brand = ({brandName,imgSrc,alt = '' }: BandCardProps) => {
   return (
         <div className="card-brand">
             <Link to={"#"}>
                 <div className="card-image">
-                    <img src={imgSrc} alt="Orange" />
+                    <img src={imgSrc} alt={alt} />
                     <h4> {brandName}</h4>
                 </div>
             </Link>

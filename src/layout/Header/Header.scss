@@ -1,6 +1,5 @@
 header {
   background-color: white;
-  border-bottom: 1px solid #ebebeb;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -8,9 +7,16 @@ header {
     width: 85vw;
     display: flex;
     align-items: center;
-    height: 70px;
     font-size: 1rem;
     color: #181818;
+
+    h4.navbar-logo {
+      margin: 0;
+      // color: #57487e;
+      i {
+        margin-left: 5px;
+      }
+    }
 
 
     ul.nav-menu {
@@ -18,34 +24,79 @@ header {
       display: grid;
       padding: 0;
       grid-template-columns: repeat(8, auto);
-      gap: 20px;
+      justify-content: end;
+      // align-items: center;
       list-style: none;
       text-align: center;
-      justify-content: end;
       margin: 0;
 
       li {
+        // background-color: brown;
+        position: relative;
+        padding: 1rem 0;
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+
+
+        @media (min-width: 980px) {
+          &:not(.desktop-icons-user):after {
+            position: absolute;
+            content: "";
+            display: block;
+            height: 4px;
+            width: 0;
+            background-color: #2f2f2f;
+            bottom: 0;
+            left: 0;
+          }
+          
+          &.activate:after,
+          &:hover:after 
+          {
+            width: 100%;
+          }
+        }
+
+
         a.nav-links {
           color: #000000;
           text-decoration: none;
-          position: relative;
-          small.heart-text {
-            font-size: 14px;
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            text-align: center;
-            background-color: rgb(255, 255, 255);
-            position: absolute;
-            display: inline-block;
-            bottom: -17px;
-            right: -10px;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+          span.icon-svg-container {
+            display: block;
+            height: fit-content;
+            position: relative;
+
+            svg {
+              display: block;
+              height: 35px;
+
+            }
+            small.heart-text {
+              font-size: 14px;
+              height: 20px;
+              width: 20px;
+              border-radius: 50%;
+              text-align: center;
+              background-color: rgb(255, 255, 255);
+              position: absolute;
+              display: inline-block;
+              bottom: -10px;
+              right: -13px;
+              box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            }
           }
+
         }
 
         &:nth-child(5) {
          margin-left: 250px;
+        }
+
+        &:hover  a {
+          // color: #57487e;
+          font-weight: 400;
         }
       }
     }
@@ -100,20 +151,29 @@ header {
           a.nav-links {
             color: #010101;
             text-decoration: none;
-            position: relative;
+            span.icon-svg-container {
+              display: block;
+              height: fit-content;
+              position: relative;
   
-            small.heart-text {
-              font-size: 14px;
-              height: 20px;
-              width: 20px;
-              border-radius: 50%;
-              text-align: center;
-              background-color: rgb(255, 255, 255);
-              position: absolute;
-              display: inline-block;
-              bottom: -17px;
-              right: -10px;
-              box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+              svg {
+                display: block;
+                height: 35px;
+  
+              }
+              small.heart-text {
+                font-size: 14px;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                text-align: center;
+                background-color: rgb(255, 255, 255);
+                position: absolute;
+                display: inline-block;
+                bottom: -10px;
+                right: -13px;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+              }
             }
           }
         }
@@ -122,9 +182,10 @@ header {
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 980px) {
   header {
     padding: 0 10px ;
+    height: 72px;
     nav.navbar {
       display: flex;
       flex-direction: row;
@@ -169,6 +230,7 @@ header {
         transition: all 0.5s ease;
 
         &.active {
+          border-top: 1px solid #ebebeb;
           background-color: white;
           left: 0;
           opacity: 1;

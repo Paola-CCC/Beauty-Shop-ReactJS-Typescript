@@ -4,6 +4,7 @@ import { Card } from "../../components/ui";
 import { Brand } from "../../components/Brand/Brand";
 import ProductsService from "../../services/productsService";
 import { Products } from "../../types/products.type";
+import { Link } from "react-router-dom";
 
 const Home = () => {
 
@@ -30,7 +31,6 @@ const [datas, setDatas] = useState<Products[]>([]);
         <div className="hero-text">
           <h1>BEAUTY GALAXY</h1>
           <p>Votre beauté est notre priorité</p>
-          {/* <button>Hire me</button> */}
         </div>
       </div>
       <section className="element">
@@ -40,9 +40,11 @@ const [datas, setDatas] = useState<Products[]>([]);
               <p> Créer votre skincare routine avec nos meilleurs produits </p>
             </div>
             <div className="heading-btn">
-              <button>
-                  Tout voir
-              </button>
+              <Link to="/nouveaux" >
+                <button>
+                    Tout voir
+                </button>
+              </Link>
             </div>    
         </div>
         <div className="container-mosaique">

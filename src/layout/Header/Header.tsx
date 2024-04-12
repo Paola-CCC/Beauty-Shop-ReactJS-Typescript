@@ -2,29 +2,36 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 import { useAppSelector } from "../../redux/hooks";
+import { ReactComponent as CartIcon } from '../../assets/svg/cart-icon.svg';
+import { ReactComponent as HeartIcon } from '../../assets/svg/heart-icon.svg';
+import { ReactComponent as UserIcon } from '../../assets/svg/user-icon.svg';
+import { usePathname } from '../../hooks/useNavigate';
+
 
 const Header = () => {
   const [active, setActive] = useState<boolean>(false);
-  const [carItems , setCarTItems] = useState<any>({});
+  const [carItems, setCarTItems] = useState<any>({});
   const cartData = useAppSelector((state) => state.cart);
-  const isLoggedUser   = useAppSelector((state) => state.auth);
-  const [ userIsLogged , setUserIsLogger ] = useState<boolean>( false);
+  const isLoggedUser = useAppSelector((state) => state.auth);
+  const [userIsLogged, setUserIsLogger] = useState<boolean>(false);
 
   const handleClick = () => {
     setActive(!active);
-  };  
+  };
 
-useEffect(()=> {
+  const path = usePathname();
+  
+  useEffect(() => {
 
-    if( cartData ) {
+    if (cartData) {
       setCarTItems(cartData);
     }
 
     if (isLoggedUser) {
       setUserIsLogger(isLoggedUser.isLogged);
-    } 
+    }
 
-},[cartData , isLoggedUser ])
+  }, [cartData, isLoggedUser])
 
   return (
     <header>
@@ -37,83 +44,99 @@ useEffect(()=> {
             </div>
             <h4 className="navbar-logo">
               <Link to={'/'}>
-                Beauty Galaxy 
+                BEAUTY GALAXY
                 <i className="fab fa-react"></i>
               </Link>
             </h4>
           </div>
 
           <ul className="nav-links-mobile">
-            {/* <li>
-              <Link to="#" className="nav-links">
-                <i className="fa-solid fa-heart fa-lg"></i>
-                <small className="heart-text"> 8 </small>
-              </Link>
-            </li> */}
-            <li>
-              <Link to="panier" className="nav-links">
-                <i className="fa-solid fa-cart-shopping fa-lg"></i>
-                <small id="cart-show-item" className="heart-text"> {carItems.cartLength}</small>
+            <li className={`${path === '/nouveaux' ? 'activate' : ''}`}>
+              <Link to="nouveaux" className="nav-links">
+              <span className="icon-svg-container">
+                <HeartIcon />
+                <small className="heart-text"> 0 </small>
+              </span>
               </Link>
             </li>
-            <li>
-              { userIsLogged ? (
-                  <Link to={"personal-space"}  className="nav-links">
-                    <i className="fa-solid fa-user fa-lg"></i>
-                  </Link>
+            <li className={`${path === '/panier' ? 'activate' : ''}`}>
+              <Link to="panier" className="nav-links">
+                <span className="icon-svg-container">
+                  <CartIcon />
+                  <small id="cart-show-item" className="heart-text"> {carItems.cartLength}</small>
+                </span>              
+              </Link>
+            </li>
+            <li className={`${path === '/personal-space' || path === '/connexion' ? 'activate' : ''}`}>
+              {userIsLogged ? (
+                <Link to={"personal-space"} className="nav-links">
+                  <span className="icon-svg-container">
+                    <UserIcon />
+                  </span>               
+                </Link>
               ) : (
-                  <Link to={"connexion"}  className="nav-links">
-                    <i className="fa-solid fa-user fa-lg"></i>
-                  </Link>
+                <Link to={"connexion"} className="nav-links">
+                  <span className="icon-svg-container">
+                    <UserIcon />
+                  </span>                
+                </Link>
               )}
             </li>
           </ul>
         </div>
 
         <ul className={active ? "nav-menu active" : "nav-menu"}>
-          <li>
+          <li className={`${path === '/' ? 'activate' : ''}`}>
             <Link to="/" className="nav-links">
               Accueil
             </Link>
           </li>
-          <li>
+          <li className={`${path === '/nouveaux' ? 'activate' : ''}`}>
+            <Link to="nouveaux" className="nav-links">
+              Nouveautés
+            </Link>
+          </li>
+          <li className={`${path === '/make-up' ? 'activate' : ''}`}>
             <Link to="make-up" className="nav-links">
               Maquillage
             </Link>
           </li>
-          <li>
+          <li className={`${path === '/skin-care' ? 'activate' : ''}`}>
             <Link to="skin-care" className="nav-links">
               Skincare
             </Link>
           </li>
-          <li>
-            <Link to="#" className="nav-links">
-              About
+          <li className={`desktop-icons-user ${ path === '/favoris' ? 'activate' : ''}`}>
+            <Link to="favoris" className="nav-links">
+              <span className="icon-svg-container">
+                <HeartIcon />
+                <small className="heart-text"> 0 </small>
+              </span>
             </Link>
           </li>
-          <li className="desktop-icons-user">
-            {/* <Link to="#" className="nav-links">
-              <i className="fa-solid fa-heart fa-lg"></i>
-              <small className="heart-text"> 10 </small>
-            </Link> */}
-          </li>
-          <li className="desktop-icons-user">
+          <li className={`desktop-icons-user ${ path === '/panier' ? 'activate' : ''}`}>
             <Link to="panier" className="nav-links">
-              <i className="fa-solid fa-cart-shopping fa-lg"></i>
-              <small id="cart-show-item" className="heart-text"> {carItems.cartLength}</small>
+              <span className="icon-svg-container">
+                <CartIcon />
+                <small id="cart-show-item" className="heart-text"> {carItems.cartLength}</small>
+              </span>
             </Link>
           </li>
 
           <li className="desktop-icons-user">
 
-            { userIsLogged ? (
-                <Link to={"personal-space"}  className="nav-links">
-                  <i className="fa-solid fa-user fa-lg"></i>
-                </Link>
+            {userIsLogged ? (
+              <Link to={"personal-space"} className="nav-links">
+                <span className="icon-svg-container">
+                  <UserIcon />
+                </span>
+              </Link>
             ) : (
-                <Link to={"connexion"}  className="nav-links">
-                  <i className="fa-solid fa-user fa-lg"></i>
-                </Link>
+              <Link to={"connexion"} className="nav-links">
+                <span className="icon-svg-container">
+                  <UserIcon />
+                </span>
+              </Link>
             )}
 
           </li>

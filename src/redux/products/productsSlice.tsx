@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice  } from "@reduxjs/toolkit";
-import { getPopularProductsList, getproductList } from "./productsActions";
+import {  getproductList } from "./productsActions";
 import { RootState } from "../store";
 import { Products } from "../../types/products.type";
 
@@ -63,19 +63,19 @@ const productsSlice = createSlice({
       })
 
 
-      .addCase(getPopularProductsList.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getPopularProductsList.fulfilled, (state, action: PayloadAction< any>) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.popularProducts = action.payload;
-      })
-      .addCase(getPopularProductsList.rejected,(state,action: PayloadAction< any>) => {
-        state.isLoading = false;
-        state.isSuccess = false;
-        state.errorMessage = action.payload;
-      });
+      // .addCase(getPopularProductsList.pending, (state) => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(getPopularProductsList.fulfilled, (state, action: PayloadAction< any>) => {
+      //   state.isLoading = false;
+      //   state.isSuccess = true;
+      //   state.popularProducts = action.payload;
+      // })
+      // .addCase(getPopularProductsList.rejected,(state,action: PayloadAction< any>) => {
+      //   state.isLoading = false;
+      //   state.isSuccess = false;
+      //   state.errorMessage = action.payload;
+      // });
   },
 });
 

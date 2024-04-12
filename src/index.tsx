@@ -6,13 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { showCartFromLocalstorage } from './redux/cart/cartSlice';
-import { getPopularProductsList, getproductList } from './redux/products/productsActions';
+import { getproductList } from './redux/products/productsActions';
 import { showUserIsLogged } from './redux/auth/authSlice';
 
 store.getState();
 store.dispatch(showCartFromLocalstorage());
 store.dispatch(getproductList());
-store.dispatch(getPopularProductsList());
 store.dispatch(showUserIsLogged())
 
 const root = ReactDOM.createRoot(
