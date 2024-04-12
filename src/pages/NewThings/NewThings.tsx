@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import './NewThings.scss';
 import { Products } from '../../types/products.type';
-import { useAppSelector } from '../../redux/hooks';
-import { selectAllProducts } from '../../redux/products/productsSlice';
 import { Card } from '../../components/ui'
+import ProductsService from '../../services/productsService';
 
 const NewThings = () => {
   
-  const [productDatas,setProductDatas] = useState<Products[]>([]);
-  const products = useAppSelector(selectAllProducts);
+  const [latestProduct,setLatestProduct] = useState<Products[]>([]);
 
+  useEffect(()=> {
 
-  useEffect(() => {
-    
-      if( products ) {        
-        const datas = products.filter((e) => e.categories === "make-up");        
-        setProductDatas(datas);
-      }
-      
-  },[products])
+    const getData = async() => {
+       try {
+        const response = await ProductsService.getLatestProducts();        
+        setLatestProduct(response.data);
+       } catch (error) {
+        console.error("Error ", error);
+       }
+    };
+
+     getData();
+  },[])
 
   
  return (
@@ -33,10 +35,10 @@ const NewThings = () => {
 
   <section>
     <ul className='items-list makeup'>
-        { productDatas?.map((e : Products,index: number) => (
+        { latestProduct?.map((e : Products,index: number) => (
           <li key={index}>
                 <Card 
-                  path={'make-up/'+ e.id}
+                  path={e.categories + '/'+ e.id}
                   {...e} 
                 />
           </li>
