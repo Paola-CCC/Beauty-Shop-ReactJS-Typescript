@@ -34,10 +34,12 @@ export const cartSlice = createSlice({
 
     addToCart(state, action: PayloadAction<CartItems>) {
       let sumItems : number = 0;
+      let quantityItems: number = 0;
+
       const findItemId = state.CartItems.find((key) => key.id === action.payload.id);
 
       if (findItemId && findItemId !== undefined) {
-        const multiply = (findItemId.price * findItemId.quantity).toFixed(2) ;
+        const multiply = (findItemId.price * findItemId.quantity).toFixed(2);
         findItemId.quantity = action.payload.quantity;
         findItemId.price = action.payload.price;
         findItemId.priceQty = Number(multiply);
@@ -53,21 +55,26 @@ export const cartSlice = createSlice({
           brandName: action.payload.brandName,
         });
       }
+  
+      state.CartItems.map((itemsList) => {
 
-      const dataCartItem = state.CartItems.map((key) => key.priceQty);
-      dataCartItem.forEach((num) => {
-        if( num ){
-          return sumItems += Number(num.toFixed(2))    ;
-        }
-      });
+        let price =  Number(itemsList.priceQty);
+        sumItems += Number(price.toFixed(2));
+
+        let quantity = Number(itemsList.quantity);
+        quantityItems += quantity;
+
+        return quantityItems;
+    });
 
       state.total = sumItems;
-      state.cartLength = state.CartItems.length;
+      state.cartLength = quantityItems;
       localStorage.setItem("cart", JSON.stringify(state));
     },
 
     updateQuantityProduct(state, action: PayloadAction<CartItems>) {
       let sumItems = 0;
+      let quantityItems: number = 0;
 
       const itemIndex = state.CartItems.findIndex(
         (item) => item.id === action.payload.id
@@ -80,30 +87,39 @@ export const cartSlice = createSlice({
         state.CartItems[itemIndex].priceQty = Number(transformedPriceQty); 
       }
 
-      const dataCartItem = state.CartItems.map((key) => key.priceQty);
-      dataCartItem.forEach((num) => {
-        if( num ){
-          return sumItems += Number(num.toFixed(2))    ;
-        }    
-       });
+      state.CartItems.map((itemsList) => {
+
+        let price =  Number(itemsList.priceQty);
+        sumItems += Number(price.toFixed(2));
+
+        let quantity = Number(itemsList.quantity);
+        quantityItems += quantity;
+
+        return quantityItems;
+      });
 
       state.total = sumItems;
-      state.cartLength = state.CartItems.length;
+      state.cartLength = quantityItems;
       localStorage.setItem("cart", JSON.stringify(state));
     },
 
     removeFromCart(state, action: PayloadAction<{ id: number }>) {
       let sumItems = 0;
+      let quantityItems: number = 0;
       state.CartItems = state.CartItems.filter((key) => key.id !== action.payload.id);
-      state.cartLength = state.CartItems.length;
-      const dataCartItem = state.CartItems.map((key) => key.priceQty);
-      dataCartItem.forEach((num) => {
-        if( num ){
-          return sumItems += Number(num.toFixed(2))    ;
-        }    
-       });
+
+      state.CartItems.map((itemsList) => {
+
+          let price =  Number(itemsList.priceQty);
+          sumItems += Number(price.toFixed(2));
+
+          let quantity = Number(itemsList.quantity);
+          quantityItems += quantity;
+          return quantityItems;
+      });
 
        state.total = sumItems;
+       state.cartLength = quantityItems;
       localStorage.setItem("cart", JSON.stringify(state));
     },
 

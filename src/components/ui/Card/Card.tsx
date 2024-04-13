@@ -36,7 +36,7 @@ const Card = ({ path, brandName, notes, descriptionShort, thumbnail, price, show
   }
 
   const optionsQuantity = [
-    { value: '', label: "sélectionnez la quantité" },
+    { value: 0, label: "sélectionnez la quantité" },
     { value: 1, label: "1" },
     { value: 2, label: "2" },
     { value: 3, label: "3" },
@@ -58,8 +58,8 @@ const Card = ({ path, brandName, notes, descriptionShort, thumbnail, price, show
           )}
         </span>
       </figure>
-      <div className='card-main' tabIndex={0} onClick={ pathUrl  === '/favoris' ? handleNavigate : undefined} >
-        <div className="card-main-header">
+      <div className='card-main' >
+        <div className="card-main-header" tabIndex={0} onClick={ pathUrl === '/favoris' ? handleNavigate : undefined} >
           <h4>
             <span className='title-card'> {brandName?.toUpperCase()}
               <span><i className="fa-solid fa-star"></i> {notes}</span>

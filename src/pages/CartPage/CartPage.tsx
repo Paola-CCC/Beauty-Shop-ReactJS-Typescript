@@ -7,18 +7,16 @@ import { useNavigate } from 'react-router-dom';
   
 const CartPage = () => {
 
-    const products = useAppSelector((state : RootState) =>  state.cart);
-    const [itemsCartAll, setItemsCartAll] = useState<any>({});
+    const cartState = useAppSelector((state : RootState) =>  state.cart);
     const [itemsOnly, setItemsOnly] = useState<any>([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if( Object.values(products).length > 0) {
-            setItemsOnly(products.CartItems);
-            setItemsCartAll(products);
+        if( Object.values(cartState).length > 0) {
+            setItemsOnly(cartState.CartItems);
         }
            
-    },[products ,itemsOnly])
+    },[cartState ,itemsOnly])
 
 
 
@@ -57,12 +55,12 @@ const CartPage = () => {
                     <h4> 
                         <span>Nombre d'articles: </span>
                         <span>
-                            { itemsCartAll.cartLength > 1 ? `${itemsCartAll.cartLength} articles `: `${itemsCartAll.cartLength} article` }
+                            { cartState?.cartLength > 1 ? `${cartState?.cartLength} articles `: `${cartState?.cartLength} article` }
                         </span>
                     </h4>
                     <h4> 
                         <span>Total:  </span>
-                        <span> {itemsCartAll.total} € </span>
+                        <span> {cartState?.total} € </span>
                     </h4>
                     <button className="checkout-button" disabled={Object.values(itemsOnly).length !== 0 ? false : true} >Valider le panier</button>
                     <button className="checkout-button" onClick={() => navigate('/')} >Continuer vos achats</button>
