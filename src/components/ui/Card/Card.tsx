@@ -6,30 +6,54 @@ import { Link, useNavigate } from 'react-router-dom';
 import InputSelect from '../InputSelect/InputSelect';
 import { usePathname } from '../../../hooks/useNavigate';
 import Button from '../Button/Button';
+import { useAppDispatch } from '../../../redux/hooks';
+import { CartItems } from '../../../types/products.type';
+import { addToCart } from '../../../redux/cart/cartSlice';
 interface CardProps {
+  id?: number | null,
   path?: string,
-  brandName?: string,
+  brandName: string,
+  name: string,
+  descriptionLong: string,
+  descriptionShort: string,
+  thumbnail: string,
+  quantity: number | null,
+  tags?: string[],
+  subCategories?: string[],
+  categories: string,
   notes?: any,
-  descriptionShort?: string,
-  thumbnail?: string,
+  createdAt: string,
   price: number | null,
   showBtnLink?: boolean,
-  heartIsCliked?: boolean | undefined
+  heartIsCliked?: boolean | undefined,
 }
 
-const Card = ({ path, brandName, notes, descriptionShort, thumbnail, price, showBtnLink = true, heartIsCliked }: CardProps) => {
+const Card = ({ path, showBtnLink = true, heartIsCliked , ...props}: CardProps) => {
 
   const [userClickOnHeart,setUserClickOnHeart ] = useState<boolean | undefined >(heartIsCliked);
-  const [quantity, setQuantity] = useState<number>(0);
-  
-  const navigate = useNavigate();
-  const pathUrl = usePathname()
+  const dispatch = useAppDispatch();
 
+  const [quantityProduct, setQuantityProduct] = useState<string>('0');
 
   const handleClick = () => {
-    console.log( "quantity ", quantity );
-    
+
+      if( props.id && props.price ) {
+        const datasCatOne : CartItems  = {
+            id: props.id ,
+            quantity: Number(quantityProduct),
+            price: props.price,
+            thumbnail: props.thumbnail,
+            descriptionShort: props.descriptionShort,
+            brandName: props.brandName,
+        } 
+
+        dispatch(addToCart(datasCatOne));
+      }
+
   }
+
+  const navigate = useNavigate();
+  const pathUrl = usePathname()
 
   const handleNavigate  = () => {
     navigate('/' + path);    
@@ -48,7 +72,7 @@ const Card = ({ path, brandName, notes, descriptionShort, thumbnail, price, show
   return (
     <div className="card-ui" >
       <figure className="card-image">
-        <img src={thumbnail} alt="skincare-i" />
+        <img src={props.thumbnail} alt="skincare-i" />
         <span tabIndex={0} onClick={() => setUserClickOnHeart(!userClickOnHeart) }>
 
           {userClickOnHeart ? (
@@ -61,13 +85,13 @@ const Card = ({ path, brandName, notes, descriptionShort, thumbnail, price, show
       <div className='card-main' >
         <div className="card-main-header" tabIndex={0} onClick={ pathUrl === '/favoris' ? handleNavigate : undefined} >
           <h4>
-            <span className='title-card'> {brandName?.toUpperCase()}
-              <span><i className="fa-solid fa-star"></i> {notes}</span>
+            <span className='title-card'> {props.brandName?.toUpperCase()}
+              <span><i className="fa-solid fa-star"></i> {props.notes}</span>
             </span>
           </h4>
           <div className='card-main-body'>
-            <span className='description-short'> {descriptionShort} </span>
-            <span className='pricing'> {price} € </span>
+            <span className='description-short'> {props.descriptionShort} </span>
+            <span className='pricing'> {props.price} € </span>
           </div>
         </div>
         <div className="card-main-footer">
@@ -86,8 +110,8 @@ const Card = ({ path, brandName, notes, descriptionShort, thumbnail, price, show
                 <InputSelect
                     name="item-quantity"
                     options={optionsQuantity}
-                    value={quantity}
-                    onChange={(e)=>setQuantity(Number(e.target.value))}
+                    value={quantityProduct}
+                    onChange={(e) => setQuantityProduct(e.target.value)}
                 />
                 <Button kind='primary' onClick={handleClick} >
                   Acheter
