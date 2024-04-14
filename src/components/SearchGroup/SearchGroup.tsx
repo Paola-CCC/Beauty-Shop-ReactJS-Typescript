@@ -30,8 +30,8 @@ const SearchGroup = () => {
 
   const optionsCategory = [
     { value: "", label: "catégorie" },
-    { value: 1, label: "skin care" },
-    { value: 2, label: "make up" },
+    { value: 1, label: "Soin visage" },
+    { value: 2, label: "Maquillage" },
   ];
 
   const optionsSubCategory = [
@@ -76,7 +76,6 @@ const SearchGroup = () => {
               options={optionsBrands}
               onChange={handleChangeSearch}
             />
-
 
 
             {pathUrl === '/nouveaux' && (

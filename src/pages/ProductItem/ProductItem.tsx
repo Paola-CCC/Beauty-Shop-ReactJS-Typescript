@@ -86,9 +86,9 @@ const ProductItem = () => {
         }
 
         if( Id && reviewsList.length > 0  ) {
-            const usersReviews = reviewsList.filter(element => element.productID ===  Number(Id));
+            const usersReviews = reviewsList.filter(element => element.product_id ===  Number(Id));
             setReviewsAll(usersReviews);
-        }
+        }        
        
     },[Id,productDatas ,dispatch ,reviewsList])
 
@@ -104,56 +104,55 @@ const ProductItem = () => {
             <div className='img-container'> 
                 <img src={productDatas?.thumbnail}   alt="skincare-i" />
             </div>
-            <div className='description-zone'> 
-               
-                <div className='main-datas'>
 
-                    <h3> {productDatas?.brandName} </h3>
-                    <h1>{ productDatas?.name} </h1>
-                    <div>
-                        <RatingStars ratingScore={Number(productDatas?.notes) } /> 
-                        <span>  (35 avis)</span>
-                        
+            <div className='main-container'>
+                <div className='description-zone'> 
+                    <div className='main-datas'>
+                        <h3> {productDatas?.brandName} </h3>
+                        <h1>{ productDatas?.name} </h1>
+                        <div>
+                            <RatingStars ratingScore={Number(productDatas?.notes) } /> 
+                            <span>  (35 avis)</span>
+                        </div>
+                        <p> {productDatas?.price} €</p>
                     </div>
-                    <p> {productDatas?.price} €</p>
+                    
+                    <div className='section-actions-cat'>
+                        <div className='mb-3'>
+                            <InputSelect
+                                name="item-quantity"
+                                label="sélectionnez la quantité:"
+                                options={optionsQuantity}
+                                value={quantity !== 0 ?  quantity : ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <Button kind='primary' onClick={handleAddCat}>
+                            Ajouter au panier
+                        </Button>
+                    </div>          
                 </div>
 
-                <div className='section-actions-cat'>
+                <div className='product-reviews'>
+                        <h3> Commentaires: </h3> 
 
-                    <div className='mb-3'>
-                        <InputSelect
-                            name="item-quantity"
-                            label="sélectionnez la quantité:"
-                            options={optionsQuantity}
-                            value={quantity !== 0 ?  quantity : ""}
-                            onChange={handleChange}
-                        />
-                    </div>
-
-                    <Button kind='primary' onClick={handleAddCat}>
-                        Ajouter au panier
-                    </Button>
+                        <div className='reviews-list'>
+                            <ul className='reviews-zone'>
+                                {reviewsAll.length > 0 && reviewsAll.map((e: Reviews) => (
+                                    <li key={e.id}>
+                                        <ReviewCard
+                                        pseudo={e.pseudo}
+                                        rating={e.rating}
+                                        commentText={e.comment}
+                                        createdAt={e.createdAt}
+                                        />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                 </div>
-          
             </div>
-        </div>
-    </section>
-
-    <section className='product-reviews'>
-        <div>
-            <h4> Avis Client </h4> 
-            <ul className='reviews-zone'>
-            {reviewsAll.length > 0 && reviewsAll.map((e: Reviews) => (
-                    <li key={e.id}>
-                        <ReviewCard
-                        username={e.username}
-                        rating={e.rating}
-                        commentText={e.comment}
-                        createdAt={e.createdAt}
-                        />
-                    </li>
-                ))}
-            </ul>
         </div>
     </section>
     </>

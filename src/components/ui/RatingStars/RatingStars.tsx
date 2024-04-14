@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 interface RatingStarsProps {
-  ratingScore: number
+  ratingScore: number | undefined
 }
 
 
@@ -13,13 +13,12 @@ const RatingStars = ({ratingScore} : RatingStarsProps) => {
 
    return (
      <>
-       {
-        tabChoice.map((value) => (
+       { ratingScore !== undefined && tabChoice.map((value) => (
           <span key={value} >
             <FontAwesomeIcon
               icon={faStar}
               size="sm"
-              style={{ color: value <= ratingScore ? "black" : "#9999A3" }}
+              style={{ color: (value <= ratingScore) ? "black" : "#9999A3" }}
             />
           </span>
         ))

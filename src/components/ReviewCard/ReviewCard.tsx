@@ -2,13 +2,13 @@ import React from 'react';
 import RatingStars from '../ui/RatingStars/RatingStars';
 
 interface reviewCardProps  { 
-    username: string,
-    rating: number,
-    commentText: string,
-    createdAt: string,
+    pseudo: string,
+    rating: number | undefined,
+    commentText: string | undefined,
+    createdAt: string | undefined,
 }
 const ReviewCard = ({
-    username,
+    pseudo,
     rating,
     commentText,
     createdAt
@@ -17,7 +17,7 @@ const ReviewCard = ({
     <div className="reviewItem">
     <div className="top">
         <div className="clientImage">
-            <span>{username}</span>
+            <span>{pseudo}</span>
         </div>
         <ul>
             <RatingStars ratingScore={rating}/>

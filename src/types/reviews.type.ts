@@ -1,10 +1,11 @@
 export type Reviews = {
     id?: number,
-    userID: number,
-    username: string,
-    productID: number,
-    rating: number,
-    comment: string,
-    createdAt: string,
+    pseudo: string,
+    product_id: number,
+    rating?: number,
+    comment?: string,
+    createdAt?: string,
+    updatedAt?: string,
+
 }
   

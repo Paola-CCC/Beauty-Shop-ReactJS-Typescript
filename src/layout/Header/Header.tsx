@@ -103,7 +103,7 @@ const Header = () => {
           </li>
           <li className={`${path === '/skin-care' ? 'activate' : ''}`}>
             <Link to="skin-care" className="nav-links">
-              Skincare
+              Soin visage
             </Link>
           </li>
           <li className={`desktop-icons-user ${ path === '/favoris' ? 'activate' : ''}`}>
