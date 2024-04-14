@@ -1,0 +1,44 @@
+div.container-search-group {
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(229, 229, 229);
+    padding: 1rem 0;
+    border-radius: 20px;
+    width: 980px;
+    margin: 0 auto;
+
+    .header-filter {
+        width: 95%;
+        margin: 0 auto;
+ 
+
+        .filter-title  {
+            display: block;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgb(221, 221, 221);
+            width: 100%;
+            color: grey;
+
+            p {
+                margin: 0;            
+            }
+        }
+        .form-search {
+            padding: 15px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 0 25px;
+
+            .input-select-container {
+                // background-color: coral;
+                label {
+                    display: block;
+                    padding-bottom: 8px ;
+                    font-weight: 600;
+                    font-size: 14px;
+                    color: rgb(112, 117, 122);
+                }
+            }
+        }
+    }
+}

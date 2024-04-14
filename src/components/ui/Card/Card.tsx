@@ -3,9 +3,9 @@ import './Card.scss';
 import { ReactComponent as HeartIcon } from '../../../assets/svg/heart-icon.svg';
 import { ReactComponent as HeartIconSelected } from '../../../assets/svg/heart-full-icon.svg';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from '../Button/Button';
 import InputSelect from '../InputSelect/InputSelect';
 import { usePathname } from '../../../hooks/useNavigate';
+import Button from '../Button/Button';
 interface CardProps {
   path?: string,
   brandName?: string,
@@ -46,7 +46,7 @@ const Card = ({ path, brandName, notes, descriptionShort, thumbnail, price, show
 
 
   return (
-    <div className="card" >
+    <div className="card-ui" >
       <figure className="card-image">
         <img src={thumbnail} alt="skincare-i" />
         <span tabIndex={0} onClick={() => setUserClickOnHeart(!userClickOnHeart) }>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
@@ -12,7 +12,7 @@ import { showUserIsLogged } from './redux/auth/authSlice';
 store.getState();
 store.dispatch(showCartFromLocalstorage());
 store.dispatch(getproductList());
-store.dispatch(showUserIsLogged())
+store.dispatch(showUserIsLogged());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

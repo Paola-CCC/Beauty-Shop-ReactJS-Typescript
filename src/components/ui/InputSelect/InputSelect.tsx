@@ -16,7 +16,7 @@ interface InputSelectProps {
 }
 
 
-const InputSelect = ({ label, name,  options, value, onChange }: InputSelectProps) => {
+const InputSelect = ({ label, name, options, value, onChange }: InputSelectProps) => {
 
   return (
     <div className="input-select-container">

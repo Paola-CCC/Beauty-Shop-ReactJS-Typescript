@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './layout';
 import { Blog, CartPage, Favorites, Home, Login, MakeUpPage, NewThings, Orders, PersonalPage, ProductItem, Register, SkinCarePage, UsersDetails } from './pages';

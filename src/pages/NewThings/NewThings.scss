@@ -7,6 +7,10 @@
         width: 85vw;
         padding: 50px 0;
 
+        &.search-container-form {
+            padding: 25px 0;
+        }
+
         ul.items-list {
             width: 100%;
             display: flex;

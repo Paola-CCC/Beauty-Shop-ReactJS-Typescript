@@ -9,7 +9,7 @@ interface BandCardProps {
     alt?: string
 }
 
-export const Brand = ({brandName,imgSrc,alt = '' }: BandCardProps) => {
+const Brand = ({brandName,imgSrc,alt = '' }: BandCardProps) => {
   return (
         <div className="card-brand">
             <Link to={"#"}>
@@ -21,3 +21,5 @@ export const Brand = ({brandName,imgSrc,alt = '' }: BandCardProps) => {
         </div>
   )
 }
+
+export default Brand;
