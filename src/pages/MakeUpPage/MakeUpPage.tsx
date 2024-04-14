@@ -4,6 +4,7 @@ import './MakeUpPage.scss';
 import { selectAllProducts } from '../../redux/products/productsSlice';
 import { useAppSelector } from '../../redux/hooks';
 import { Products } from '../../types/products.type';
+import { SearchGroup } from '../../components';
 
 const MakeUpPage = () => {
 
@@ -35,7 +36,8 @@ const MakeUpPage = () => {
         </div>
       </section>
 
-      <section>
+      <section className='search-container-form'>
+        <SearchGroup />
       </section>
 
       <section>

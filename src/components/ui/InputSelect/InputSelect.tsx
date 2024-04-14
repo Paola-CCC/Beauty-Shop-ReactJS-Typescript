@@ -25,7 +25,7 @@ const InputSelect = ({ label, name, options, value, onChange }: InputSelectProps
       )}
       <select value={value} name={name} onChange={onChange}>
         {options?.map((option : any, index : number) => (
-          <option key={index} value={option.value} disabled={ option.value === 0 ? true : false } >
+          <option key={index} value={option.value} defaultValue={option.value === "" ? option.value : undefined} >
             {option.label}
           </option>
         ))}

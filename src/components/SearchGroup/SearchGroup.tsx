@@ -1,57 +1,128 @@
-import React from 'react'
-import "./SaerchGroup.scss" ;
-import { InputSelect } from '../ui';
+import React, { useState } from 'react'
+import "./SaerchGroup.scss";
+import { DoubleInputPrice, InputSelect } from '../ui';
+import { Button } from '@chakra-ui/react';
+import { usePathname } from '../../hooks/useNavigate';
 
- const SearchGroup = () => {
-  const optionsQuantity = [
-    { value: 0, label: "sélectionnez la quantité" },
+const SearchGroup = () => {
+
+  const initialeState = {
+    brandId: '',
+    categoryId: '',
+    subCategoryId: '',
+    minPrice: '',
+    maxPrice: '',
+  };
+
+  const [searchValues, setSearchValues] = useState(initialeState);
+
+  const pathUrl = usePathname()
+
+
+  const optionsBrands = [
+    { value: "", label: "marque" },
     { value: 1, label: "1" },
     { value: 2, label: "2" },
     { value: 3, label: "3" },
     { value: 4, label: "4" },
     { value: 5, label: "5" },
-];
+  ];
+
+  const optionsCategory = [
+    { value: "", label: "catégorie" },
+    { value: 1, label: "skin care" },
+    { value: 2, label: "make up" },
+  ];
+
+  const optionsSubCategory = [
+    { value: "", label: "sous catégorie" },
+    { value: 1, label: "1" },
+    { value: 2, label: "2" },
+    { value: 3, label: "3" },
+    { value: 4, label: "4" },
+    { value: 5, label: "5" },
+  ];
+
+
+  /** Assigne les donnée saisie à l'état */
+  const handleChangeSearch = (event: any) => {
+
+    setSearchValues((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value
+    }));
+
+  };
+
+  /** Nettoie les éléments à rechercher */
+  const resetSearch = () => {
+    setSearchValues(initialeState);
+  };
+
+
 
   return (
-    <div className='container-search-group'>
-        
+    <>
+      <div className='container-search-group'>
+
         <div className='header-filter'>
-          {/* <div className='filter-title'>
-            <p>FILTRES</p>
-          </div> */}
+ 
+          <div className={`form-search ${ pathUrl !== '/nouveaux' ?  'grid-4'  :''}`}>
 
-          <div className='form-search'>
+            <InputSelect
+              label='Marque:'
+              name='brandId'
+              value={searchValues.brandId}
+              options={optionsBrands}
+              onChange={handleChangeSearch}
+            />
 
-              <InputSelect
-                label='Marque:'
-                name='brands'
-                options={optionsQuantity}
-              />
 
-              <InputSelect
+
+            {pathUrl === '/nouveaux' && (
+                <InputSelect
                 label='Catégorie:'
-                name='category'
-                options={optionsQuantity}
+                name='categoryId'
+                value={searchValues.categoryId}
+                options={optionsCategory}
+                onChange={handleChangeSearch}
               />
+               )
+            }
 
-              <InputSelect
-              label='Texture:'
-              name='texture'
-              options={optionsQuantity}
-              />
+            <InputSelect
+              label='Sous catégorie:'
+              name='subCategoryId'
+              value={searchValues.subCategoryId}
+              options={optionsSubCategory}
+              onChange={handleChangeSearch}
+            />
 
-              <InputSelect
-              label='Prix:'
-              name='texture'
-              options={optionsQuantity}
-              />
-      
+            <DoubleInputPrice
+              minValue={searchValues.minPrice}
+              maxValue={searchValues.maxPrice}
+              onChange={handleChangeSearch}
+            />
+
+            <div className='btn-search-zone'>
+              <Button colorScheme='teal' variant='solid' >
+                <i className="fa-solid fa-magnifying-glass"></i>
+                Filtrer
+              </Button>
+            </div>
           </div>
-
         </div>
 
-    </div>
+      </div>
+      <div className='remove-zone'>
+          <Button size='sm' variant='ghost' onClick={resetSearch}>
+          <i className="fa-regular fa-circle-xmark"></i>            
+          Réinitialiser
+          </Button>
+      </div>
+    </>
+
   )
-} ;
+};
 
 export default SearchGroup;

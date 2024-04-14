@@ -18,7 +18,7 @@ const ShoppingCartRow = ({ id,productName,descriptionShort,price,thumbnail,quant
     const dispatch = useAppDispatch();
 
     const optionsQuantity = [
-        { value: 0, label: "sélectionnez la quantité" },
+        { value: "", label: "sélectionnez la quantité" },
         { value: 1, label: "1" },
         { value: 2, label: "2" },
         { value: 3, label: "3" },
