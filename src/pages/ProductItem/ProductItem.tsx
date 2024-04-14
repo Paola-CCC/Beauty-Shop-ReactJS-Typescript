@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "./ProductItem.scss";
-import { Button, InputSelect } from '../../components/ui';
+import { Button, InputSelect, RatingStars } from '../../components/ui';
 import { useParams } from 'react-router-dom';
 import { addToCart } from '../../redux/cart/cartSlice';
 import { CartItems, Products } from '../../types/products.type';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import ProductsService from '../../services/productsService';
-import ReviewCard from '../../components/ReviewCard/ReviewCard';
-import RatingStars from '../../components/ui/RatingStars/RatingStars';
 import { getReviewsList } from '../../redux/reviews/reviewsActions';
 import { Reviews } from '../../types/reviews.type';
+import { ReviewCard } from '../../components';
 
 const ProductItem = () => {
 
@@ -53,7 +52,7 @@ const ProductItem = () => {
     };
 
     const optionsQuantity = [
-        { value: '', label: "sélectionnez la quantité" },
+        { value: "", label: "sélectionnez la quantité" },
         { value: 1, label: "1" },
         { value: 2, label: "2" },
         { value: 3, label: "3" },
@@ -126,7 +125,7 @@ const ProductItem = () => {
                             name="item-quantity"
                             label="sélectionnez la quantité:"
                             options={optionsQuantity}
-                            value={quantity}
+                            value={quantity !== 0 ?  quantity : ""}
                             onChange={handleChange}
                         />
                     </div>

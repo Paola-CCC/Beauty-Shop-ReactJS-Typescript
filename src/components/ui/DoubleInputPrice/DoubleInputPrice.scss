@@ -1,0 +1,41 @@
+
+div.double-range-container {
+    // background-color: coral;
+
+    label {
+        display: block;
+        padding-bottom: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        color: rgb(112, 117, 122);
+    }
+
+    .input-group {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .chakra-input__left-element.css-gv1iwz {
+            width: 25px;
+            right: 0;
+            left: unset;
+            color: rgb(112, 117, 122);
+        }
+
+        input.chakra-input {
+            background-color: white;
+            padding: 0px 25px 0px 8px;
+        }
+
+        div.cale {
+            height: 1px;
+            width: 20px;
+            border: 1px solid rgb(112, 117, 122);
+            background-color: rgb(203, 179, 227);
+        }
+
+
+    }
+
+}

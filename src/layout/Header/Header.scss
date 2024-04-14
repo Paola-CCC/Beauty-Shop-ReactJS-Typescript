@@ -4,12 +4,12 @@ header {
   flex-direction: row;
   justify-content: center;
   nav.navbar {
-    width: 85vw;
+    width: 90vw;
     display: flex;
     align-items: center;
     font-size: 1rem;
     color: #181818;
-
+    padding: 0;
     h4.navbar-logo {
       margin: 0;
       // color: #57487e;

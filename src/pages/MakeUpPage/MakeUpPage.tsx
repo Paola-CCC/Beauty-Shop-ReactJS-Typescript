@@ -4,6 +4,7 @@ import './MakeUpPage.scss';
 import { selectAllProducts } from '../../redux/products/productsSlice';
 import { useAppSelector } from '../../redux/hooks';
 import { Products } from '../../types/products.type';
+import { SearchGroup } from '../../components';
 
 const MakeUpPage = () => {
 
@@ -25,7 +26,7 @@ const MakeUpPage = () => {
 
       <section>
         <div className="title-grp">
-          <h3>  MAQUILLAGE</h3>
+          <h3> MAQUILLAGE </h3>
           <p>
             Essentiel beauté incontournable, le maquillage est notre meilleur allié ! Teint frais, lèvres
             gourmandes et smoky eyes, le makeup parfait est à portée de main. On laisse libre cours
@@ -35,6 +36,9 @@ const MakeUpPage = () => {
         </div>
       </section>
 
+      <section className='search-container-form'>
+        <SearchGroup />
+      </section>
 
       <section>
         <ul className='items-list makeup'>

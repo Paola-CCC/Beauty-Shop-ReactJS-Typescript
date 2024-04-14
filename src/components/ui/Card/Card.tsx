@@ -3,9 +3,9 @@ import './Card.scss';
 import { ReactComponent as HeartIcon } from '../../../assets/svg/heart-icon.svg';
 import { ReactComponent as HeartIconSelected } from '../../../assets/svg/heart-full-icon.svg';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from '../Button/Button';
 import InputSelect from '../InputSelect/InputSelect';
 import { usePathname } from '../../../hooks/useNavigate';
+import Button from '../Button/Button';
 interface CardProps {
   path?: string,
   brandName?: string,
@@ -36,7 +36,7 @@ const Card = ({ path, brandName, notes, descriptionShort, thumbnail, price, show
   }
 
   const optionsQuantity = [
-    { value: '', label: "sélectionnez la quantité" },
+    { value: "", label: "sélectionnez la quantité" },
     { value: 1, label: "1" },
     { value: 2, label: "2" },
     { value: 3, label: "3" },
@@ -46,7 +46,7 @@ const Card = ({ path, brandName, notes, descriptionShort, thumbnail, price, show
 
 
   return (
-    <div className="card" >
+    <div className="card-ui" >
       <figure className="card-image">
         <img src={thumbnail} alt="skincare-i" />
         <span tabIndex={0} onClick={() => setUserClickOnHeart(!userClickOnHeart) }>
@@ -58,8 +58,8 @@ const Card = ({ path, brandName, notes, descriptionShort, thumbnail, price, show
           )}
         </span>
       </figure>
-      <div className='card-main' tabIndex={0} onClick={ pathUrl  === '/favoris' ? handleNavigate : undefined} >
-        <div className="card-main-header">
+      <div className='card-main' >
+        <div className="card-main-header" tabIndex={0} onClick={ pathUrl === '/favoris' ? handleNavigate : undefined} >
           <h4>
             <span className='title-card'> {brandName?.toUpperCase()}
               <span><i className="fa-solid fa-star"></i> {notes}</span>

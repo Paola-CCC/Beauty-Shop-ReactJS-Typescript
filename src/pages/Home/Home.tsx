@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Home.scss";
 import { Card } from "../../components/ui";
-import { Brand } from "../../components/Brand/Brand";
 import ProductsService from "../../services/productsService";
 import { Products } from "../../types/products.type";
 import { Link } from "react-router-dom";
+import { Brand } from "../../components";
 
 const Home = () => {
 
@@ -49,7 +49,6 @@ const [datas, setDatas] = useState<Products[]>([]);
         </div>
         <div className="container-mosaique">
             <div className="grid-item content-one"> 
-
                <img src="https://media.allure.com/photos/6217d1050c9cc364689cda05/16:9/w_1280,c_limit/fenty%20skin%20fragrance-free%20lede.jpg" alt="drunk elephant" />
             </div>
 
@@ -59,7 +58,6 @@ const [datas, setDatas] = useState<Products[]>([]);
 
             <div className="grid-item content-three">
               <img src="https://i.pinimg.com/736x/27/a5/a3/27a5a387550bb00c33752e093361d218.jpg" alt="glossier" />
-
             </div>
           <div className="grid-item content-four"> 
           <h5> Trouver la skincare qu'il vous faut</h5>

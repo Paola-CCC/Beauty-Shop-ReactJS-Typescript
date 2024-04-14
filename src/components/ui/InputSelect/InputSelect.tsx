@@ -16,7 +16,7 @@ interface InputSelectProps {
 }
 
 
-const InputSelect = ({ label, name,  options, value, onChange }: InputSelectProps) => {
+const InputSelect = ({ label, name, options, value, onChange }: InputSelectProps) => {
 
   return (
     <div className="input-select-container">
@@ -24,8 +24,8 @@ const InputSelect = ({ label, name,  options, value, onChange }: InputSelectProp
         <label>{label}</label>
       )}
       <select value={value} name={name} onChange={onChange}>
-        {options?.map((option : any, index : any) => (
-          <option key={index} value={option.value} >
+        {options?.map((option : any, index : number) => (
+          <option key={index} value={option.value} defaultValue={option.value === "" ? option.value : undefined} >
             {option.label}
           </option>
         ))}
