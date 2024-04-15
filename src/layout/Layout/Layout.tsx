@@ -3,25 +3,19 @@ import { Outlet } from 'react-router';
 import './Layout.scss';
 import Header from '../Header/Header';
 import { usePathname } from '../../hooks/useNavigate';
+import Footer from '../Footer/Footer';
 
 
 const Layout = () => {
   const path = usePathname();
   
-
     return (
         <>
           <Header/>
           <main className={`${path === '/' ? 'home-page' : ''}`} >
             <Outlet />
           </main>
-          {/* <footer>
-            <div>
-              <span>
-                BeautyGalaxy 2024
-              </span>
-            </div>
-          </footer> */}
+          <Footer />
         </>
       );
 }
