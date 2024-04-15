@@ -1,0 +1,18 @@
+footer {
+    height: 40px;
+    background-color: rgb(209, 209, 209);
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  
+    div {
+      width: 90vw;
+      align-self: center;
+      text-align: right;
+      
+    }
+}

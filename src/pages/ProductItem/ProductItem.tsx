@@ -135,22 +135,30 @@ const ProductItem = () => {
                 </div>
 
                 <div className='product-reviews'>
-                        <h3> Commentaires: </h3> 
+                        <h3> Espace { reviewsAll.length > 0 ? 'commentaires': 'commentaire'}: </h3> 
 
+                        { reviewsAll.length > 0 ? (
                         <div className='reviews-list'>
-                            <ul className='reviews-zone'>
-                                {reviewsAll.length > 0 && reviewsAll.map((e: Reviews) => (
-                                    <li key={e.id}>
-                                        <ReviewCard
-                                        pseudo={e.pseudo}
-                                        rating={e.rating}
-                                        commentText={e.comment}
-                                        createdAt={e.createdAt}
-                                        />
-                                    </li>
-                                ))}
+                        <ul className='reviews-zone'>
+                            {reviewsAll.length > 0 && reviewsAll.map((e: Reviews) => (
+                                <li key={e.id}>
+                                    <ReviewCard
+                                    pseudo={e.pseudo}
+                                    rating={e.rating}
+                                    commentText={e.comment}
+                                    createdAt={e.createdAt}
+                                    />
+                                </li>
+                            ))}
                             </ul>
                         </div>
+                        ) :(
+                            <p> Aucun commentaire</p>
+                        )
+                             
+                        }
+
+
                 </div>
             </div>
         </div>

@@ -2,7 +2,13 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <footer>
+      <div>
+        <span>
+          Beauty Galaxy 2024
+        </span>
+      </div>
+    </footer>
   )
 }
 
