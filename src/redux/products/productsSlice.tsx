@@ -5,18 +5,20 @@ import { Products } from "../../types/products.type";
 
 interface ProductsState {
   datas?: Products[],
-  popularProducts?: Products[],
-  categories?: string[],
-  tags?: string[],
+  popularProducts: Products[],
+  listFavoris: Products[],
+  categories: string[],
+  tags: string[],
   isLoading: boolean,
   isSuccess: boolean,
-  errorMessage: any
+  errorMessage: string
 }
 
 const initialState: ProductsState = {
   datas: [],
   popularProducts: [],
   categories:[],
+  listFavoris:[],
   tags: [],
   isLoading: false,
   isSuccess: false,
@@ -26,7 +28,30 @@ const initialState: ProductsState = {
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+
+    handleStorage: (state) => {
+      let localStorageFavoris = localStorage.getItem("favoris_product");      
+      let productsFavoris = localStorageFavoris ? JSON.parse(localStorageFavoris): null ;
+  
+      if( productsFavoris) {
+        state.listFavoris.push(...productsFavoris);
+      }
+    },
+  
+    toggleFavoris: (state, action: PayloadAction< Products>) => {
+      
+      const findFavorisById = state.listFavoris.find((key:any) => key.id === action.payload.id);
+
+      if (findFavorisById && findFavorisById !== undefined ) {
+        state.listFavoris = state.listFavoris.filter((key:any) => key.id !== action.payload.id)
+      } else {
+        state.listFavoris.push(action.payload);
+      }
+
+      localStorage.setItem('favoris_product', JSON.stringify(state.listFavoris))
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getproductList.pending, (state) => {
@@ -78,6 +103,8 @@ const productsSlice = createSlice({
       // });
   },
 });
+
+export const { toggleFavoris ,handleStorage } =  productsSlice.actions;
 
 export const selectAllProducts = (state : RootState) => state.products.datas;
 export const getProductIsSuccess = (state : RootState) => state.products.isSuccess;

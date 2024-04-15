@@ -8,9 +8,12 @@ import store from './redux/store';
 import { showCartFromLocalstorage } from './redux/cart/cartSlice';
 import { getproductList } from './redux/products/productsActions';
 import { showUserIsLogged } from './redux/auth/authSlice';
+import { handleStorage } from './redux/products/productsSlice';
 
 store.getState();
 store.dispatch(showCartFromLocalstorage());
+store.dispatch(handleStorage());
+
 store.dispatch(getproductList());
 store.dispatch(showUserIsLogged());
 

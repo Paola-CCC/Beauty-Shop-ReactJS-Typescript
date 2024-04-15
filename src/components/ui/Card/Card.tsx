@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Card.scss';
 import { ReactComponent as HeartIcon } from '../../../assets/svg/heart-icon.svg';
 import { ReactComponent as HeartIconSelected } from '../../../assets/svg/heart-full-icon.svg';
@@ -6,35 +6,29 @@ import { Link, useNavigate } from 'react-router-dom';
 import InputSelect from '../InputSelect/InputSelect';
 import { usePathname } from '../../../hooks/useNavigate';
 import Button from '../Button/Button';
-import { useAppDispatch } from '../../../redux/hooks';
-import { CartItems } from '../../../types/products.type';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { CartItems, Products } from '../../../types/products.type';
 import { addToCart } from '../../../redux/cart/cartSlice';
-interface CardProps {
-  id?: number | null,
-  path?: string,
-  brandName: string,
-  name: string,
-  descriptionLong: string,
-  descriptionShort: string,
-  thumbnail: string,
-  quantity: number | null,
-  tags?: string[],
-  subCategories?: string[],
-  categories: string,
-  notes?: any,
-  createdAt: string,
-  price: number | null,
+import { toggleFavoris } from '../../../redux/products/productsSlice';
+import { RootState } from '../../../redux/store';
+interface CardProps extends Products {
+  path: string,
   showBtnLink?: boolean,
-  heartIsCliked?: boolean | undefined,
+  getLocalStorage?: () => void
 }
 
-const Card = ({ path, showBtnLink = true, heartIsCliked , ...props}: CardProps) => {
+const Card = ({ path, showBtnLink = true,getLocalStorage , ...props}: CardProps) => {
 
-  const [userClickOnHeart,setUserClickOnHeart ] = useState<boolean | undefined >(heartIsCliked);
-  const dispatch = useAppDispatch();
-
+  const favorisList = useAppSelector((state: RootState) => state.products.listFavoris);
+  const cartItem = useAppSelector((state: RootState) => state.cart.cartItems);
   const [quantityProduct, setQuantityProduct] = useState<string>('0');
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const pathUrl = usePathname();
+  const fetchData = useRef<boolean>(false);
 
+
+  /** Ajout dans la page panier */
   const handleClick = () => {
 
       if( props.id && props.price ) {
@@ -49,12 +43,11 @@ const Card = ({ path, showBtnLink = true, heartIsCliked , ...props}: CardProps) 
 
         dispatch(addToCart(datasCatOne));
       }
-
   }
 
-  const navigate = useNavigate();
-  const pathUrl = usePathname()
-
+  /** Ajoute/Supprime dans la liste des favoris */
+  const handleFavoris = () =>  dispatch(toggleFavoris(props));
+    
   const handleNavigate  = () => {
     navigate('/' + path);    
   }
@@ -66,16 +59,44 @@ const Card = ({ path, showBtnLink = true, heartIsCliked , ...props}: CardProps) 
     { value: 3, label: "3" },
     { value: 4, label: "4" },
     { value: 5, label: "5" },
-];
+  ];
 
+  /** retrouve les produits qui sont dans les favoris */
+  const handleFavorisCheck = () => {
+
+    const mappedFavoris = favorisList.map((value: Products) => value.id );
+
+    if (mappedFavoris.includes(props.id)) {
+      return true ;
+    } else {
+      return false
+    }   
+  }
+
+
+  useEffect(() => {
+    const checkCartItem = () => {
+
+      const quantityCart = cartItem.find((cart: CartItems) => cart.id === props.id );
+      if ( quantityCart !== undefined) {
+        setQuantityProduct(quantityCart.quantity + '');
+      } 
+    }
+
+    if( fetchData.current === false){      
+      checkCartItem();
+      fetchData.current = true;
+    }    
+
+  },[cartItem,props]);
 
   return (
     <div className="card-ui" >
       <figure className="card-image">
         <img src={props.thumbnail} alt="skincare-i" />
-        <span tabIndex={0} onClick={() => setUserClickOnHeart(!userClickOnHeart) }>
+        <span tabIndex={0} onClick={handleFavoris}>
 
-          {userClickOnHeart ? (
+          {handleFavorisCheck() ? (
              <HeartIconSelected />
           ) : (
             <HeartIcon />
@@ -119,7 +140,6 @@ const Card = ({ path, showBtnLink = true, heartIsCliked , ...props}: CardProps) 
             </div>
           )}
           
- 
         </div>
       </div>
     </div>

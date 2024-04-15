@@ -4,16 +4,17 @@ import ShoppingCartRow from '../../components/ShoppingCartRow/ShoppingCartRow';
 import { useAppSelector } from '../../redux/hooks';
 import { RootState } from '../../redux/store';
 import { useNavigate } from 'react-router-dom';
+import { CartItems } from '../../types/products.type';
   
 const CartPage = () => {
 
     const cartState = useAppSelector((state : RootState) =>  state.cart);
-    const [itemsOnly, setItemsOnly] = useState<any>([]);
+    const [itemsOnly, setItemsOnly] = useState<CartItems[]>([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         if( Object.values(cartState).length > 0) {
-            setItemsOnly(cartState.CartItems);
+            setItemsOnly(cartState.cartItems);
         }
            
     },[cartState ,itemsOnly])

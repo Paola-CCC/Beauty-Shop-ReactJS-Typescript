@@ -12,6 +12,8 @@ const Header = () => {
   const [active, setActive] = useState<boolean>(false);
   const [carItems, setCarTItems] = useState<any>({});
   const cartData = useAppSelector((state) => state.cart);
+  const listFavoris = useAppSelector((state) => state.products.listFavoris);
+
   const isLoggedUser = useAppSelector((state) => state.auth);
   const [userIsLogged, setUserIsLogger] = useState<boolean>(false);
 
@@ -51,11 +53,13 @@ const Header = () => {
           </div>
 
           <ul className="nav-links-mobile">
-            <li className={`${path === '/nouveaux' ? 'activate' : ''}`}>
-              <Link to="nouveaux" className="nav-links">
+            <li className={`${path === '/favoris' ? 'activate' : ''}`}>
+              <Link to="favoris" className="nav-links">
               <span className="icon-svg-container">
                 <HeartIcon />
-                <small className="heart-text"> 0 </small>
+                { listFavoris?.length !== 0 && (
+                  <small className="heart-text"> {listFavoris?.length} </small>
+                )}
               </span>
               </Link>
             </li>
@@ -63,7 +67,9 @@ const Header = () => {
               <Link to="panier" className="nav-links">
                 <span className="icon-svg-container">
                   <CartIcon />
-                  <small id="cart-show-item" className="heart-text"> {carItems.cartLength}</small>
+                  { carItems.cartLength !== 0 && (
+                      <small id="cart-show-item" className="heart-text"> {carItems?.cartLength}</small>
+                  )}
                 </span>              
               </Link>
             </li>
@@ -110,7 +116,9 @@ const Header = () => {
             <Link to="favoris" className="nav-links">
               <span className="icon-svg-container">
                 <HeartIcon />
-                <small className="heart-text"> 0 </small>
+                { listFavoris?.length !== 0 && (
+                  <small className="heart-text"> {listFavoris?.length} </small>
+                )}              
               </span>
             </Link>
           </li>
@@ -118,8 +126,10 @@ const Header = () => {
             <Link to="panier" className="nav-links">
               <span className="icon-svg-container">
                 <CartIcon />
-                <small id="cart-show-item" className="heart-text"> {carItems.cartLength}</small>
-              </span>
+                { carItems.cartLength !== 0 && (
+                      <small id="cart-show-item" className="heart-text"> {carItems?.cartLength}</small>
+                  )}              
+                </span>
             </Link>
           </li>
 

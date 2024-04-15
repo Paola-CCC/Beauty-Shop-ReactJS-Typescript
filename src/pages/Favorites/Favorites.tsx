@@ -2,22 +2,21 @@ import React, { useEffect, useState } from 'react';
 import './Favorites.scss';
 import { Products } from '../../types/products.type';
 import { useAppSelector } from '../../redux/hooks';
-import { selectAllProducts } from '../../redux/products/productsSlice';
 import { Card } from '../../components/ui';
+import { RootState } from '../../redux/store';
 
 
 const Favorites = () => {
 
 
   const [productDatas , setProductDatas] = useState<Products[]>();
-  const products = useAppSelector(selectAllProducts);
+  const products = useAppSelector((state: RootState) => state.products.listFavoris);
 
 
   useEffect(() => {
     
-      if( products ) {        
-        const datas = products.filter((e) => e.categories === "make-up");        
-        setProductDatas(datas)
+      if( products ) {       
+        setProductDatas(products)
       }
       
   },[products])
@@ -42,7 +41,6 @@ const Favorites = () => {
             <li key={e.id}>
                   <Card 
                     path={'make-up/'+ e.id}
-                    heartIsCliked={true}
                     {...e} 
                   />
             </li>
