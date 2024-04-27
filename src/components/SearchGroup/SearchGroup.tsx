@@ -1,47 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./SaerchGroup.scss";
 import { DoubleInputPrice, InputSelect } from '../ui';
 import { Button } from '@chakra-ui/react';
 import { usePathname } from '../../hooks/useNavigate';
-import ProductsService from '../../services/productsService';
+import { useFetchCriteria } from '../../hooks/useFetchCriteria';
+import { Brands, Categories, SubCategories, searchProduct } from '../../types/products.type';
 
 const SearchGroup = () => {
 
   const initialeState = {
-    brandId: 5,
-    categoryId: 1,
+    brandId: '',
+    categoryId: '',
     subCategoryId: '',
-    minPrice: '10',
-    maxPrice: '70',
+    minPrice: '',
+    maxPrice: '',
   };
 
   const [searchValues, setSearchValues] = useState(initialeState);
-
+  const { criterias, update } = useFetchCriteria();
+  const criteriasCompleted = useRef<boolean>(false);
   const pathUrl = usePathname()
+  const [optionsBrands ,setOptionsBrands] = useState([
+    { value: "", label: "marque" }
+  ]);
 
-  const optionsBrands = [
-    { value: "", label: "marque" },
-    { value: 1, label: "1" },
-    { value: 2, label: "2" },
-    { value: 3, label: "3" },
-    { value: 4, label: "4" },
-    { value: 5, label: "5" },
-  ];
+  const [optionsCategory ,setOptionsCategory] = useState([
+    { value: "", label: "catégorie" }
+  ]);
 
-  const optionsCategory = [
-    { value: "", label: "catégorie" },
-    { value: 1, label: "Soin visage" },
-    { value: 2, label: "Maquillage" },
-  ];
+  const [optionsSubCategory ,setOptionsSubCategory] = useState([
+    { value: "", label: "sous catégorie" }
+  ]);
 
-  const optionsSubCategory = [
-    { value: "", label: "sous catégorie" },
-    { value: 1, label: "1" },
-    { value: 2, label: "2" },
-    { value: 3, label: "3" },
-    { value: 4, label: "4" },
-    { value: 5, label: "5" },
-  ];
 
 
   /** Assigne les donnée saisie à l'état */
@@ -59,11 +49,12 @@ const SearchGroup = () => {
     setSearchValues(initialeState);
   };
 
-  const searchData = () => {
+  /** Envoie les critères de recherche vers le Hook puis le backend */
+  const searchData = async () => {
 
     try {
 
-      const data = {
+      const data : searchProduct= {
         brandId: searchValues.brandId ? Number(searchValues.brandId) : null,
         categoryId: searchValues.categoryId ? Number(searchValues.categoryId) : null,
         subCategoryId: searchValues.subCategoryId ? Number(searchValues.subCategoryId) : null,
@@ -71,9 +62,8 @@ const SearchGroup = () => {
         maxPrice: searchValues.maxPrice ? Number(searchValues.maxPrice) : null,
       };
 
-      const response = ProductsService.getSearchProducts(data);
+      await update(data);
 
-      console.log('response ', response);
       
     } catch (error) {
       console.error('Error ', error)
@@ -81,6 +71,41 @@ const SearchGroup = () => {
     
   }
 
+  useEffect(() => {
+
+    /** Recupère toutes les critères pour filtrer */
+    const getCriterias = () => {
+      const brandsObjt = criterias?.brands.map((e: Brands) => { 
+        return {
+          value: e.id + '',
+          label: e.name
+        }
+      });
+      const categoriesObjt = criterias?.categories.map((e: Categories) => { 
+        return {
+          value:  e.id + '',
+          label: e.name
+        }
+      });
+
+      const subCategoriesObj = criterias?.subCategories.map((e: SubCategories) => { 
+        return {
+          value:  e.id + '',
+          label: e.name
+        }
+      });
+      setOptionsBrands([...optionsBrands , ...brandsObjt ])
+      setOptionsCategory([...optionsCategory , ...categoriesObjt]);
+      setOptionsSubCategory([...optionsSubCategory,...subCategoriesObj ])    
+
+    }
+
+    if( (criterias?.brands  && criterias?.categories && criterias?.subCategories ) && criteriasCompleted.current === false){
+      getCriterias();
+      criteriasCompleted.current = true;      
+    }
+    
+  },[criterias , optionsBrands ,optionsCategory , optionsSubCategory])
 
 
   return (

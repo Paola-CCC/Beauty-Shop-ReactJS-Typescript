@@ -26,9 +26,31 @@ export type CartItems = {
 
 
 export type searchProduct = { 
-    brandId: number,
-    categoryId: number,
-    subCategoryId: number,
-    minPrice: number,
-    maxPrice: number,
+    brandId: number | null,
+    categoryId: number | null ,
+    subCategoryId: number | null,
+    minPrice: number | null,
+    maxPrice: number | null,
+}
+
+export type Brands = {
+    id: number,
+    name: string
+}
+
+export type Categories = {
+    id: number,
+    name: string
+}
+
+export type SubCategories = {
+    id: number,
+    name: string,
+    category_Id: number
+}
+
+export type CriteriasProducts = {
+    brands : Brands[]
+    categories: Categories[]
+    subCategories: SubCategories[]
 }

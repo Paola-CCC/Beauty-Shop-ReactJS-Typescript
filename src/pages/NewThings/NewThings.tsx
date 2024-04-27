@@ -4,10 +4,12 @@ import { Products } from '../../types/products.type';
 import { Card } from '../../components/ui'
 import ProductsService from '../../services/productsService';
 import SearchGroup from '../../components/SearchGroup/SearchGroup';
+import { useFetchCriteria } from '../../hooks/useFetchCriteria';
 
 const NewThings = () => {
   
   const [latestProduct,setLatestProduct] = useState<Products[]>([]);
+  const { productFilered } = useFetchCriteria();
 
   useEffect(()=> {
 
@@ -21,7 +23,12 @@ const NewThings = () => {
     };
 
      getData();
-  },[])
+
+     if( productFilered.length > 0) {
+      setLatestProduct(productFilered);
+     }
+
+  },[productFilered])
 
   
  return (
