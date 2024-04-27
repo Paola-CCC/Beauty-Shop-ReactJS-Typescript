@@ -1,10 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import ProductsService from "../services/productsService";
-import { CriteriasProducts, Products, searchProduct } from "../types/products.type";
+import { CriteriasProducts, searchProduct } from "../types/products.type";
 
 const useFetchCriteria = () => {
   const [criterias, setCriterias] = useState<CriteriasProducts>({} as CriteriasProducts);
-  const [ productFilered, setProductFilered] = useState< Products[]>([]);
   const isFetched = useRef<boolean>(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -37,21 +36,19 @@ const useFetchCriteria = () => {
 
 
   const update = async (newData : searchProduct) => {
-    setLoading(true);
-    setError(null);
     try {
 
       const response = await ProductsService.getSearchProducts(newData);
       if( response.status >= 200) {
-        setProductFilered(response.data);
+        return response.data;
       }
+      
     } catch (err:any) {
-      setError(err);
+      return err;
     }
-    setLoading(false);
   }
 
-  return { criterias , loading, error , update ,productFilered };
+  return { criterias, loading, error, update};
 };
 
 

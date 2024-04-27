@@ -4,9 +4,14 @@ import { DoubleInputPrice, InputSelect } from '../ui';
 import { Button } from '@chakra-ui/react';
 import { usePathname } from '../../hooks/useNavigate';
 import { useFetchCriteria } from '../../hooks/useFetchCriteria';
-import { Brands, Categories, SubCategories, searchProduct } from '../../types/products.type';
+import { Brands, Categories, Products, SubCategories, searchProduct } from '../../types/products.type';
 
-const SearchGroup = () => {
+
+interface searchGroupProps {
+  handleSearch: (values: Products[]) => void
+}
+
+const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
 
   const initialeState = {
     brandId: '',
@@ -32,8 +37,6 @@ const SearchGroup = () => {
     { value: "", label: "sous catégorie" }
   ]);
 
-
-
   /** Assigne les donnée saisie à l'état */
   const handleChangeSearch = (event: any) => {
 
@@ -47,6 +50,7 @@ const SearchGroup = () => {
   /** Nettoie les éléments à rechercher */
   const resetSearch = () => {
     setSearchValues(initialeState);
+    handleSearch([]);
   };
 
   /** Envoie les critères de recherche vers le Hook puis le backend */
@@ -62,9 +66,9 @@ const SearchGroup = () => {
         maxPrice: searchValues.maxPrice ? Number(searchValues.maxPrice) : null,
       };
 
-      await update(data);
+      const response = await update(data);
+      handleSearch(response);
 
-      
     } catch (error) {
       console.error('Error ', error)
     }
@@ -100,7 +104,7 @@ const SearchGroup = () => {
 
     }
 
-    if( (criterias?.brands  && criterias?.categories && criterias?.subCategories ) && criteriasCompleted.current === false){
+    if((criterias?.brands  && criterias?.categories && criterias?.subCategories ) && criteriasCompleted.current === false){
       getCriterias();
       criteriasCompleted.current = true;      
     }
@@ -111,9 +115,7 @@ const SearchGroup = () => {
   return (
     <>
       <div className='container-search-group'>
-
         <div className='header-filter'>
- 
           <div className={`form-search ${ pathUrl !== '/nouveaux' ?  'grid-4'  :''}`}>
 
             <InputSelect
@@ -133,8 +135,7 @@ const SearchGroup = () => {
                 options={optionsCategory}
                 onChange={handleChangeSearch}
               />
-               )
-            }
+            )}
 
             <InputSelect
               label='Sous catégorie:'
@@ -158,13 +159,15 @@ const SearchGroup = () => {
             </div>
           </div>
         </div>
-
       </div>
       <div className='remove-zone'>
           <Button size='sm' variant='ghost' onClick={resetSearch}>
-          <i className="fa-regular fa-circle-xmark"></i>            
-          Réinitialiser
+            <i className="fa-regular fa-circle-xmark"></i>            
+            Réinitialiser
           </Button>
+      </div>
+      <div className='resp-error show'>
+        Aucun éléments trouvés
       </div>
     </>
 

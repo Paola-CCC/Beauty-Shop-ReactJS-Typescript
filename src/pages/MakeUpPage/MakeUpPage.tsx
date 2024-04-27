@@ -8,13 +8,19 @@ import { SearchGroup } from '../../components';
 
 const MakeUpPage = () => {
 
-  const [productDatas , setProductDatas] = useState<Products[]>();
+  const [productDatas , setProductDatas] = useState<Products[]>([]);
   const products = useAppSelector(selectAllProducts);
+  const [productFilered, setProductFilered] = useState<Products[]>([]);
+
+  const getDataFilered = (response: Products[]) => {
+    console.log( 'MAKEUP => ', response)
+    setProductFilered(response);
+  };
 
 
   useEffect(() => {
     
-      if(products  ) {        
+      if(products) {        
         const datas = products.filter((e) => e.categories === "make-up");        
         setProductDatas(datas)
       }
@@ -37,20 +43,35 @@ const MakeUpPage = () => {
       </section>
 
       <section className='search-container-form'>
-        <SearchGroup />
+        <SearchGroup handleSearch={getDataFilered} />
       </section>
 
       <section>
         <ul className='items-list makeup'>
           
-           { productDatas?.map((e : Products) => (
-            <li key={e.id}>
-                  <Card 
-                    path={'make-up/'+ e.id}
-                    {...e} 
-                  />
-            </li>
-          ))} 
+          { productFilered.length === 0 ? (
+            <>
+               { productDatas?.map((e: Products,index: number) => (
+                  <li key={index}>
+                        <Card 
+                          path={'make-up/'+ e.id}
+                          {...e} 
+                        />
+                  </li>
+                ))} 
+            </>
+          ) : (
+            <>
+              { productFilered?.map((e: Products,index: number) => (
+                <li key={index}>
+                      <Card 
+                        path={'make-up/'+ e.id}
+                        {...e} 
+                      />
+                </li>
+              ))}
+            </>
+          )}
         </ul>
       </section>
     </div>

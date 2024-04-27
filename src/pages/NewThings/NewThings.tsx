@@ -4,12 +4,11 @@ import { Products } from '../../types/products.type';
 import { Card } from '../../components/ui'
 import ProductsService from '../../services/productsService';
 import SearchGroup from '../../components/SearchGroup/SearchGroup';
-import { useFetchCriteria } from '../../hooks/useFetchCriteria';
 
 const NewThings = () => {
   
   const [latestProduct,setLatestProduct] = useState<Products[]>([]);
-  const { productFilered } = useFetchCriteria();
+  const [productFilered, setProductFilered] = useState<Products[]>([]);
 
   useEffect(()=> {
 
@@ -24,12 +23,12 @@ const NewThings = () => {
 
      getData();
 
-     if( productFilered.length > 0) {
-      setLatestProduct(productFilered);
-     }
+  },[])
 
-  },[productFilered])
-
+  const getDataFilered = (response: Products[]) => {
+    console.log('EVEN => ', response)
+    setProductFilered(response);
+  };
   
  return (
   <div className="container-lastest-product-zone">
@@ -42,19 +41,35 @@ const NewThings = () => {
     </section>
 
     <section className='search-container-form'>
-      <SearchGroup />
+      <SearchGroup handleSearch={getDataFilered} />
     </section>
 
     <section className=''>
       <ul className='items-list makeup'>
-          { latestProduct?.map((e : Products,index: number) => (
-            <li key={index}>
-                  <Card 
-                    path={e.categories + '/'+ e.id}
-                    {...e} 
-                  />
-            </li>
-          ))} 
+
+          { productFilered.length === 0 ? (
+            <>
+               { latestProduct?.map((e : Products,index: number) => (
+                  <li key={index}>
+                        <Card 
+                          path={e.categories + '/'+ e.id}
+                          {...e} 
+                        />
+                  </li>
+                ))} 
+            </>
+          ) : (
+            <>
+              { productFilered?.map((e : Products,index: number) => (
+                <li key={index}>
+                      <Card 
+                        path={e.categories + '/'+ e.id}
+                        {...e} 
+                      />
+                </li>
+              ))}
+            </>
+          )}
       </ul>
     </section>
 

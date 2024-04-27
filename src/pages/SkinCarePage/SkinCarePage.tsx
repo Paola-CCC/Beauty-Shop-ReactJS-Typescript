@@ -10,7 +10,12 @@ const SkinCarePage = () => {
 
   const [productDatas , setProductDatas] = useState<Products[]>();
   const products = useAppSelector(selectAllProducts);
+  const [productFilered, setProductFilered] = useState<Products[]>([]);
 
+  const getDataFilered = (response: Products[]) => {
+    console.log('SKIN-CARE => ', response)
+    setProductFilered(response);
+  };
 
   useEffect(() => {
     if(products ) {
@@ -36,20 +41,35 @@ const SkinCarePage = () => {
 
 
       <section className='search-container-form'>
-        <SearchGroup />
+        <SearchGroup handleSearch={getDataFilered} />
       </section>
 
       <section>
       <ul className='items-list makeup'>
-          
-          { productDatas?.map((e : Products) => (
-           <li key={e.id}>
-                 <Card 
-                   path={'skin-care/'+ e.id}
-                   {...e} 
-                 />
-           </li>
-         ))} 
+
+          { productFilered.length === 0 ? (
+            <>
+              { productDatas?.map((e: Products,index: number) => (
+                <li key={index}>
+                  <Card 
+                    path={'skin-care/'+ e.id}
+                    {...e} 
+                  />
+                </li>
+              ))} 
+            </>
+          ) : (
+            <>
+              { productFilered?.map((e: Products,index: number) => (
+                <li key={index}>
+                  <Card 
+                    path={'skin-care/'+ e.id}
+                    {...e} 
+                  />
+                </li>
+              ))}
+            </>
+          )}
        </ul>
       </section>
     </div>
