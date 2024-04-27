@@ -3,21 +3,21 @@ import "./SaerchGroup.scss";
 import { DoubleInputPrice, InputSelect } from '../ui';
 import { Button } from '@chakra-ui/react';
 import { usePathname } from '../../hooks/useNavigate';
+import ProductsService from '../../services/productsService';
 
 const SearchGroup = () => {
 
   const initialeState = {
-    brandId: '',
-    categoryId: '',
+    brandId: 5,
+    categoryId: 1,
     subCategoryId: '',
-    minPrice: '',
-    maxPrice: '',
+    minPrice: '10',
+    maxPrice: '70',
   };
 
   const [searchValues, setSearchValues] = useState(initialeState);
 
   const pathUrl = usePathname()
-
 
   const optionsBrands = [
     { value: "", label: "marque" },
@@ -58,6 +58,28 @@ const SearchGroup = () => {
   const resetSearch = () => {
     setSearchValues(initialeState);
   };
+
+  const searchData = () => {
+
+    try {
+
+      const data = {
+        brandId: searchValues.brandId ? Number(searchValues.brandId) : null,
+        categoryId: searchValues.categoryId ? Number(searchValues.categoryId) : null,
+        subCategoryId: searchValues.subCategoryId ? Number(searchValues.subCategoryId) : null,
+        minPrice: searchValues.minPrice ? Number(searchValues.minPrice) : null,
+        maxPrice: searchValues.maxPrice ? Number(searchValues.maxPrice) : null,
+      };
+
+      const response = ProductsService.getSearchProducts(data);
+
+      console.log('response ', response);
+      
+    } catch (error) {
+      console.error('Error ', error)
+    }
+    
+  }
 
 
 
@@ -104,7 +126,7 @@ const SearchGroup = () => {
             />
 
             <div className='btn-search-zone'>
-              <Button colorScheme='teal' variant='solid' >
+              <Button colorScheme='teal' variant='solid' onClick={searchData} >
                 <i className="fa-solid fa-magnifying-glass"></i>
                 Filtrer
               </Button>

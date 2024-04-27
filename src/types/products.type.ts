@@ -23,3 +23,12 @@ export type CartItems = {
     descriptionShort?: string,
     brandName?: string,
 }
+
+
+export type searchProduct = { 
+    brandId: number,
+    categoryId: number,
+    subCategoryId: number,
+    minPrice: number,
+    maxPrice: number,
+}

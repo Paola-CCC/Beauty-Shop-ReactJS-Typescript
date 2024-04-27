@@ -3,7 +3,7 @@ import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 
 type DoubleRangeSliderProps = {
     minValue:string, 
-    maxValue:string , 
+    maxValue:string, 
     onChange?: (value: any) => void;
 }
 
