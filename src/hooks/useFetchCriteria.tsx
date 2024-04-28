@@ -25,8 +25,7 @@ const useFetchCriteria = () => {
       const brands = response.data.brands.map((e: Brands) => ({
         id: e.id,
         name: e.name,
-        categoryId: e.categoryId,
-        categoryName: e.categoryName
+        categories: e.categories
       })); 
 
       const subCategories = response.data.subCategories.map((e: SubCategories) => ({

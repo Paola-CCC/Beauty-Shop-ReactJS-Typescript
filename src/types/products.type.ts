@@ -41,8 +41,7 @@ export type Categories = {
 export type Brands = {
     id: number,
     name: string,
-    categoryId: number,
-    categoryName: string
+    categories: Categories[]
 }
 
 export type SubCategories = {

@@ -25,7 +25,8 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
   const { criterias, update, criteriasAreFetched} = useFetchCriteria();
   const criteriasCompleted = useRef<boolean>(false);
   const pathUrl = usePathname();
-  const pathCategoryID = (pathUrl === '/make-up' ?  '2' : pathUrl === '/skin-care' ? '1' :  '' );
+  //  Donne l'ID à utiliser selon l'url
+  const pathCategoryID = (pathUrl === '/make-up' ? '2' : pathUrl === '/skin-care' ? '1' : '' );
   const [optionsBrands ,setOptionsBrands] = useState([
     { value: "", label: "marque" }
   ]);
@@ -65,7 +66,7 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
         subCategoryId: searchValues.subCategoryId ? Number(searchValues.subCategoryId) : null,
         minPrice: searchValues.minPrice ? Number(searchValues.minPrice) : null,
         maxPrice: searchValues.maxPrice ? Number(searchValues.maxPrice) : null,
-      };
+      };      
 
       const response = await update(data);
       handleSearch(response);
@@ -78,14 +79,26 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
 
   useEffect(() => {
 
-    const changeOptionsForNewThingsPage = (objCriteria :Brands[] | Categories[] | SubCategories[]) => {
-      return objCriteria.map((e:any) => ({ 
-        value: String(e.id),
-        label: e.name }
-      ))
+    // Afficher liste des options pour les marques page make-up et skin-care
+    const getOptionsForBrands = (objCriteria: Brands[]) => {
+      return objCriteria
+        .filter((brand :Brands) => brand.categories.some((category : Categories) => category.id === parseInt(pathCategoryID)))
+        .map((brand: Brands) => ({
+          value: brand.id +'',
+          label: brand.name,
+        }));
     };
 
-    const changeOptionsForMatchingWithPath = (objCriteria : Brands[] | Categories[] | SubCategories[]) => {
+    // Afficher liste des options pour la page Nouveauté
+    const getOptionsForNewThingsPage = (objCriteria :Brands[] | Categories[] | SubCategories[]) => {
+      return objCriteria.map((e:any) => ({ 
+        value: String(e.id),
+        label: e.name 
+      }))
+    };
+
+    // Afficher liste des options pour la page make-up et skin-care
+    const getOptionsForMatchingWithPath = (objCriteria : Brands[] | Categories[] | SubCategories[]) => {
       return objCriteria
         .filter((e :any) => e.categoryId === Number(pathCategoryID))
         .map((e :any) => ({   
@@ -97,21 +110,21 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
     /** Recupère toutes les critères pour filtrer */
     const getCriterias = () => {
 
-      let brandsObjt = [];
+      let brandsObjt :any = [];
       let categoriesObjt = [];
       let subCategoriesObj = [];
 
       if( pathUrl === '/make-up' || pathUrl === '/skin-care' ) {
-        brandsObjt = changeOptionsForMatchingWithPath(criterias?.brands);
-        categoriesObjt = changeOptionsForMatchingWithPath(criterias?.categories);
-        subCategoriesObj = changeOptionsForMatchingWithPath(criterias?.subCategories);
+        brandsObjt = getOptionsForBrands(criterias?.brands);        
+        categoriesObjt = getOptionsForMatchingWithPath(criterias?.categories);
+        subCategoriesObj = getOptionsForMatchingWithPath(criterias?.subCategories);
       } else {
-        brandsObjt = changeOptionsForNewThingsPage(criterias?.brands);
-        categoriesObjt = changeOptionsForNewThingsPage(criterias?.categories);
-        subCategoriesObj = changeOptionsForNewThingsPage(criterias?.subCategories);
+        brandsObjt = getOptionsForNewThingsPage(criterias?.brands);
+        categoriesObjt = getOptionsForNewThingsPage(criterias?.categories);
+        subCategoriesObj = getOptionsForNewThingsPage(criterias?.subCategories);
       }
 
-      setOptionsBrands([...optionsBrands, ...brandsObjt ]);
+      setOptionsBrands([...optionsBrands, ...brandsObjt]);
       setOptionsCategory([...optionsCategory, ...categoriesObjt]);
       setOptionsSubCategory([...optionsSubCategory, ...subCategoriesObj]);
 
