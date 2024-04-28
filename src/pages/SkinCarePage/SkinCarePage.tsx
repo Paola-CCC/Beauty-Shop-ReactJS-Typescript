@@ -13,13 +13,12 @@ const SkinCarePage = () => {
   const [productFilered, setProductFilered] = useState<Products[]>([]);
 
   const getDataFilered = (response: Products[]) => {
-    console.log('SKIN-CARE => ', response)
     setProductFilered(response);
   };
 
   useEffect(() => {
     if(products ) {
-      const datas = products.filter((e) => e.categories === "skin-care");      
+      const datas = products.filter((e) => e.categories === "Skin Care");      
       setProductDatas(datas)
     }
     

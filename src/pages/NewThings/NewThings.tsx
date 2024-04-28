@@ -26,7 +26,6 @@ const NewThings = () => {
   },[])
 
   const getDataFilered = (response: Products[]) => {
-    console.log('EVEN => ', response)
     setProductFilered(response);
   };
   
@@ -52,7 +51,7 @@ const NewThings = () => {
                { latestProduct?.map((e : Products,index: number) => (
                   <li key={index}>
                         <Card 
-                          path={e.categories + '/'+ e.id}
+                          path={(e.categories === 'Maquillage' ? 'make-up' : 'skin-care') + '/'+ e.id}
                           {...e} 
                         />
                   </li>
@@ -63,7 +62,7 @@ const NewThings = () => {
               { productFilered?.map((e : Products,index: number) => (
                 <li key={index}>
                       <Card 
-                        path={e.categories + '/'+ e.id}
+                        path={(e.categories === 'Maquillage' ? 'make-up' : 'skin-care') + '/'+ e.id}
                         {...e} 
                       />
                 </li>

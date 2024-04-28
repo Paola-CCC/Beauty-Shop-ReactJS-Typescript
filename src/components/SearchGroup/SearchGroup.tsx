@@ -22,9 +22,10 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
   };
 
   const [searchValues, setSearchValues] = useState(initialeState);
-  const { criterias, update } = useFetchCriteria();
+  const { criterias, update, criteriasAreFetched} = useFetchCriteria();
   const criteriasCompleted = useRef<boolean>(false);
-  const pathUrl = usePathname()
+  const pathUrl = usePathname();
+  const pathCategoryID = (pathUrl === '/make-up' ?  '2' : pathUrl === '/skin-care' ? '1' :  '' );
   const [optionsBrands ,setOptionsBrands] = useState([
     { value: "", label: "marque" }
   ]);
@@ -77,39 +78,56 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
 
   useEffect(() => {
 
+    const changeOptionsForNewThingsPage = (objCriteria :Brands[] | Categories[] | SubCategories[]) => {
+      return objCriteria.map((e:any) => ({ 
+        value: String(e.id),
+        label: e.name }
+      ))
+    };
+
+    const changeOptionsForMatchingWithPath = (objCriteria : Brands[] | Categories[] | SubCategories[]) => {
+      return objCriteria
+        .filter((e :any) => e.categoryId === Number(pathCategoryID))
+        .map((e :any) => ({   
+          value: String(e.id),
+          label: e.name
+        }))
+    };
+  
     /** Recupère toutes les critères pour filtrer */
     const getCriterias = () => {
-      const brandsObjt = criterias?.brands.map((e: Brands) => { 
-        return {
-          value: e.id + '',
-          label: e.name
-        }
-      });
-      const categoriesObjt = criterias?.categories.map((e: Categories) => { 
-        return {
-          value:  e.id + '',
-          label: e.name
-        }
-      });
 
-      const subCategoriesObj = criterias?.subCategories.map((e: SubCategories) => { 
-        return {
-          value:  e.id + '',
-          label: e.name
-        }
-      });
-      setOptionsBrands([...optionsBrands , ...brandsObjt ])
-      setOptionsCategory([...optionsCategory , ...categoriesObjt]);
-      setOptionsSubCategory([...optionsSubCategory,...subCategoriesObj ])    
+      let brandsObjt = [];
+      let categoriesObjt = [];
+      let subCategoriesObj = [];
+
+      if( pathUrl === '/make-up' || pathUrl === '/skin-care' ) {
+        brandsObjt = changeOptionsForMatchingWithPath(criterias?.brands);
+        categoriesObjt = changeOptionsForMatchingWithPath(criterias?.categories);
+        subCategoriesObj = changeOptionsForMatchingWithPath(criterias?.subCategories);
+      } else {
+        brandsObjt = changeOptionsForNewThingsPage(criterias?.brands);
+        categoriesObjt = changeOptionsForNewThingsPage(criterias?.categories);
+        subCategoriesObj = changeOptionsForNewThingsPage(criterias?.subCategories);
+      }
+
+      setOptionsBrands([...optionsBrands, ...brandsObjt ]);
+      setOptionsCategory([...optionsCategory, ...categoriesObjt]);
+      setOptionsSubCategory([...optionsSubCategory, ...subCategoriesObj]);
 
     }
 
-    if((criterias?.brands  && criterias?.categories && criterias?.subCategories ) && criteriasCompleted.current === false){
+    if(criteriasAreFetched.current && criteriasCompleted.current === false){   
+      setSearchValues((prev) =>({
+        ...prev,
+        categoryId : pathCategoryID
+      }))  
+
       getCriterias();
       criteriasCompleted.current = true;      
     }
     
-  },[criterias , optionsBrands ,optionsCategory , optionsSubCategory])
+  },[criterias, optionsBrands, optionsCategory, optionsSubCategory, criteriasAreFetched, pathUrl, searchValues ,pathCategoryID])
 
 
   return (

@@ -13,7 +13,6 @@ const MakeUpPage = () => {
   const [productFilered, setProductFilered] = useState<Products[]>([]);
 
   const getDataFilered = (response: Products[]) => {
-    console.log( 'MAKEUP => ', response)
     setProductFilered(response);
   };
 
@@ -21,7 +20,7 @@ const MakeUpPage = () => {
   useEffect(() => {
     
       if(products) {        
-        const datas = products.filter((e) => e.categories === "make-up");        
+        const datas = products.filter((e) => e.categories === "Maquillage"); 
         setProductDatas(datas)
       }
       

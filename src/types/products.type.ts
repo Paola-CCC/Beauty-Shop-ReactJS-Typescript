@@ -33,24 +33,27 @@ export type searchProduct = {
     maxPrice: number | null,
 }
 
-export type Brands = {
-    id: number,
-    name: string
-}
-
 export type Categories = {
     id: number,
     name: string
 }
 
+export type Brands = {
+    id: number,
+    name: string,
+    categoryId: number,
+    categoryName: string
+}
+
 export type SubCategories = {
     id: number,
     name: string,
-    category_Id: number
+    categoryId: number,
+    categoryName: string
 }
 
 export type CriteriasProducts = {
-    brands : Brands[]
-    categories: Categories[]
+    brands : Brands[],
+    categories: Categories[],
     subCategories: SubCategories[]
 }

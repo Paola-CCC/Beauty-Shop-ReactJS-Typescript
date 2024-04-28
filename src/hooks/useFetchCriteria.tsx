@@ -1,38 +1,66 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import ProductsService from "../services/productsService";
-import { CriteriasProducts, searchProduct } from "../types/products.type";
+import { Brands, Categories, CriteriasProducts, SubCategories, searchProduct } from "../types/products.type";
 
 const useFetchCriteria = () => {
-  const [criterias, setCriterias] = useState<CriteriasProducts>({} as CriteriasProducts);
-  const isFetched = useRef<boolean>(false);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  const fetchData = useCallback( async () => {
+  const [criterias, setCriterias] = useState< CriteriasProducts >({
+    brands: [],
+    categories: [],
+    subCategories: []
+  });
+  const criteriasAreFetched = useRef<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchData = useCallback(async () => {
     setLoading(true);
     setError(null);
-
+  
     try {
       const response = await ProductsService.getAllCriterias();
-            
-      setCriterias(response.data);
+  
+      const categories: Categories[]= response.data.categories;
 
-    } catch (error: any) {
-      setError(error.message);
+      const brands = response.data.brands.map((e: Brands) => ({
+        id: e.id,
+        name: e.name,
+        categoryId: e.categoryId,
+        categoryName: e.categoryName
+      })); 
+
+      const subCategories = response.data.subCategories.map((e: SubCategories) => ({
+        id: e.id,
+        name: e.name,
+        categoryId: e.categoryId,
+        categoryName: e.categoryName
+      })); 
+  
+      setCriterias((prevState : CriteriasProducts) => ({
+        ...prevState,
+        categories: categories, 
+        brands: brands,
+        subCategories: subCategories
+      }));
+
+      criteriasAreFetched.current = true;
+
+    } catch (error :any) {
+      setError(error );
+  
     } finally {
       setLoading(false);
     }
-  },[]);
+  
+  }, []); 
 
   useEffect(() => {
 
-    if(isFetched.current === false ){
+    if(criteriasAreFetched.current === false ){
       fetchData();
-      isFetched.current = true ;
+    }        
 
-    }
-
-  }, [fetchData]);
+  }, [fetchData ,criterias]);
 
 
   const update = async (newData : searchProduct) => {
@@ -48,7 +76,7 @@ const useFetchCriteria = () => {
     }
   }
 
-  return { criterias, loading, error, update};
+  return { criterias, loading, error, update ,criteriasAreFetched};
 };
 
 
