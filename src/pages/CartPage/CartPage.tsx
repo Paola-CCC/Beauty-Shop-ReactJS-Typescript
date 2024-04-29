@@ -8,9 +8,17 @@ import { CartItems } from '../../types/products.type';
   
 const CartPage = () => {
 
+    const userState = useAppSelector((state : RootState) =>  state.auth.isLogged);
     const cartState = useAppSelector((state : RootState) =>  state.cart);
     const [itemsOnly, setItemsOnly] = useState<CartItems[]>([]);
     const navigate = useNavigate();
+
+    const handleCartValidation = () => {
+
+        if( !userState ) {
+            navigate('/connexion');
+        }
+    };
 
     useEffect(() => {
         if( Object.values(cartState).length > 0) {
@@ -63,7 +71,7 @@ const CartPage = () => {
                         <span>Total:  </span>
                         <span> {cartState?.total} € </span>
                     </h4>
-                    <button className="checkout-button" disabled={Object.values(itemsOnly).length !== 0 ? false : true} >Valider le panier</button>
+                    <button className="checkout-button" disabled={Object.values(itemsOnly).length !== 0 ? false : true}  onClick={handleCartValidation}  >Valider le panier</button>
                     <button className="checkout-button" onClick={() => navigate('/')} >Continuer vos achats</button>
                 </div>
         </section>

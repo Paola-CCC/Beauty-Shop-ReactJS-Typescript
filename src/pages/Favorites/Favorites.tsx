@@ -29,7 +29,7 @@ const Favorites = () => {
           <div className="title-grp">
             <h3> FAVORIS </h3>
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus cursus mattis porttitor.
+              Retrouvez la liste de vos favoris
             </p>
           </div>
         </section>

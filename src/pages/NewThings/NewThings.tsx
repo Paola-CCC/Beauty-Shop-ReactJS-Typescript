@@ -35,7 +35,7 @@ const NewThings = () => {
     <section>
       <div className="title-grp">
         <h3> TOUTES NOS NOUVEAUTÉS </h3>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus cursus mattis porttitor. </p>
+        <p> Retrouvez nos dernières nouveautés pour être au top des nouvelles tendances ! </p>
       </div>
     </section>
 

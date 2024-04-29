@@ -35,8 +35,7 @@ const MakeUpPage = () => {
           <p>
             Essentiel beauté incontournable, le maquillage est notre meilleur allié ! Teint frais, lèvres
             gourmandes et smoky eyes, le makeup parfait est à portée de main. On laisse libre cours
-            à toutes nos envies maquillage en créant des looks à l'infini ! Best-sellers ou nouveautés
-            beauté, le maquillage n'a jamais été aussi fun qu'avec Sephora.
+            à toutes nos envies maquillage en créant des looks à l'infini.
           </p>
         </div>
       </section>
