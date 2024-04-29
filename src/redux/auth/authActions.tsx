@@ -7,7 +7,7 @@ export const registerUser = createAsyncThunk(
   async (datas: UserDatas , { rejectWithValue }) => {
     try {
       const { data } = await authService.register(datas);
-      const userInfo = { userId : data.user?.id, email: data?.user?.email, jwt: data?.jwt};
+      const userInfo = { id : data.user?.id, email: data?.user?.email, jwt: data?.jwt};
       localStorage.setItem('userToken', JSON.stringify(userInfo));
       return data?.user;
     } catch (error: any) {
@@ -28,7 +28,7 @@ export const loginUser = createAsyncThunk(
     try {
 
       const { data } = await authService.login({ email, password });
-      const userInfo = { userId : data.user?.id, email: data.user.email, jwt: data?.jwt};
+      const userInfo = { id : data.user?.id, email: data.user.email, jwt: data?.jwt};
       localStorage.setItem('userToken', JSON.stringify(userInfo));
       return data?.user;
     } catch (error : any) {

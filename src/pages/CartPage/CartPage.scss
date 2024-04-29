@@ -1,3 +1,7 @@
+
+$backGroundColor : #3c437c;
+
+
 .cart-shopping-container {
   min-height: 900px;
   padding: 50px;
@@ -7,7 +11,38 @@
     width: 90vw;
     margin: 0px auto 50px auto ;
   }
+
+
 }
+section.chakra-modal__content {
+  // background-color: cadetblue;
+  border-radius: 15px;
+  header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  .chakra-modal__body {
+    text-align: center;
+    padding: 15px;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    button {
+      width: 40%;
+      &.primary{
+        background-color: $backGroundColor;
+
+      }
+
+    }
+
+  }
+}
+
 
 .cart-shopping-container section.cart-items-layout {
   width: 90vw;

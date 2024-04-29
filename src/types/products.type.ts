@@ -23,6 +23,7 @@ export type CartItems = {
     descriptionShort?: string,
     brandName?: string,
     notes?: number,
+    date?: string
 }
 
 

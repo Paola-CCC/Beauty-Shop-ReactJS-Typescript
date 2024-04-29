@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Register.scss";
-import { Button, InputText } from "../../components/ui";
+import { InputText } from "../../components/ui";
+import { Button } from '@chakra-ui/react';
 import { useAppDispatch } from "../../redux/hooks";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../redux/auth/authActions";
@@ -104,8 +105,8 @@ const Register = () => {
         </div>
 
         <div className="mb-3"> 
-          <Button type="submit" kind={'primary'} stylesClass="mb-3">
-            S'inscrire
+          <Button type="submit" className="primary mb-3" colorScheme='teal' variant='solid'  >
+               S'inscrire
           </Button>
         </div>
 

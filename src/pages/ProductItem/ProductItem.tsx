@@ -9,6 +9,7 @@ import ProductsService from '../../services/productsService';
 import { getReviewsList } from '../../redux/reviews/reviewsActions';
 import { Reviews } from '../../types/reviews.type';
 import { ReviewCard } from '../../components';
+// import { Button, ButtonGroup } from '@chakra-ui/react'
 
 const ProductItem = () => {
 

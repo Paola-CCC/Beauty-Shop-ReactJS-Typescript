@@ -1,3 +1,6 @@
+$backGroundColor : #3c437c;
+
+
 div.container-search-group {
   background-color: rgba(245, 245, 245, 0.885);
   border: 1px solid rgb(238, 238, 238);
@@ -44,6 +47,8 @@ div.container-search-group {
         align-items: flex-end;
 
         button {
+          background-color: $backGroundColor;
+
           i {
             padding: 0 10px;
           }

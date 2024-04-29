@@ -7,6 +7,9 @@ interface CartState {
   cartLength: number,
   total: number,
   devise: string,
+  userId: number | null,
+  date: string
+
 }
 
 const initialState: CartState = {
@@ -14,6 +17,8 @@ const initialState: CartState = {
   cartLength: 0,
   total: 0,
   devise: "EUR",
+  userId: null,
+  date: ''
 };
 
 export const cartSlice = createSlice({

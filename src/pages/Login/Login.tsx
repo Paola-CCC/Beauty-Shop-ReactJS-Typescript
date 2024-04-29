@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Login.scss";
-import { Button, InputText } from "../../components/ui";
+import { Button } from '@chakra-ui/react';
+import { InputText } from "../../components/ui";
 import { loginUser } from "../../redux/auth/authActions";
 import { useAppDispatch } from "../../redux/hooks";
 import { Link, useNavigate } from "react-router-dom";
@@ -28,7 +29,7 @@ const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // const response = dispatch(loginUser(userDatas));
+    const response = dispatch(loginUser(userDatas));
     dispatch(loginUser(userDatas));
     navigate("/");
   };
@@ -63,8 +64,8 @@ const Login = () => {
         </div>
 
         <div className="mb-3"> 
-          <Button type="submit" kind={'primary'} stylesClass="mb-3">
-            Se connecter
+          <Button type="submit" className="primary mb-3"   colorScheme='teal' variant='solid'  >
+                Se connecter
           </Button>
         </div>
 

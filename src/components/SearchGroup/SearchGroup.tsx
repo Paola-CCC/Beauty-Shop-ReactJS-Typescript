@@ -198,7 +198,7 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
             />
 
             <div className='btn-search-zone'>
-              <Button colorScheme='teal' variant='solid' onClick={searchData} >
+              <Button colorScheme='teal' variant='solid' className="primary" onClick={searchData} >
                 <i className="fa-solid fa-magnifying-glass"></i>
                 Filtrer
               </Button>
