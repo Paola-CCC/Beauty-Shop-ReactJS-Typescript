@@ -9,7 +9,7 @@ export type Products = {
     tags?: string[],
     subCategories?: string[],
     categories: string,
-    notes?: any,
+    notes?: number,
     createdAt: string,
     price: number | null,
 } 
@@ -22,6 +22,7 @@ export type CartItems = {
     thumbnail?: string,
     descriptionShort?: string,
     brandName?: string,
+    notes?: number,
 }
 
 

@@ -57,7 +57,7 @@ div.container-search-group {
     }
   }
 }
-div.remove-zone ,div.resp-error {
+div.remove-zone  {
   max-width: 1000px;
   margin: 0 auto;
   padding: 8px 0;
@@ -72,8 +72,16 @@ div.remove-zone ,div.resp-error {
   }
 }
 
-div.resp-error.show {
-  display: none;
+div.resp-error {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 8px 0;
+  background-color: rgba(241, 241, 241, 0.822);
+  margin-top: 10px;
+  border-radius: 20px;
+  text-align: center;
+
+
 }
 
 @media screen and (max-width: 1100px) {

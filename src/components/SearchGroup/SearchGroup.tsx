@@ -22,6 +22,7 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
   };
 
   const [searchValues, setSearchValues] = useState(initialeState);
+  const [searchResultsIsEmpty, setSearchResultsIsEmpty] = useState<boolean | null >(null);
   const { criterias, update, criteriasAreFetched} = useFetchCriteria();
   const criteriasCompleted = useRef<boolean>(false);
   const pathUrl = usePathname();
@@ -53,6 +54,8 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
   const resetSearch = () => {
     setSearchValues(initialeState);
     handleSearch([]);
+    setSearchResultsIsEmpty(null);
+
   };
 
   /** Envoie les critères de recherche vers le Hook puis le backend */
@@ -71,11 +74,23 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
       const response = await update(data);
       handleSearch(response);
 
+      if( response.length > 0) {
+        setSearchResultsIsEmpty(false);
+      } else {
+        setSearchResultsIsEmpty(true);
+      }
+
     } catch (error) {
       console.error('Error ', error)
     }
     
   }
+
+  /** vérifie que une des valeurs de searchValues est différent est '' */
+  const checkEmptySearchValuesState = () => {
+    const result = Object.values(searchValues).some((element: string) => element !== '');
+    return result;
+  };
 
   useEffect(() => {
 
@@ -197,9 +212,14 @@ const SearchGroup = ( { handleSearch}: searchGroupProps ) => {
             Réinitialiser
           </Button>
       </div>
-      <div className='resp-error show'>
-        Aucun éléments trouvés
-      </div>
+
+      {  checkEmptySearchValuesState() && searchResultsIsEmpty &&  (
+        <div className='resp-error'>
+          <span>
+          Aucun éléments trouvés pour votre recherche
+          </span>
+        </div>
+      )}
     </>
 
   )
