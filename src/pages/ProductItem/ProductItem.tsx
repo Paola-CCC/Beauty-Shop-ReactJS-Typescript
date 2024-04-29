@@ -25,7 +25,7 @@ const ProductItem = () => {
         quantity: null,
         tags: [],
         categories: '',
-        notes: null,
+        notes: undefined,
         createdAt: '',
         price: null,
     }

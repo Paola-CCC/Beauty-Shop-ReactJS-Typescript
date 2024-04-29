@@ -1,15 +1,26 @@
 
-import { Products } from "../types/products.type";
+import { CriteriasProducts, Products} from "../types/products.type";
 import http from "./axiosClient";
 
 export const getAll = async () => {
     return await http.get<Products[]>("/products");
 };
 
+export const getAllCriterias = async () => {
+    return await http.get<CriteriasProducts>("/all-criterias");
+};
+
 export const getPopularProducts = async () => {
     return await http.get<Products[]>("/popular-products");
 };
 
+export const getSearchProducts = async (data: any) => {
+    return await http.post<Products[]>("/search-products", data);
+};
+
+export const getFiltedProductByName = async (name: string) => {
+    return await http.get<Products[]>(`/filter-products?name=${name}`);
+};
 
 export const getLatestProducts = async () => {
     return await http.get<Products[]>("/latest-products");
@@ -23,7 +34,10 @@ const ProductsService = {
     getAll,
     getById,
     getPopularProducts,
-    getLatestProducts
+    getLatestProducts,
+    getSearchProducts,
+    getFiltedProductByName,
+    getAllCriterias
 };
 
 export default ProductsService;

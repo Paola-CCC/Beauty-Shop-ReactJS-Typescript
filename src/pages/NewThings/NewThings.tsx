@@ -8,6 +8,7 @@ import SearchGroup from '../../components/SearchGroup/SearchGroup';
 const NewThings = () => {
   
   const [latestProduct,setLatestProduct] = useState<Products[]>([]);
+  const [productFilered, setProductFilered] = useState<Products[]>([]);
 
   useEffect(()=> {
 
@@ -21,8 +22,12 @@ const NewThings = () => {
     };
 
      getData();
+
   },[])
 
+  const getDataFilered = (response: Products[]) => {
+    setProductFilered(response);
+  };
   
  return (
   <div className="container-lastest-product-zone">
@@ -35,19 +40,35 @@ const NewThings = () => {
     </section>
 
     <section className='search-container-form'>
-      <SearchGroup />
+      <SearchGroup handleSearch={getDataFilered} />
     </section>
 
     <section className=''>
       <ul className='items-list makeup'>
-          { latestProduct?.map((e : Products,index: number) => (
-            <li key={index}>
-                  <Card 
-                    path={e.categories + '/'+ e.id}
-                    {...e} 
-                  />
-            </li>
-          ))} 
+
+          { productFilered.length === 0 ? (
+            <>
+               { latestProduct?.map((e : Products,index: number) => (
+                  <li key={index}>
+                        <Card 
+                          path={(e.categories === 'Maquillage' ? 'make-up' : 'skin-care') + '/'+ e.id}
+                          {...e} 
+                        />
+                  </li>
+                ))} 
+            </>
+          ) : (
+            <>
+              { productFilered?.map((e : Products,index: number) => (
+                <li key={index}>
+                      <Card 
+                        path={(e.categories === 'Maquillage' ? 'make-up' : 'skin-care') + '/'+ e.id}
+                        {...e} 
+                      />
+                </li>
+              ))}
+            </>
+          )}
       </ul>
     </section>
 

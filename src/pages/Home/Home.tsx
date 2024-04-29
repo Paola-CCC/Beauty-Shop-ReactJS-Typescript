@@ -86,7 +86,10 @@ const [datas, setDatas] = useState<Products[]>([]);
           { datas?.length > 0 && (
               datas.map((e) => (
                 <li key={e.id}  className="container-card popular-choice">
-                  <Card path={`${e.categories}/${e.id}`} {...e} />
+                  <Card 
+                    path={(e.categories === 'Maquillage' ? 'make-up' : 'skin-care') + '/'+ e.id}
+                    {...e} 
+                  />
                 </li>
               ))
           )}

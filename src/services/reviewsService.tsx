@@ -14,7 +14,7 @@ export const createReview = async (data: Reviews) => {
 };
 
 export const updateReview = async (id : string | number, data: Reviews) => {
-    return await http.post<Reviews>(`/update-reviews/`, data);
+    return await http.put<Reviews>(`/update-reviews/`, data);
 };
 
 export const reviewsService = {
