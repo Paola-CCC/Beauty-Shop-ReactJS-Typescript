@@ -24,6 +24,12 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+
+    updateUserInfos(state ,action: PayloadAction<UserDatas>){
+      state.userInfo = action.payload;
+      state.isLogged = true;
+    },
+
     showUserIsLogged(state) {
       if (localStorage.getItem("userToken")) {        
         state.isLogged = true;
@@ -85,7 +91,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { showUserIsLogged ,logOutUser } = authSlice.actions;
+export const { showUserIsLogged ,logOutUser ,updateUserInfos } = authSlice.actions;
 
 
 export default authSlice.reducer;

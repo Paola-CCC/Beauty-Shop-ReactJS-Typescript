@@ -2,14 +2,15 @@ import React, { useEffect, useRef, useState } from 'react'
 import './UsersDetails.scss';
 import authService from '../../services/authService';
 import { UserDatas } from '../../types/user.type';
+import { useAppDispatch } from '../../redux/hooks';
+import { updateUserInfos } from '../../redux/auth/authSlice';
 
 
 const UsersDetails = () => {
 
    const [ userData,setUserData] = useState<  UserDatas >({} as UserDatas);
    const datasUserFetched = useRef<boolean>(false)
-
-   // const handleUpdateData = () => {}
+   const dispatch = useAppDispatch();
 
    useEffect(() => {
 
@@ -19,7 +20,8 @@ const UsersDetails = () => {
             const userStorage = localStorage.getItem("userToken");      
             if (userStorage) {
                let userDataStored = JSON.parse(userStorage);
-               const response = await authService.getCurrentUserById(userDataStored.userId);
+               const response = await authService.getCurrentUserById(userDataStored.id);
+               dispatch(updateUserInfos(response.data));
                setUserData(response.data);
             }
 
@@ -33,7 +35,7 @@ const UsersDetails = () => {
          datasUserFetched.current = true ;
       }
 
-   },[userData])
+   },[userData ,dispatch])
    
   return (
     <>
